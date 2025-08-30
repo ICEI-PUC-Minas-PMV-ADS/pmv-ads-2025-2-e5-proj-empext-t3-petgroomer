@@ -36,4 +36,12 @@ Apresentar aqui como este projeto extensionista transforma a realidade do parcei
 
 ## Descrição do Parceiro
 
-Apresente uma descrição resumida sobre a organização onde o projeto será desenvolvido para que possa ser compreendido o cenário do sistema sociotécnico.
+Frontend: React Native (ou React, se for web)
+
+Backend: Node.js com Express
+
+Banco de Dados: MongoDB / MySQL / Firebase (especificar)
+
+API RESTful: Para integração entre front e back
+
+Autenticação: JWT ou Firebase Auth
