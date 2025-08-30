@@ -31,9 +31,19 @@ Descreva as dores/dificuldades do parceiro que motivam trabalhar na construção
 
 ## Relação com a Extensão Universitária
 
-Relacionar a situação-problema da organização com o impacto social esperado com a implantação do sistema sociotécnico.
-Apresentar aqui como este projeto extensionista transforma a realidade do parceiro e dos alunos.
+Este projeto está diretamente ligado às práticas de extensão universitária, pois integra conhecimento acadêmico com necessidades reais da comunidade.
 
+Através do desenvolvimento do aplicativo, os estudantes aplicam conteúdos aprendidos em sala de aula — como programação, design de interfaces, banco de dados e gestão de projetos — para criar uma solução tecnológica que beneficia tanto empreendedores locais quanto tutores de animais.
+
+Além disso, o projeto:
+
+* Promove aprendizado prático ao envolver alunos no desenvolvimento de um sistema real.
+
+* Contribui para o bem-estar animal ao facilitar o acesso a serviços de banho e tosa.
+
+* Fortalece a relação universidade-comunidade, oferecendo inovação ao setor pet.
+
+* Estimula empreendedorismo e inovação tecnológica, gerando impacto social e econômico.
 ## Descrição do Parceiro
 
 Frontend: React Native (ou React, se for web)
