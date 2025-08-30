@@ -3,15 +3,15 @@
 Pet Groomer um aplicativo simples e intuitivo para agendamento de serviços de banho e tosa em pet shops. Com ele, clientes podem escolher datas, horários e serviços para seus pets, enquanto os estabelecimentos gerenciam sua agenda de forma prática e organizada.
 
 ## Problema
- Agendamento manual: Muitos pet shops ainda dependem de ligações telefônicas ou anotações em papel, o que gera confusão e erros.
+* Agendamento manual: Muitos pet shops ainda dependem de ligações telefônicas ou anotações em papel, o que gera confusão e erros.
 
- Falta de organização: Sem um sistema centralizado, é fácil ocorrerem conflitos de horários e esquecimentos.
+ * Falta de organização: Sem um sistema centralizado, é fácil ocorrerem conflitos de horários e esquecimentos.
 
- Dificuldade para os clientes: Tutores têm pouca praticidade para marcar um horário, precisando ligar ou ir pessoalmente ao pet shop.
+ * Dificuldade para os clientes: Tutores têm pouca praticidade para marcar um horário, precisando ligar ou ir pessoalmente ao pet shop.
 
- Pouco controle do histórico: Sem registros digitais, fica difícil acompanhar o histórico de serviços prestados ao pet.
+ * Pouco controle do histórico: Sem registros digitais, fica difícil acompanhar o histórico de serviços prestados ao pet.
 
- Baixa fidelização: A ausência de lembretes e notificações reduz a frequência dos clientes.
+ * Baixa fidelização: A ausência de lembretes e notificações reduz a frequência dos clientes.
 
 > **Links Úteis**:
 > - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
