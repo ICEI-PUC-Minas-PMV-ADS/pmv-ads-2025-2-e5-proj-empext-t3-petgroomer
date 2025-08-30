@@ -39,30 +39,26 @@ Para mais informações, consulte os microfundamentos Fundamentos de Engenharia 
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| O sistema deve permitir cadastrar clientes, incluindo nome, telefone e informações do pet (nome, espécie, raça, idade). | ALTA | 
+|RF-002| O sistema deve permitir editar os dados de clientes ou pets já cadastrados.  | MÉDIA |
+|RF-003| O sistema deve permitir agendar atendimentos, informando cliente, serviço, data e horário.  | ALTA |
+|RF-004| O sistema deve permitir cancelar um agendamento previamente marcado.  | MÉDIA |
+|RF-005| O sistema deve exibir todos os agendamentos do dia em ordem de horário.  | ALTA |
+|RF-006| O sistema deve permitir localizar clientes por nome ou telefone.  | MÉDIA |
+|RF-007| O sistema deve permitir cadastrar os serviços oferecidos (banho, tosa, etc.), com nome e valor.  | ALTA |
+|RF-008| O sistema deve permitir marcar o agendamento como “pendente” ou “confirmado”.  | MÉDIA |
+|RF-009| O sistema deve exibir uma lista com todos os clientes registrados.  | BAIXA |
+|RF-010| O sistema deve permitir agendar atendimentos, informando cliente, serviço, data e horário.  | MÉDIA |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+|RNF-001| A interface deve ser intuitiva e responsiva, garantindo boa experiência tanto em computadores quanto em dispositivos móveis. | ALTA | 
+|RNF-002| O sistema deve responder às requisições do usuário em até 3 segundos para as operações principais (cadastro, edição, busca e agendamento). |  ALTA | 
+|RNF-003| Os dados de clientes e pets devem ser armazenados de forma segura, com criptografia de informações sensíveis (como telefone). | ALTA |
+|RNF-004| O sistema deve estar disponível pelo menos 99% do tempo e garantir persistência das informações em caso de falhas. | ALTA |
 
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
 
 ## Restrições
 
@@ -71,13 +67,10 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|02| O cadastro de clientes deve aceitar apenas números válidos de telefone |
+|03| O sistema deve ser desenvolvido para mobile e plataforma web utilizando arquitetura cliente-servidor.|
+|04| O desenvolvimento deve respeitar o orçamento disponível, sem custos adicionais de licenças proprietárias.|
 
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Diagrama de Caso de Uso
 
