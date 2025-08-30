@@ -12,7 +12,7 @@ Nesse momento o grupo deve apresentar a situação-problema (dor/oportunidade) d
 
 ## Objetivos
 
-Aqui o grupo deve descrever os objetivos do trabalho indicando que o objetivo é aplicar os conceitos de extensão universitária no desenvolvimento de um sistema sociotécnico que impacte positivamente a comunidade.
+O Pet Groomer foi criado para ajudar pet shops a melhorar a experiência dos clientes e organizar os agendamentos de forma eficiente, economizando tempo e oferecendo praticidade no dia a dia.
 
 ## Justificativa
 
