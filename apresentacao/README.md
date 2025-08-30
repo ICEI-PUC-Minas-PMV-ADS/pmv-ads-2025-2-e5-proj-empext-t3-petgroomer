@@ -1,6 +1,6 @@
 # Etapa 1 - Apresentação da proposta da Solução
-Arquivo de apresentação (em slides) da proposta de solução  
-Deve conter a descrição do cliente, o Project Model Canvas e o Diagrama de Caso de Uso.
+Pet Groomer um aplicativo simples e intuitivo para agendamento de serviços de banho e tosa em pet shops.
+Com ele, clientes podem escolher datas, horários e serviços para seus pets, enquanto os estabelecimentos gerenciam sua agenda de forma prática e organizada.
 
 # Etapa 5 - Apresentação da Solução
 - Apresentação para Mostra de Extensão Eixo 5 ADS:
