@@ -31,12 +31,12 @@ Autenticação e Segurança: JWT ou Firebase Authentication para login seguro.
 
 🔹 Tecnologias
 Camada	Tecnologias	Função
-Frontend	React Native / React.js	Interface para usuários e administradores
-Backend	Node.js + Express	API RESTful e lógica de negócio
-Banco de Dados	MongoDB / MySQL / Firebase	Armazenamento de dados
-Hospedagem	Vercel / Heroku / Render	Deploy do backend e frontend
-Notificações	Firebase Cloud Messaging	Envio de lembretes e avisos
-Controle de Versão	Git + GitHub	Gestão do código e colaboração
+* Frontend	React Native / React.js	Interface para usuários e administradores
+* Backend	Node.js + Express	API RESTful e lógica de negócio
+* Banco de Dados	MongoDB / MySQL / Firebase	Armazenamento de dados
+* Hospedagem	Vercel / Heroku / Render	Deploy do backend e frontend
+* Notificações	Firebase Cloud Messaging	Envio de lembretes e avisos
+* Controle de Versão	Git + GitHub	Gestão do código e colaboração
 ## Project Model Canvas
 
 Deve ser desenvolvido a partir do microfundamento: Empreendedorismo e inovação.
