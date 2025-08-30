@@ -19,8 +19,24 @@ Definição do problema e ideia de solução a partir da perspectiva do usuário
 
 ## Arquitetura e Tecnologias
 
-Descreva brevemente a arquitetura definida para o projeto e as tecnologias a serem utilizadas. Sugere-se a criação de um diagrama de componentes da solução.
+O Pet Groomer foi desenvolvido com uma arquitetura baseada em camadas e serviços, seguindo o modelo Cliente-Servidor. O aplicativo será dividido em:
 
+Frontend (Cliente): Aplicativo mobile (ou web) para clientes e administradores.
+
+Backend (Servidor): API RESTful para processar dados e regras de negócio.
+
+Banco de Dados: Sistema centralizado para armazenar informações de usuários, pets e agendamentos.
+
+Autenticação e Segurança: JWT ou Firebase Authentication para login seguro.
+
+🔹 Tecnologias
+Camada	Tecnologias	Função
+Frontend	React Native / React.js	Interface para usuários e administradores
+Backend	Node.js + Express	API RESTful e lógica de negócio
+Banco de Dados	MongoDB / MySQL / Firebase	Armazenamento de dados
+Hospedagem	Vercel / Heroku / Render	Deploy do backend e frontend
+Notificações	Firebase Cloud Messaging	Envio de lembretes e avisos
+Controle de Versão	Git + GitHub	Gestão do código e colaboração
 ## Project Model Canvas
 
 Deve ser desenvolvido a partir do microfundamento: Empreendedorismo e inovação.
