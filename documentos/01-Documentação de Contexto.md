@@ -1,6 +1,6 @@
 # Introdução
 
-Texto descritivo apresentando a compreensão sobre extensão universitária discutido no microfundamento de nivelamento, relacionando a situação-problema da organização e ao sistema sociotécnico que será desenvolvido e implantado.
+Pet Groomer um aplicativo simples e intuitivo para agendamento de serviços de banho e tosa em pet shops. Com ele, clientes podem escolher datas, horários e serviços para seus pets, enquanto os estabelecimentos gerenciam sua agenda de forma prática e organizada.
 
 ## Problema
 Nesse momento o grupo deve apresentar a situação-problema (dor/oportunidade) do parceiro onde será desenvolvido sistema sociotécnico.
