@@ -1,7 +1,17 @@
 # Etapa 1 - Apresentação da proposta da Solução
-Pet Groomer um aplicativo simples e intuitivo para agendamento de serviços de banho e tosa em pet shops.
-Com ele, clientes podem escolher datas, horários e serviços para seus pets, enquanto os estabelecimentos gerenciam sua agenda de forma prática e organizada.
+O Pet Groomer surge como uma solução tecnológica para modernizar e simplificar o agendamento de serviços de banho e tosa em pet shops. A proposta tem como objetivo oferecer uma plataforma intuitiva que facilite a vida de clientes e empreendedores, eliminando processos manuais e centralizando todas as informações em um único sistema.
 
+A aplicação permitirá que:
+
+* Clientes agendem horários para seus pets de forma rápida e prática, com lembretes automáticos.
+
+* Pet shops tenham controle completo da agenda, otimizando recursos e reduzindo erros.
+
+* Administradores visualizem relatórios e históricos de serviços, auxiliando na tomada de decisão.
+
+* Universidades integrem alunos em um projeto real, fortalecendo a extensão universitária.
+
+Com essa proposta, o sistema não apenas melhora a organização interna dos estabelecimentos, mas também oferece uma experiência diferenciada aos clientes, aproximando-os do pet shop e criando um ecossistema digital para o setor pet.
 # Etapa 5 - Apresentação da Solução
 - Apresentação para Mostra de Extensão Eixo 5 ADS:
   * descrição do cliente,
