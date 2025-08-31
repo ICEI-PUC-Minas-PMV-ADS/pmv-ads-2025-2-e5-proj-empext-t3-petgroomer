@@ -23,11 +23,7 @@ Pet Groomer um aplicativo simples e intuitivo para agendamento de serviços de b
 O Pet Groomer foi criado para ajudar pet shops a melhorar a experiência dos clientes e organizar os agendamentos de forma eficiente, economizando tempo e oferecendo praticidade no dia a dia.
 
 ## Justificativa
-
-Descreva as dores/dificuldades do parceiro que motivam trabalhar na construção da solução.
-
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Muitos pet shops ainda fazem o agendamento e controle de serviços de forma manual (telefone, pessoalmente ou WhatsApp), o que gera erros, perda de informação e retrabalho. Existe a necessidade de uma forma forma centralizada de registrar os dados de clientes, pets e atendimentos.
 
 ## Relação com a Extensão Universitária
 
