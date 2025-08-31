@@ -95,6 +95,7 @@ O diagrama de casos de uso é o próximo passo após a elicitação de requisito
 Para mais informações, consulte o microfundamento Engenharia de Requisitos de Software 
 
 As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
+<img width="1468" height="765" alt="image" src="https://github.com/user-attachments/assets/3df76a3c-1abe-418e-9e72-d3ee9f2bb5d2" />
 
 > **Links Úteis**:
 > - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
