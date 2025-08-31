@@ -108,10 +108,6 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Diagrams](https://app.diagrams.net/)
 
 ## Modelo da Base de Dados
+<img width="689" height="306" alt="MODELO drawio" src="https://github.com/user-attachments/assets/ba1ed4e7-9ddd-4768-850a-a7371a49fe46" />
 
-# Para banco de dados relacional:
-- Apresentar o MER (Modelo Entidade-Relacionamento)
-- Apresentar o Projeto Físico da Base de Dados (estrutura das tabelas, tipos de dados, chaves primárias e estrangeiras)
-# Para banco de dados NoSQL:
-Apresentar o Modelo da Base de Dados (estrutura dos documentos, coleções, ou grafos, conforme o tipo de NoSQL utilizado)
-
+[Link](https://drive.google.com/file/d/1CViOd4k-w7u63FFX6sT6vDnEzrHGG9Au/view?usp=sharing)
