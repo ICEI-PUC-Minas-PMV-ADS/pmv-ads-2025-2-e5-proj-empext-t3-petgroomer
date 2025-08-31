@@ -40,7 +40,9 @@ Camada	Tecnologias	Função
 ## Project Model Canvas
 
 
-<img width="1441" height="850" alt="project model canvas" src="https://github.com/user-attachments/assets/2a3d0533-24f0-49d7-a905-5a7ac1c4246e" />
+
+
+<img width="1322" height="831" alt="MODELCANVAS2" src="https://github.com/user-attachments/assets/d7fc07d4-c075-41d9-a93c-9fcf39e154c3" />
 
 
 > **Links Úteis**:
