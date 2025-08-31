@@ -39,8 +39,9 @@ Camada	Tecnologias	Função
 * Controle de Versão	Git + GitHub	Gestão do código e colaboração
 ## Project Model Canvas
 
-Deve ser desenvolvido a partir do microfundamento: Empreendedorismo e inovação.
-Colocar a imagem do modelo construído apresentando a proposta de solução.
+
+<img width="1441" height="850" alt="project model canvas" src="https://github.com/user-attachments/assets/2a3d0533-24f0-49d7-a905-5a7ac1c4246e" />
+
 
 > **Links Úteis**:
 > Disponíveis em material de apoio do projeto
