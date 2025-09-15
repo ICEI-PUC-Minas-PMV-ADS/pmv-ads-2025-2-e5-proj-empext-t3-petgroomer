@@ -41,8 +41,9 @@ Camada	Tecnologias	Função
 
 
 
+<img width="1231" height="835" alt="Capturar" src="https://github.com/user-attachments/assets/4a203f6f-e3e3-4cd6-b15a-449c1f093c86" />
 
-<img width="1322" height="831" alt="MODELCANVAS2" src="https://github.com/user-attachments/assets/d7fc07d4-c075-41d9-a93c-9fcf39e154c3" />
+
 
 
 > **Links Úteis**:
