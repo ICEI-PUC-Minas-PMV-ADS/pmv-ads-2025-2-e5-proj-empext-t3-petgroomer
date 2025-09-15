@@ -15,11 +15,11 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
-    <td>Este caso de teste verifica se um usuário pode fazer login com sucesso utilizando credenciais válidas.</td>
+    <td>Este caso de teste verifica se o sistema permite cadastrar clientes e seus pets corretamente..</td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">José da Silva</td>
+    <td width="430">NOME TESTE1</td>
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
@@ -27,15 +27,16 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
-    <td>RF-001: O funcionário deve conseguir logar no aplicativo</td>
+    <td>RF-001: O sistema deve permitir cadastrar clientes, incluindo nome, telefone e informações do pet (nome, espécie, raça, idade).</td>
   </tr>
   <tr>
     <td><strong>Passos</strong></td>
     <td>
       1. Abrir o aplicativo.<br>
-      2. Inserir o CPF válido.<br>
-      3. Inserir a senha válida.<br>
-      4. Clicar no botão "Entrar".
+      2. Navegar até a tela “Cadastrar Cliente”.<br>
+      3. Preencher campos do cliente: nome, telefone, e-mail (se houver).<br>
+      4. Preencher informações do pet: nome, espécie, raça, idade. <br>
+      5. Clicar em “Salvar”.
       </td>
   </tr>
     <tr>
