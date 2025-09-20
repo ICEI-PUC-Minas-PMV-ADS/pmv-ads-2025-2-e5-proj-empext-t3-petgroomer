@@ -275,7 +275,7 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
 
 <table> <!--a fazer: CT-002 - I02 Evidência do Ariel do Teste do Upload de formato inadequado para foto-->
   <tr>
-    <th colspan="6" width="1000">CT-002<br>Teste do serviço backend de hospedagem de fotos.</th>
+    <th colspan="6" width="1000">CT-002<br>Upload de formato inadequado para foto.</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
@@ -381,7 +381,7 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
 
 <table> <!--a fazer: CT-002 - I02 Evidência da Ariel do Teste do Upload de formato inadequado para foto-->
   <tr>
-    <th colspan="6" width="1000">CT-001<br>CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
+    <th colspan="6" width="1000">CT-002 - I01<br>Upload de formato inadequado para foto.</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
