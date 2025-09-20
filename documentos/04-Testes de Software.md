@@ -1,13 +1,17 @@
-# Planos de Testes de Software
+# Testes de Software
 
-Apresente os casos de testes utilizados na realização da verificação e validação da aplicação. <!--Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos bem como o tratamento de erros (robustez da aplicação).-->
+Apresentação dos casos de testes utilizados na realização da verificação e validação da aplicação. <!--
 
-### Tipo de Teste
+Para demonstração da robustez da aplicação, foram escolhidos cenários de testes que demonstrem os requisitos sendo satisfeitos bem como o tratamento de erros.
+
+##### Tipos de Teste Realizados:
 - **Sucesso**: Tem o objetivo de verificar se as funcionalidades funcionam corretamente.
 - **Insucesso**: Tem o objetivo de verificar se o sistema trata erros de maneira correta.
 
-<!-- #### Exemplo de Caso de Teste de Sucesso
-O caso de teste de sucesso deve ser identificado por CT - xxx - S -->
+# Planos de Testes de Software
+## ETAPA 2
+Exemplo de Caso de Teste de Sucesso
+O caso de teste de sucesso deve ser identificado por CT - xxx - S
 
 <table>
   <tr>
@@ -19,7 +23,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S -->
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">NOME TESTE1</td>
+    <td width="430">[Nome do Responsável pelo Requisito]</td>
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
@@ -39,22 +43,21 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S -->
       5. Clicar em “Salvar”.
       </td>
   </tr>
-    <tr>
+    <!-- <tr>
     <td><strong>Dados de teste</strong></td>
     <td>
       - <strong>CPF:</strong> Colocar CPF cadastrado na base<br>
       - <strong>Senha:</strong> Colocar valor de senha válida
-  </tr>
+  </tr> -->
     <tr>
     <td><strong>Critérios de êxito</strong></td>
-    <td>O sistema deve redirecionar o usuário para a página inicial do aplicativo após o login bem-sucedido.</td>
+    <td>- O cliente deve passar a constar no banco de dados.</td>
   </tr>
 </table>
 
 <!-- #### Exemplo de Caso de Teste de Insucesso
 Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.
 Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Etapa 2, Etapa 3 e Etapa 4 -->
-### ETAPA 2  
 <table>
   <tr>
     <th colspan="2" width="1000">CT-002 - I01<br>Login com credenciais inválidas</th>
@@ -65,7 +68,7 @@ Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Et
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">José da Silva</td>
+    <td width="430">[Nome do Responsável pelo Requisito]</td>
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
@@ -96,10 +99,10 @@ Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Et
   </tr>
 </table>
 
-### ETAPA 3
+## ETAPA 3
 Casos de teste etapa 3
 
-### ETAPA 4
+## ETAPA 4
 Casos de teste etapa 4
  
 # Evidências de Testes de Software
