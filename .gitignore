@@ -53,7 +53,7 @@ appsettings.Development.json
 *.DS_Store
 
 ### Local Dev ###
-launchSettings.json 
+# launchSettings.json 
 
 # User-specific files
 *.rsuser
