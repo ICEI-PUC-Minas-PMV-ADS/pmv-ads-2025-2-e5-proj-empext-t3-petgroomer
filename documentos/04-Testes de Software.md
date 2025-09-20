@@ -1,6 +1,6 @@
-# Testes de Software
+# Planos de Testes de Software
 
-Apresentação dos casos de testes utilizados na realização da verificação e validação da aplicação. <!--
+Apresentação dos casos de testes utilizados na realização da verificação e validação da aplicação.
 
 Para demonstração da robustez da aplicação, foram escolhidos cenários de testes que demonstrem os requisitos sendo satisfeitos bem como o tratamento de erros.
 
@@ -8,7 +8,7 @@ Para demonstração da robustez da aplicação, foram escolhidos cenários de te
 - **Sucesso**: Tem o objetivo de verificar se as funcionalidades funcionam corretamente.
 - **Insucesso**: Tem o objetivo de verificar se o sistema trata erros de maneira correta.
 
-# Planos de Testes de Software
+
 ## ETAPA 2
 Exemplo de Caso de Teste de Sucesso
 O caso de teste de sucesso deve ser identificado por CT - xxx - S
@@ -54,6 +54,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
     <td>- O cliente deve passar a constar no banco de dados.</td>
   </tr>
 </table>
+-----
 
 <!-- #### Exemplo de Caso de Teste de Insucesso
 Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.
