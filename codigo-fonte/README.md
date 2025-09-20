@@ -7,6 +7,6 @@ Descrever a infra estrutura utilizada para implantação da aplicação.
 
 ## Histórico de versões
 
-### [0.1.0] - DD/MM/AAAA
+### [0.1.0] - 20/07/2025
 #### Adicionado
 - Adicionado ...
