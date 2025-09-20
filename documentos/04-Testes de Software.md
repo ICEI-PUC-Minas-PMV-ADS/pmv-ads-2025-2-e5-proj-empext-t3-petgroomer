@@ -62,7 +62,7 @@ Os casos de testes de insucesso devem ser identificados por CT - xxx - I + seque
 Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Etapa 2, Etapa 3 e Etapa 4 -->
 <table>
   <tr>
-    <th colspan="2" width="1000">CT-002 - I01<br>Login com credenciais inválidas</th>
+    <th colspan="2" width="1000">CT-002 - I01<br>Login com credenciais inválidas - EXEMPLO</th>
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
@@ -101,11 +101,55 @@ Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Et
   </tr>
 </table>
 
-## ETAPA 3
+--------
+
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-00X - S<br>[Nome do caso de teste]</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>[Descrição do caso de teste]</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">[Nome do Responsável pelo Requisito]</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">[Sucesso ou insucesso]</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>[RF-00X: Requisito.]</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Passo 1.<br>
+      2. Passo 2.<br>
+      3. Passo 3.<br>
+      4. Passo 4<br>
+      5. Passo 5.
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>Dado:</strong> Descrição do dado<br>
+      - <strong>Dado:</strong> Descrição do dado<br>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>- Critério.</td>
+  </tr>
+</table>
+
+<!-- ## ETAPA 3
 Casos de teste etapa 3
 
 ## ETAPA 4
-Casos de teste etapa 4
+Casos de teste etapa 4 -->
  
 # Evidências de Testes de Software
 
