@@ -279,8 +279,10 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
-    <td colspan="5">- Deve cair na pasta do projeto do cloudinary.<br>
-    - O swagger deve retornar dois códigos 200 e response body com [nomeArquivo], [url] e [dataUpload].</td>
+    <td colspan="5">-- Deve retornar resposta 500 do Cloudinary.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
+    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",
+  "detalhes": "Invalid image file".</td>
   </tr>
     <tr>
     <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
@@ -385,7 +387,8 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td width="170"><strong>Critérios de êxito</strong></td>
     <td colspan="5">- Deve retornar resposta 500 do Cloudinary.<br>
     - Deve retornar resposta 200 da tentativa de envio.<br>
-    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",  "detalhes": "File size too large. Got [size]. Maximum is 10485760."</td>
+    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",
+  "detalhes": "Invalid image file"</td>
   </tr>
     <tr>
       <td><strong>Responsável pela funcionalidade</strong></td>
@@ -397,7 +400,7 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">O sistema está impedindo o upload de foto grande corretamente.</td>
+    <td colspan="5">O sistema está impedindo o upload de formato inadequado corretamente.</td>
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong></td>
