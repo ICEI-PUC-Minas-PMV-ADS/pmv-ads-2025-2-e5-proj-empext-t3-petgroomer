@@ -57,6 +57,59 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
 
 ------
 
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-002 - S<br>Upload de foto</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se o serviço de upload de fotos aceita formatos válidos de fotos.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Ariel Ortega</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>[RF-00X: Requisito.]</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Executar no swagger.<br>
+      2. Clicar em [Escolher arquivo].<br>
+      3. Selecionar arquivo de foto.<br>
+      4. Execute.<br>
+      </td>
+  </tr>
+    <!-- <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>Dado:</strong> Descrição do dado<br>
+      - <strong>Dado:</strong> Descrição do dado<br>
+  </tr> -->
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>
+    - Deve cair na pasta do projeto do cloudnary.<br>
+    - O swagger deve retornar código 200 e response body:<br> 
+    ```
+    {
+  "nomeArquivo": "[nomearquivo].jpg",
+  "url": "https://res.cloudinary.com/dzgbrk7nk/image/upload/[imagelink].jpg",
+  "dataUpload": "[data]"
+}
+```
+    </td>
+  </tr>
+</table>
+
+--------
+
 <!-- #### Exemplo de Caso de Teste de Insucesso
 Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.
 Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Etapa 2, Etapa 3 e Etapa 4 -->
@@ -102,48 +155,6 @@ Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Et
 </table>
 
 --------
-
-<table>
-  <tr>
-    <th colspan="2" width="1000">CT-00X - S<br>[Nome do caso de teste]</th>
-  </tr>
-  <tr>
-    <td width="150"><strong>Descrição</strong></td>
-    <td>[Descrição do caso de teste]</td>
-  </tr>
-  <tr>
-    <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">[Nome do Responsável pelo Requisito]</td>
-  </tr>
- <tr>
-    <td><strong>Tipo do Teste</strong></td>
-    <td width="430">[Sucesso ou insucesso]</td>
-  </tr> 
-  <tr>
-    <td><strong>Requisitos associados</strong></td>
-    <td>[RF-00X: Requisito.]</td>
-  </tr>
-  <tr>
-    <td><strong>Passos</strong></td>
-    <td>
-      1. Passo 1.<br>
-      2. Passo 2.<br>
-      3. Passo 3.<br>
-      4. Passo 4<br>
-      5. Passo 5.
-      </td>
-  </tr>
-    <tr>
-    <td><strong>Dados de teste</strong></td>
-    <td>
-      - <strong>Dado:</strong> Descrição do dado<br>
-      - <strong>Dado:</strong> Descrição do dado<br>
-  </tr>
-    <tr>
-    <td><strong>Critérios de êxito</strong></td>
-    <td>- Critério.</td>
-  </tr>
-</table>
 
 <!-- ## ETAPA 3
 Casos de teste etapa 3
