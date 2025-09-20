@@ -264,7 +264,9 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
     <td colspan="5">O sistema está impedindo o upload de foto grande corretamente.</td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><strong>Evidência</strong></td>
+    <td colspan="6" align="center"><strong>Evidência</strong> 
+    <img width="1420" height="706" alt="image" src="https://github.com/user-attachments/assets/46242262-2783-4376-815d-482e573382b1" />
+</td>
   </tr>
   <tr>
     <td colspan="6" align="center"><video  src="[link]"/></td>
@@ -295,7 +297,10 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
     <td colspan="5">O sistema está impedindo o upload de formato inadequado corretamente.</td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><strong>Evidência</strong></td>
+    <td colspan="6" align="center"><strong>Evidência</strong>
+    <img width="1419" height="703" alt="image" src="https://github.com/user-attachments/assets/19e2d135-42e3-49bb-98d1-cd8073f56959" />
+
+</td>
   </tr>
   <tr>
     <td colspan="6" align="center"><video  src="[link]"/></td>
