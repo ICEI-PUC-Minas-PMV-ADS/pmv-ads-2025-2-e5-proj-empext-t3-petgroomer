@@ -102,9 +102,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
 </table>
 
 --------
-<!-- #### Exemplo de Caso de Teste de Insucesso
-Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.
-Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Etapa 2, Etapa 3 e Etapa 4 -->
+<!-- Teste de Insucesso: Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.-->
 
  <table> <!--ct 002 I01 upload de foto grande demais -->
   <tr>
@@ -153,7 +151,7 @@ Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Et
 
 --------
 
-<table> <!--CT-002 - I02Upload de formato inadequado para foto -->
+<table> <!--CT-002 - I02 Upload de formato inadequado para foto -->
   <tr>
     <th colspan="2" width="1000">CT-002 - I02<br>Upload de formato inadequado para foto</th>
   </tr>
@@ -242,7 +240,7 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
 </table>
 
-<table> <!--a fazer: CT-002 - I01 Evidência do Ariel do Teste do serviço backend de hospedagem de fotos-->
+<table> <!--a fazer: CT-002 - I01 Evidência do Ariel do Teste do upload de foto grande demais -->
   <tr>
     <th colspan="6" width="1000">CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
   </tr>
@@ -270,7 +268,7 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
 </table>
 
-<table> <!--a fazer: CT-002 - I02 Evidência do Ariel do Teste do serviço backend de hospedagem de fotos-->
+<table> <!--a fazer: CT-002 - I02 Evidência do Ariel do Teste do Upload de formato inadequado para foto-->
   <tr>
     <th colspan="6" width="1000">CT-002<br>Teste do serviço backend de hospedagem de fotos.</th>
   </tr>
@@ -308,7 +306,39 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
 
 ### ETAPA 2
 
-### Exemplo
+<table> <!--a fazer: CT-002 - I01 Evidência da Isa do Teste do serviço backend de hospedagem de fotos-->
+  <tr>
+    <th colspan="6" width="1000">CT-001<br>CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve retornar resposta 500 do Cloudinary.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
+    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",  "detalhes": "File size too large. Got [size]. Maximum is 10485760."</td>
+  </tr>
+    <tr>
+      <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Ariel Ortega </td>
+      <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">Isabela Castro </td>
+     <td width="100"><strong>Data do teste</strong></td>
+    <td width="150">20/09/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está impedindo o upload de foto grande corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video src="link"/></td>
+  </tr>
+</table>
+
+-----------------
+
+
 <table> <!--a fazer: CT-002 - I01 Evidência da Isa do Teste do Upload de foto de tamanho grande demais-->
   <tr>
     <th colspan="6" width="1000">CT-001<br>CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
@@ -340,6 +370,39 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
 </table>
 
 -----------------
+
+<table> <!--a fazer: CT-002 - I02 Evidência da Ariel do Teste do Upload de formato inadequado para foto-->
+  <tr>
+    <th colspan="6" width="1000">CT-001<br>CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve retornar resposta 500 do Cloudinary.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
+    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",  "detalhes": "File size too large. Got [size]. Maximum is 10485760."</td>
+  </tr>
+    <tr>
+      <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Ariel Ortega </td>
+      <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">Isabela Castro </td>
+     <td width="100"><strong>Data do teste</strong></td>
+    <td width="150">20/09/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está impedindo o upload de foto grande corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video src="link"/></td>
+  </tr>
+</table>
+
+-----------------
+
 
 <!-- ### ETAPA 3
 Colocar evidências de teste da etapa 3
