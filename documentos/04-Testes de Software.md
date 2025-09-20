@@ -75,7 +75,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
-    <td>[RF-00X: Requisito.]</td>
+    <td>RF-003: O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas no portfólio.</td>
   </tr>
   <tr>
     <td><strong>Passos</strong></td>
@@ -124,7 +124,7 @@ Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Et
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
-    <td>[RF-00X: Requisito.]</td>
+    <td>RF-003: O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas no portfólio.</td>
   </tr>
   <tr>
     <td><strong>Passos</strong></td>
@@ -171,7 +171,7 @@ Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Et
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
-    <td>[RF-00X: Requisito.]</td>
+    <td>RF-003: O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas no portfólio.</td>
   </tr>
   <tr>
     <td><strong>Passos</strong></td>
