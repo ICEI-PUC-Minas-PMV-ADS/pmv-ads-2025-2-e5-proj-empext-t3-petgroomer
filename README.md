@@ -1,4 +1,4 @@
-# TÍTULO DO PROJETO
+# MARCIA NICOLE - PET GROOMER
 
 `ANÁLISE E DESENVOLVIMENTO DE SISTEMAS`
 
@@ -6,7 +6,7 @@
 
 `Turma 03 - 2025/2`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Aplicativo para portfólio e agendamento de serviços de Banho e Tosa para pets.
 
 ## Integrantes
 
