@@ -17,8 +17,8 @@ obj/
 *.log
 
 # Secrets e configs locais
-appsettings.*.json
-appsettings.Development.json
+# appsettings.*.json
+# appsettings.Development.json
 
 # Publish
 publish/
