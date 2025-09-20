@@ -54,7 +54,8 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
     <td>- O cliente deve passar a constar no banco de dados.</td>
   </tr>
 </table>
------
+
+------
 
 <!-- #### Exemplo de Caso de Teste de Insucesso
 Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.
