@@ -96,14 +96,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
     <td><strong>Critérios de êxito</strong></td>
     <td>
     - Deve cair na pasta do projeto do cloudnary.<br>
-    - O swagger deve retornar código 200 e response body:<br> 
-    ```
-    {
-  "nomeArquivo": "[nomearquivo].jpg",
-  "url": "https://res.cloudinary.com/dzgbrk7nk/image/upload/[imagelink].jpg",
-  "dataUpload": "[data]"
-}
-```
+    - O swagger deve retornar código 200 e response body com `nomeArquivo`, `url` e `dataUpload`.
     </td>
   </tr>
 </table>
