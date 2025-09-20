@@ -102,6 +102,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
 </table>
 
 --------
+
 <!-- Teste de Insucesso: Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.-->
 
  <table> <!--ct 002 I01 upload de foto grande demais -->
@@ -240,6 +241,8 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
 </table>
 
+----------
+
 <table> <!--a fazer: CT-002 - I01 Evidência do Ariel do Teste do upload de foto grande demais -->
   <tr>
     <th colspan="6" width="1000">CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
@@ -268,6 +271,8 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
 </table>
 
+----------------
+
 <table> <!--a fazer: CT-002 - I02 Evidência do Ariel do Teste do Upload de formato inadequado para foto-->
   <tr>
     <th colspan="6" width="1000">CT-002<br>Teste do serviço backend de hospedagem de fotos.</th>
@@ -294,6 +299,8 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
     <td colspan="6" align="center"><video  src="[link]"/></td>
   </tr>
 </table>
+
+----------------------
 
 <!-- ### ETAPA 3
 Evidências de teste etapa 3
