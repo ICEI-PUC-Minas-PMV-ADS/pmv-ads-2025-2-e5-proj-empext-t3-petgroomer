@@ -13,7 +13,7 @@ Para demonstração da robustez da aplicação, foram escolhidos cenários de te
 Exemplo de Caso de Teste de Sucesso
 O caso de teste de sucesso deve ser identificado por CT - xxx - S
 
-<table>
+<table><!-- ct 001 Cadastro de clientes com dados válidos-->
   <tr>
     <th colspan="2" width="1000">CT-001 - S<br>Cadastro de clientes com dados válidos</th>
   </tr>
@@ -57,13 +57,13 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
 
 ------
 
-<table>
+<table><!-- ct 002 Teste do serviço backend de hospedagem de fotos-->
   <tr>
-    <th colspan="2" width="1000">CT-002 - S<br>Upload de foto</th>
+    <th colspan="2" width="1000">CT-002 - S<br>Teste do serviço backend de hospedagem de fotos</th>
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
-    <td>Este caso de teste verifica se o serviço de upload de fotos aceita formatos válidos de fotos.</td>
+    <td>Este caso de teste verifica se o serviço de upload de fotos aceita formatos válidos de fotos e os hospeda na pasta do Cloudinary.</td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
@@ -95,15 +95,18 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
     <tr>
     <td><strong>Critérios de êxito</strong></td>
     <td>
-    - Deve cair na pasta do projeto do cloudnary.<br>
-    - O swagger deve retornar código 200 e response body com [nomeArquivo], [url] e [dataUpload].
+    - Deve cair na pasta do projeto do cloudinary.<br>
+    - O swagger deve retornar dois códigos 200 e response body com [nomeArquivo], [url] e [dataUpload].
     </td>
   </tr>
 </table>
 
 --------
+<!-- #### Exemplo de Caso de Teste de Insucesso
+Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.
+Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Etapa 2, Etapa 3 e Etapa 4 -->
 
-<table>
+ <table> <!--ct 002 I01 upload de foto grande demais -->
   <tr>
     <th colspan="2" width="1000">CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
   </tr>
@@ -141,8 +144,8 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
     <tr>
     <td><strong>Critérios de êxito</strong></td>
     <td>
-    - Deve retornar resposta local 200.<br>
-    - Deve retornar resposta do servidor 500.<br>
+    - Deve retornar resposta 500 do Cloudinary.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
     - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",  "detalhes": "File size too large. Got [size]. Maximum is 10485760."
     </td>
   </tr>
@@ -150,7 +153,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
 
 --------
 
-<table>
+<table> <!--CT-002 - I02Upload de formato inadequado para foto -->
   <tr>
     <th colspan="2" width="1000">CT-002 - I02<br>Upload de formato inadequado para foto</th>
   </tr>
@@ -188,56 +191,11 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
     <tr>
     <td><strong>Critérios de êxito</strong></td>
     <td>
-    - Deve retornar resposta local 200.<br>
-    - Deve retornar resposta do servidor 500.<br>
+    - Deve retornar resposta 500 do Cloudinary.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
     - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",
   "detalhes": "Invalid image file"
     </td>
-  </tr>
-</table>
-
---------
-
-<!-- #### Exemplo de Caso de Teste de Insucesso
-Os casos de testes de insucesso devem ser identificados por CT - xxx - I + sequencial de insucesso.
-Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Etapa 2, Etapa 3 e Etapa 4 -->
-<table>
-  <tr>
-    <th colspan="2" width="1000">CT-002 - I01<br>Envio de fotos com API</th>
-  </tr>
-  <tr>
-    <td width="150"><strong>Descrição</strong></td>
-    <td>Este caso de teste verifica o fluxo entre o backend e o servidor de hospedagem de fotos.</td>
-  </tr>
-  <tr>
-    <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">Ariel Ortega Acerbi</td>
-  </tr>
- <tr>
-    <td><strong>Tipo do Teste</strong></td>
-    <td width="430">Sucesso</td>
-  </tr> 
-  <tr>
-    <td><strong>Requisitos associados</strong></td>
-    <td>RF-003: O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas no portfólio.</td>
-  </tr>
-  <tr>
-    <td><strong>Passos</strong></td>
-    <td>
-      1. Enviar o arquivo selecionado.<br>
-      2. O backend manda o arquivo para a nuvem.<br>
-      3. Retornar um link da imagem hospedada.<br>
-      </td>
-  </tr>
-    <tr>
-    <td><strong>Dados de teste</strong></td>
-    <td>
-      - <strong>Arquivo:</strong> Enviar o arquivo e receber o link da imagem.<br>
-    
-  </tr>
-    <tr>
-    <td><strong>Critérios de êxito</strong></td>
-    <td>O sistema deve apresentar o link da imagem hospedada.</td>
   </tr>
 </table>
 
@@ -257,13 +215,14 @@ Apresente imagens e/ou vídeos que comprovam que um determinado teste foi execut
 Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, utilizando casos de teste, tanto de sucesso quanto de insucesso, elaborados por ele. Todos os testes devem ser evidenciados.
 
 ### ETAPA 2
-<table>
+<table><!--CT-002 Evidência do Ariel do Teste do serviço backend de hospedagem de fotos.-->
   <tr>
-    <th colspan="6" width="1000">CT-002<br>Adicione fotos de seus serviços e que essas fotos sejam hospedadas na web.</th>
+    <th colspan="6" width="1000">CT-002<br>Teste do serviço backend de hospedagem de fotos.</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
-    <td colspan="5">O sistema deve responder a requisição corratamente, fornecendo o link da imagem na web.</td>
+    <td colspan="5">- Deve cair na pasta do projeto do cloudinary.<br>
+    - O swagger deve retornar dois códigos 200 e response body com [nomeArquivo], [url] e [dataUpload].</td>
   </tr>
     <tr>
     <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
@@ -283,11 +242,66 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
 </table>
 
-### ETAPA 3
+<table> <!--a fazer: CT-002 - I01 Evidência do Ariel do Teste do serviço backend de hospedagem de fotos-->
+  <tr>
+    <th colspan="6" width="1000">CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve retornar resposta 500 do Cloudinary.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
+    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",  "detalhes": "File size too large. Got [size]. Maximum is 10485760."</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
+    <td width="430">Ariel Ortega Acerbi </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">20/09/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está impedindo o upload de foto grande corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="https://github.com/user-attachments/assets/47253110-6001-44ef-900b-19b7b1b6e8dd"/></td>
+  </tr>
+</table>
+
+<table> <!--a fazer: CT-002 - I02 Evidência do Ariel do Teste do serviço backend de hospedagem de fotos-->
+  <tr>
+    <th colspan="6" width="1000">CT-002<br>Teste do serviço backend de hospedagem de fotos.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve cair na pasta do projeto do cloudinary.<br>
+    - O swagger deve retornar dois códigos 200 e response body com [nomeArquivo], [url] e [dataUpload].</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
+    <td width="430">Ariel Ortega Acerbi </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">20/09/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está impedindo o upload de formato inadequado corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="https://github.com/user-attachments/assets/47253110-6001-44ef-900b-19b7b1b6e8dd"/></td>
+  </tr>
+</table>
+
+<!-- ### ETAPA 3
 Evidências de teste etapa 3
 
 ### ETAPA 4
-Evidências de teste etapa 3
+Evidências de teste etapa 3 -->
 
 ## Parte 2 - Testes por pares
 A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade deve ser testada por um colega e os testes devem ser evidenciados. O colega "Tester" deve utilizar o caso de teste criado pelo desenvolvedor responsável pela funcionalidade (desenvolveu a funcionalidade e criou o caso de testes descrito no plano de testes) e caso perceba a necessidade de outros casos de teste, deve acrescentá-los na sessão "Plano de Testes".
@@ -295,37 +309,41 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
 ### ETAPA 2
 
 ### Exemplo
-<table>
+<table> <!--a fazer: CT-002 - I01 Evidência da Isa do Teste do Upload de foto de tamanho grande demais-->
   <tr>
-    <th colspan="6" width="1000">CT-001<br>Login com credenciais válidas - EXEMPLO</th>
+    <th colspan="6" width="1000">CT-001<br>CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
-    <td colspan="5">O sistema deve redirecionar o usuário para a página inicial do aplicativo após o login bem-sucedido.</td>
+    <td colspan="5">- Deve retornar resposta 500 do Cloudinary.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
+    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",  "detalhes": "File size too large. Got [size]. Maximum is 10485760."</td>
   </tr>
     <tr>
       <td><strong>Responsável pela funcionalidade</strong></td>
-    <td width="430">José da Silva </td>
+    <td width="430">Ariel Ortega </td>
       <td><strong>Responsável pelo teste</strong></td>
-    <td width="430">Maria Oliveira </td>
+    <td width="430">Isabela Castro </td>
      <td width="100"><strong>Data do teste</strong></td>
-    <td width="150">08/05/2024</td>
+    <td width="150">20/09/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">O sistema está permitindo o login corretamente.</td>
+    <td colspan="5">O sistema está impedindo o upload de foto grande corretamente.</td>
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><video src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-time-sheet/assets/82043220/2e3c1722-7adc-4bd4-8b4c-3abe9ddc1b48"/></td>
+    <td colspan="6" align="center"><video src="link"/></td>
   </tr>
 </table>
 
-### ETAPA 3
+-----------------
+
+<!-- ### ETAPA 3
 Colocar evidências de teste da etapa 3
 
 ### ETAPA 4
 Colocar evidências de teste da etapa 4
-
+ -->
