@@ -62,42 +62,41 @@ Os casos de testes de insucesso devem ser identificados por CT - xxx - I + seque
 Para cada etapa do projeto, criar uma seção com o nome da Etapa do projeto: Etapa 2, Etapa 3 e Etapa 4 -->
 <table>
   <tr>
-    <th colspan="2" width="1000">CT-002 - I01<br>Login com credenciais inválidas - EXEMPLO</th>
+    <th colspan="2" width="1000">CT-002 - I01<br>Envio de fotos com API</th>
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
-    <td>Este caso de teste verifica o tratamento de credenciais inválidas no login.</td>
+    <td>Este caso de teste verifica o fluxo entre o backend e o servidor de hospedagem de fotos.</td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">[Nome do Responsável pelo Requisito]</td>
+    <td width="430">Ariel Ortega Acerbi</td>
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
-    <td width="430">Insucesso</td>
+    <td width="430">Sucesso</td>
   </tr> 
   <tr>
     <td><strong>Requisitos associados</strong></td>
-    <td>RF-001: O funcionário não conseguirá logar no aplicativo</td>
+    <td>RF-003: O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas no portfólio.</td>
   </tr>
   <tr>
     <td><strong>Passos</strong></td>
     <td>
-      1. Abrir o aplicativo.<br>
-      2. Inserir o CPF válido.<br>
-      3. Inserir a senha inválida.<br>
-      4. Clicar no botão "Entrar".
+      1. Enviar o arquivo selecionado.<br>
+      2. O backend manda o arquivo para a nuvem.<br>
+      3. Retornar um link da imagem hospedada.<br>
       </td>
   </tr>
     <tr>
     <td><strong>Dados de teste</strong></td>
     <td>
-      - <strong>CPF:</strong> Colocar CPF cadastrado na base<br>
-      - <strong>Senha:</strong> Colocar senha inválida
+      - <strong>Arquivo:</strong> Enviar o arquivo e receber o link da imagem.<br>
+    
   </tr>
     <tr>
     <td><strong>Critérios de êxito</strong></td>
-    <td>O sistema deve apresentar a mensagem de login inválido.</td>
+    <td>O sistema deve apresentar o link da imagem hospedada.</td>
   </tr>
 </table>
 
@@ -161,27 +160,27 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
 ### ETAPA 2
 <table>
   <tr>
-    <th colspan="6" width="1000">CT-001<br>Login com credenciais válidas -- EXEMPLO</th>
+    <th colspan="6" width="1000">CT-002<br>Adicione fotos de seus serviços e que essas fotos sejam hospedadas na web.</th>
   </tr>
   <tr>
     <td width="170"><strong>Critérios de êxito</strong></td>
-    <td colspan="5">O sistema deve redirecionar o usuário para a página inicial do aplicativo após o login bem-sucedido.</td>
+    <td colspan="5">O sistema deve responder a requisição corratamente, fornecendo o link da imagem na web.</td>
   </tr>
     <tr>
     <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
-    <td width="430">José da Silva </td>
+    <td width="430">Ariel Ortega Acerbi </td>
      <td width="100"><strong>Data do Teste</strong></td>
-    <td width="150">08/05/2024</td>
+    <td width="150">20/09/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">O sistema está permitindo o login corretamente.</td>
+    <td colspan="5">O sistema está retornando as requisições corretamente.</td>
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><video src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e5-proj-time-sheet/assets/82043220/2e3c1722-7adc-4bd4-8b4c-3abe9ddc1b48"/></td>
+    <td colspan="6" align="center"><video  src="https://github.com/user-attachments/assets/47253110-6001-44ef-900b-19b7b1b6e8dd"/></td>
   </tr>
 </table>
 
