@@ -61,7 +61,7 @@ Para mais informações, consulte os microfundamentos Fundamentos de Engenharia 
 |------|-----------------------------------------|----|
 |RF-001| O sistema deve permitir cadastrar clientes, incluindo nome, telefone e informações do pet (nome, espécie, raça, idade). | ALTA | 
 |RF-002| O sistema deve permitir editar os dados de clientes ou pets já cadastrados.  | MÉDIA |
-|RF-003| O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas em uma lista no portfólio.  | ALTA |
+|RF-003| O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas no portfólio.  | ALTA |
 |RF-004| O sistema deve permitir cancelar um agendamento previamente marcado.  | MÉDIA |
 |RF-005| O sistema deve exibir todos os agendamentos do dia em ordem de horário.  | ALTA |
 |RF-006| O sistema deve permitir localizar clientes por nome ou telefone.  | MÉDIA |
