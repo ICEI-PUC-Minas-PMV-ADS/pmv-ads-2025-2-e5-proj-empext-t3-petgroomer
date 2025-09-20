@@ -105,7 +105,7 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
 
 <table>
   <tr>
-    <th colspan="2" width="1000">CT-002 - I01<br>Upload de foto</th>
+    <th colspan="2" width="1000">CT-002 - I01<br>Upload de foto de tamanho grande demais</th>
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
@@ -144,6 +144,54 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
     - Deve retornar resposta local 200.<br>
     - Deve retornar resposta do servidor 500.<br>
     - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",  "detalhes": "File size too large. Got [size]. Maximum is 10485760."
+    </td>
+  </tr>
+</table>
+
+--------
+
+<table>
+  <tr>
+    <th colspan="2" width="1000">CT-002 - I02<br>Upload de formato inadequado para foto</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se o serviço de upload de fotos recusa arquivos que não sejam de foto.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Ariel Ortega</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Insucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>[RF-00X: Requisito.]</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Executar no swagger.<br>
+      2. Clicar em [Escolher arquivo].<br>
+      3. Selecionar arquivo de vídeo de tamanho inferior a 10MB.<br>
+      4. Execute.<br>
+      </td>
+  </tr>
+    <!-- <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>Dado:</strong> Descrição do dado<br>
+      - <strong>Dado:</strong> Descrição do dado<br>
+  </tr> -->
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>
+    - Deve retornar resposta local 200.<br>
+    - Deve retornar resposta do servidor 500.<br>
+    - Response body deve dizer: "erro": "Falha ao enviar a imagem para o Cloudinary.",
+  "detalhes": "Invalid image file"
     </td>
   </tr>
 </table>
