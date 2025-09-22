@@ -110,6 +110,6 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Diagrams](https://app.diagrams.net/) -->
 
 ## Modelo da Base de Dados
-<img width="689" height="306" alt="MODELO drawio" src="https://github.com/user-attachments/assets/ba1ed4e7-9ddd-4768-850a-a7371a49fe46" />
+<img width="865" height="555" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/ea02b26e-543e-4446-8dba-4c15a10e0a23" />
 
 [Link](https://drive.google.com/file/d/12Itg-_TJOVqXK3Eorn3NV1IRAWjFgAUG/view?usp=sharing)
