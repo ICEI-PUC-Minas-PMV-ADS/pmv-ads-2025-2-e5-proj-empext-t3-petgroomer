@@ -48,7 +48,7 @@
   </tr>
       <tr>
     <td>Thiago Rodrigues Silva de Oliveira </td>
-    <td></td>
+    <td>tworey19@gmail.com</td>
     <td>Desenvolvedor</td>
   </tr>
   <tr>
