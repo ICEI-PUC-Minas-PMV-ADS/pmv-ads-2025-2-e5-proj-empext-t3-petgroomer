@@ -2,6 +2,7 @@
 
 # Ata Etapa 2
 [Link do sharepoint da ata](https://sgapucminasbr-my.sharepoint.com/personal/866779_sga_pucminas_br/_layouts/15/guestaccess.aspx?share=EbsPeu6uwMlBhjlt-fecW-YB2YqkRqq7C4eeHZrCG1_yzA&e=pgCude)
+
 [Link do vídeo da reunião](https://youtu.be/rmF-XVMPYqE)
 
 <table>
