@@ -345,7 +345,8 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><video src="link"/></td>
+    <td colspan="6" align="center"><img width="1920" height="1491" alt="image" src="https://github.com/user-attachments/assets/8ac44402-6b88-4e27-bda7-40d8bcb24d41" />
+</td>
   </tr>
 </table>
 
@@ -377,7 +378,8 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><video src="link"/></td>
+    <td colspan="6" align="center"><img width="1920" height="1499" alt="image" src="https://github.com/user-attachments/assets/8acce61b-6ff9-4edc-a3a9-6473ef0b37f4" />
+</td>
   </tr>
 </table>
 
@@ -410,7 +412,8 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><video src="link"/></td>
+    <td colspan="6" align="center"><img width="1920" height="1499" alt="image" src="https://github.com/user-attachments/assets/2e84d287-5705-40c4-b45a-5c123e18c442" />
+</td>
   </tr>
 </table>
 
