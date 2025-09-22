@@ -102,14 +102,14 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 <img width="523" height="770" alt="image" src="https://github.com/user-attachments/assets/bc3a53c5-cf1c-4663-9def-bdbce6e464c3" />
 
 
-> **Links Úteis**:
+<!-- > **Links Úteis**:
 > - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
 > - [Como Criar Diagrama de Caso de Uso: Tutorial Passo a Passo](https://gitmind.com/pt/fazer-diagrama-de-caso-uso.html/)
 > - [Lucidchart](https://www.lucidchart.com/)
 > - [Astah](https://astah.net/)
-> - [Diagrams](https://app.diagrams.net/)
+> - [Diagrams](https://app.diagrams.net/) -->
 
 ## Modelo da Base de Dados
 <img width="689" height="306" alt="MODELO drawio" src="https://github.com/user-attachments/assets/ba1ed4e7-9ddd-4768-850a-a7371a49fe46" />
 
-[Link](https://drive.google.com/file/d/1CViOd4k-w7u63FFX6sT6vDnEzrHGG9Au/view?usp=sharing)
+[Link](https://drive.google.com/file/d/12Itg-_TJOVqXK3Eorn3NV1IRAWjFgAUG/view?usp=sharing)
