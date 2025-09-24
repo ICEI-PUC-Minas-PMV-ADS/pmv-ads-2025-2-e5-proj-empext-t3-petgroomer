@@ -59,16 +59,16 @@ Para mais informações, consulte os microfundamentos Fundamentos de Engenharia 
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| O sistema deve permitir cadastrar clientes, incluindo nome, telefone e informações do pet (nome, espécie, raça, idade). | ALTA | 
-|RF-002| O sistema deve permitir editar os dados de clientes ou pets já cadastrados.  | MÉDIA |
-|RF-003| O sistema deve permitir que a cliente adicione fotos de seus serviços e que essas fotos sejam exibidas no portfólio.  | ALTA |
-|RF-004| O sistema deve permitir cancelar um agendamento previamente marcado.  | MÉDIA |
+|RF-001| O sistema deve permitir cadastrar petshops contratantes, incluindo nome, telefone, endereço e pessoa de contato. | ALTA | 
+|RF-002| O sistema deve permitir editar os dados dos petshops já cadastrados.  | MÉDIA |
+|RF-003| O sistema deve permitir que a cliente adicione fotos de seus serviços realizados e que essas fotos sejam exibidas em seu portfólio.  | ALTA |
+|RF-004| O sistema deve permitir cancelar um agendamento de serviço previamente marcado com um petshop. | MÉDIA |
 |RF-005| O sistema deve exibir todos os agendamentos do dia em ordem de horário.  | ALTA |
 |RF-006| O sistema deve permitir localizar clientes por nome ou telefone.  | MÉDIA |
-|RF-007| O sistema deve permitir cadastrar os serviços oferecidos (banho, tosa, etc.), com nome e valor.  | ALTA |
+|RF-007| O sistema deve permitir cadastrar os serviços oferecidos (banho, tosa, hidratação, etc.), com nome e valor.  | ALTA |
 |RF-008| O sistema deve permitir marcar o agendamento como “pendente” ou “confirmado”.  | MÉDIA |
-|RF-009| O sistema deve exibir uma lista com todos os clientes registrados.  | BAIXA |
-|RF-010| O sistema deve permitir agendar atendimentos, informando cliente, serviço, data e horário.  | MÉDIA |
+|RF-009| O sistema deve exibir uma lista com todos os petshops registrados.  | BAIXA |
+|RF-010| O sistema deve permitir agendar atendimentos, informando petshop, serviço, data e horário.  | MÉDIA |
 
 ### Requisitos não Funcionais
 
@@ -88,7 +88,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
 |02| O cadastro de clientes deve aceitar apenas números válidos de telefone |
-|03| O sistema deve ser desenvolvido para mobile e plataforma web utilizando arquitetura cliente-servidor.|
+|03| O sistema deve ser desenvolvido para  plataforma web utilizando arquitetura cliente-servidor.|
 |04| O desenvolvimento deve respeitar o orçamento disponível, sem custos adicionais de licenças proprietárias.|
 
 
