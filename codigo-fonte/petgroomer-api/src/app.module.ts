@@ -2,16 +2,14 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,        // disponível em toda a app
-      envFilePath: '.env',   // default, mas explícito
-    }),
+    ConfigModule.forRoot({ isGlobal: true }),
+    PrismaModule,
     UsersModule,
     AuthModule,
   ],
 })
-
 export class AppModule {}
