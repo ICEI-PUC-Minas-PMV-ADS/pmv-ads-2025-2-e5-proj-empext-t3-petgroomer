@@ -8,24 +8,24 @@ export class AuthController {
 
   @Post('signup')
   async signup(@Body() dto: any, @Res({ passthrough: true }) res: Response) {
-    const { access, refresh } = await this.auth.signup(dto);
+    const { access, refresh, user } = await this.auth.signup(dto);
     this.setRefreshCookie(res, refresh);
-    return { access };
+    return { access, user };
   }
 
   @Post('login')
   async login(@Body() dto: any, @Res({ passthrough: true }) res: Response) {
-    const { access, refresh } = await this.auth.login(dto);
+    const { access, refresh, user } = await this.auth.login(dto);
     this.setRefreshCookie(res, refresh);
-    return { access };
+    return { access, user };
   }
 
   @Post('refresh')
   async refresh(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const token = (req as any).cookies?.refresh_token;
-    const { access, refresh } = await this.auth.rotate(token);
+    const { access, refresh, user } = await this.auth.rotate(token);
     this.setRefreshCookie(res, refresh);
-    return { access };
+    return { access, user };
   }
 
   @Post('logout')
