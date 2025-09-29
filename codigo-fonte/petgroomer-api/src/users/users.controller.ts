@@ -13,6 +13,7 @@ export class UsersController {
   @UseGuards(AccessTokenGuard)
   @Get('me')
   getMe(@Req() req: any) {
-    return req.user; // payload do JWT
+    const userId = req.user.sub; // vindo do JWT
+     return this.users.findPublicById(userId);
   }
 }
