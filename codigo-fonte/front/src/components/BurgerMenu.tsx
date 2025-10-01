@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Drawer, Button, Menu } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const BurgerMenu: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -21,14 +21,20 @@ const BurgerMenu: React.FC = () => {
         onClose={() => setOpen(false)}
         open={open}
       >
-        <Menu mode="vertical" onClick={() => setOpen(false)}>
-          <Menu.Item key="home">
-            <Link to="/">Portfolio</Link>
-          </Menu.Item>
-          <Menu.Item key="login">
-            <Link to="/login">Login</Link>
-          </Menu.Item>
-        </Menu>
+        <Menu
+          mode="vertical"
+          onClick={() => setOpen(false)}
+          items={[
+            {
+              key: 'home',
+              label: <Link href="/">Portfolio</Link>,
+            },
+            {
+              key: 'login',
+              label: <Link href="/login">Login</Link>,
+            },
+          ]}
+        />
       </Drawer>
     </>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Menu } from 'antd';
 import BurgerMenu from './BurgerMenu';
 
@@ -7,14 +7,19 @@ const Header: React.FC = () => {
   return (
     <header style={{ display: 'flex', alignItems: 'center', padding: '0 16px', height: 64 }}>
       <div className="desktop-menu" style={{ flex: 1 }}>
-        <Menu mode="horizontal">
-          <Menu.Item key="home">
-            <Link to="/">Portfolio</Link>
-          </Menu.Item>
-          <Menu.Item key="login">
-            <Link to="/login">Login</Link>
-          </Menu.Item>
-        </Menu>
+        <Menu
+          mode="horizontal"
+          items={[
+            {
+              key: 'home',
+              label: <Link href="/">Portfolio</Link>,
+            },
+            {
+              key: 'login',
+              label: <Link href="/login">Login</Link>,
+            },
+          ]}
+        />
       </div>
       <div className="mobile-menu">
         <BurgerMenu />
