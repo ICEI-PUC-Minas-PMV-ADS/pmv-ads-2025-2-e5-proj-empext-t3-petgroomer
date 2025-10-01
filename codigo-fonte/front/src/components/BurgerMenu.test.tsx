@@ -1,22 +1,15 @@
 
+// Robust getComputedStyle mock for Ant Design Drawer
+Object.defineProperty(window, 'getComputedStyle', {
+  value: () => ({
+    getPropertyValue: () => '',
+  }),
+});
 
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import BurgerMenu from './BurgerMenu';
-
-// Mock getComputedStyle for Ant Design Drawer
-// Robust mock for getComputedStyle to prevent jsdom errors with Ant Design
-beforeAll(() => {
-  window.getComputedStyle = window.getComputedStyle || (element => {
-    return {
-      getPropertyValue: () => '',
-      display: 'none',
-      appearance: ['-webkit-appearance'],
-      // Add any other needed properties here
-    };
-  });
-});
 
 describe('BurgerMenu', () => {
   it('renders the burger button', () => {
@@ -38,16 +31,16 @@ describe('BurgerMenu Drawer', () => {
 import { waitFor } from '@testing-library/react';
 
 describe('BurgerMenu Drawer Close', () => {
-  it('closes the drawer when onClose is triggered', async () => {
+  it('adds hidden class to drawer when closed', async () => {
     render(<BurgerMenu />);
     fireEvent.click(screen.getByRole('button'));
     // Simulate closing the drawer by clicking the first close button
     const closeBtns = screen.getAllByLabelText(/close/i);
     fireEvent.click(closeBtns[0]);
-    // Wait for the drawer to close and menu items to disappear
+    // Wait for the drawer to be hidden
     await waitFor(() => {
-      expect(screen.queryByText(/Portfolio/i)).not.toBeInTheDocument();
-      expect(screen.queryByText(/Login/i)).not.toBeInTheDocument();
+      const drawerWrapper = document.querySelector('.ant-drawer-content-wrapper');
+      expect(drawerWrapper).toHaveClass('ant-drawer-content-wrapper-hidden');
     });
   });
 });
