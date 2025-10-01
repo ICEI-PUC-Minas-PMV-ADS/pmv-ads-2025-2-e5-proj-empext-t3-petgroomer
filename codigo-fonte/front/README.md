@@ -26,18 +26,13 @@ Runs unit tests (if configured). Place your test files in a `tests` folder or al
 ## Project Structure
 
 - `/pages` — Next.js routes (e.g., `index.tsx`, `login.tsx`)
-- `/src/components` — Shared React components
-- `/src/pages` — Legacy page components (migrated to `/pages`)
-- `/src/theme.ts` — Ant Design theme configuration
-- `/src/theme.css` — Global styles
-- `/tests` — (Recommended) Place all unit and integration tests here for organization
+- `/components` — Shared React components
+- `/theme.ts` — Ant Design theme configuration
+- `/theme.css` — Global styles
+- `/tests` — Place all unit and integration tests here for organization
 
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://react.dev/)
 - [Ant Design Documentation](https://ant.design/docs/react/introduce)
-
----
-
-Feel free to organize your unit tests in a `/tests` folder for clarity and maintainability. Next.js and most test runners support this convention.
