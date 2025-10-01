@@ -24,7 +24,8 @@ jobs:
           cd codigo-fonte/front
           npm ci
 
-      - name: Run tests
+      - name: Run tests with Jest GitHub Actions Reporter
         run: |
           cd codigo-fonte/front
-          npm test
+          npm install --save-dev jest-github-actions-reporter
+          npm test -- --reporters=default --reporters=jest-github-actions-reporter
