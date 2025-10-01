@@ -1,3 +1,4 @@
+import React from 'react';
 import type { AppProps } from 'next/app';
 import '../src/theme.css';
 import '../src/index.css';
