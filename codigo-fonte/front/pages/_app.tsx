@@ -1,10 +1,10 @@
 
 import React from 'react';
 import type { AppProps } from 'next/app';
-import '../src/theme.css';
+import '../theme.css';
 import { ConfigProvider, Layout } from 'antd';
-import theme from '../src/theme';
-import Header from '../src/components/Header';
+import theme from '../theme';
+import Header from '../components/Header';
 
 const { Footer } = Layout;
 

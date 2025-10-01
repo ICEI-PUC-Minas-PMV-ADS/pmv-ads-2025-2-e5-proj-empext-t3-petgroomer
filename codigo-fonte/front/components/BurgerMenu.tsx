@@ -12,7 +12,7 @@ const BurgerMenu: React.FC = () => {
         type="text"
         icon={<MenuOutlined style={{ fontSize: 24 }} />}
         onClick={() => setOpen(true)}
-        style={{ display: 'inline-block', marginLeft: 8 }}
+            style={{ display: 'inline-block', marginLeft: 8 }}
         className="burger-menu-btn"
       />
       <Drawer
