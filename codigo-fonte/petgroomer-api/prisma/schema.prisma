@@ -22,3 +22,10 @@ enum Role {
   PETSHOP
   CLIENTE
 }
+
+model Servico {
+  id    Int     @id @default(autoincrement())
+  nome  String
+  valor Float
+}
+
