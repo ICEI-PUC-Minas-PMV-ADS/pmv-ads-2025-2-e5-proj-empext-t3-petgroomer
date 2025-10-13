@@ -15,6 +15,10 @@ const Header: React.FC = () => {
               label: <Link href="/">Portfolio</Link>,
             },
             {
+              key: 'add-service',
+              label: <Link href="/add-service">Adicionar Serviço</Link>,
+            },
+            {
               key: 'login',
               label: <Link href="/login">Login</Link>,
             },

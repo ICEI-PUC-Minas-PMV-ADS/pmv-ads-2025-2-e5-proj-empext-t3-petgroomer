@@ -1,9 +1,14 @@
 import React from 'react';
+import Head from 'next/head';
 import { Form, Input, Button, Layout } from 'antd';
 const { Content } = Layout;
 
 export default function Login() {
   return (
+    <>
+      <Head>
+        <title>Login</title>
+      </Head>
     <Content style={{ padding: '0 50px', marginTop: 64 }}>
       <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
         <h1>Login</h1>
@@ -36,5 +41,6 @@ export default function Login() {
         </Form>
       </div>
     </Content>
+    </>
   );
 }
