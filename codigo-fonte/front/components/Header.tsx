@@ -1,29 +1,18 @@
 import React from 'react';
-import Link from 'next/link';
 import { Menu } from 'antd';
 import BurgerMenu from './BurgerMenu';
 
 const Header: React.FC = () => {
+  const items = [
+    { key: 'home', label: <a href="/">Portfolio</a> },
+    { key: 'add-service', label: <a href="/add-service">Adicionar Serviço</a> },
+    { key: 'login', label: <a href="/login">Login</a> },
+  ];
+
   return (
-    <header style={{ display: 'flex', alignItems: 'center', padding: '0 16px', height: 64 }}>
+    <header className="app-header">
       <div className="desktop-menu" style={{ flex: 1 }}>
-        <Menu
-          mode="horizontal"
-          items={[
-            {
-              key: 'home',
-              label: <Link href="/">Portfolio</Link>,
-            },
-            {
-              key: 'add-service',
-              label: <Link href="/add-service">Adicionar Serviço</Link>,
-            },
-            {
-              key: 'login',
-              label: <Link href="/login">Login</Link>,
-            },
-          ]}
-        />
+        <Menu mode="horizontal" items={items} />
       </div>
       <div className="mobile-menu">
         <BurgerMenu />

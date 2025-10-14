@@ -13,9 +13,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <ConfigProvider theme={theme}>
       <Layout className="layout">
         <Header />
-        <Component {...pageProps} />
-        <Footer style={{ textAlign: 'center' }}>
-          My Portfolio ©{new Date().getFullYear()} Created with Ant Design
+        <div className="site-content">
+          <Component {...pageProps} />
+        </div>
+        <Footer className="site-footer">
+          PetGroomer ©{new Date().getFullYear()}
         </Footer>
       </Layout>
     </ConfigProvider>

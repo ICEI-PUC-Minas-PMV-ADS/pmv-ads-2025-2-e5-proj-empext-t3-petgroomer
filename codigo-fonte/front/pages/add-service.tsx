@@ -9,12 +9,12 @@ export default function AddService() {
       <Head>
         <title>Adicionar Serviço</title>
       </Head>
-    <Content style={{ padding: '0 50px', marginTop: 64 }}>
-      <div style={{ background: '#fff', padding: 24, minHeight: 380 }}>
-        <h1>Adicionar Serviço</h1>
-        <p>Esta página é para adicionar um novo serviço.</p>
-      </div>
-    </Content>
+      <Content className="content">
+        <div className="page-container">
+          <h1>Adicionar Serviço</h1>
+          <p>Esta página é para adicionar um novo serviço.</p>
+        </div>
+      </Content>
     </>
   );
 }

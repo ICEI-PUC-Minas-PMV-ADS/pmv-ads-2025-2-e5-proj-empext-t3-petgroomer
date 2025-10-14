@@ -2,6 +2,7 @@
 const theme = {
   token: {
     colorPrimary: '#1890ff',
+    colorBgContainer: '#fff',
     borderRadius: 4,
   },
 };
