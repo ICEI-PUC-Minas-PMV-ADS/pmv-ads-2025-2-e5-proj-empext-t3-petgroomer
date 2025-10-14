@@ -83,7 +83,7 @@ code {
 	background: var(--color-footer-bg);
 	color: var(--color-footer-text);
 	text-align: center;
-	padding: 6px 8px; /* thinner vertical size */
+	padding: 6px 8px;
 	font-size: 0.85rem;
 	line-height: 1.2;
 	box-sizing: border-box;
