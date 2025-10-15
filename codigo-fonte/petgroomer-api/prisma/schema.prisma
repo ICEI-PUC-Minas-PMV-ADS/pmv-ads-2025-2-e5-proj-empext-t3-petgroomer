@@ -15,6 +15,7 @@ model User {
   role      Role     @default(CLIENTE)
   createdAt DateTime @default(now())
   refreshTokenHash String?
+  agendamentos    Agendamento[]
 }
 
 enum Role {
@@ -29,3 +30,16 @@ model Servico {
   valor Float
 }
 
+model Agendamento {
+  id        Int          @id @default(autoincrement())
+  cliente   User         @relation(fields: [userId], references: [id])
+  userId    String
+  data      DateTime     @db.Date
+  status    StatusAgendamento @default(PENDENTE)
+}
+
+enum StatusAgendamento {
+  PENDENTE
+  APROVADO
+  NEGADO
+}
