@@ -22,7 +22,7 @@ Aplicativo para portfólio e agendamento de serviços de Banho e Tosa para pets.
 
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+Deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
 
 # Documentação
 
