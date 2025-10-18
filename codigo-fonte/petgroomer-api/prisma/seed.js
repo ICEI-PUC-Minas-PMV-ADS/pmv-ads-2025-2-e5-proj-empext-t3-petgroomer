@@ -21,12 +21,12 @@ async function main() {
     create: { email: 'bob@example.com', hash: password, name: 'Bob' },
   });
 
-  // create two example agendamentos: one PENDENTE for today (alice), one APROVADO for tomorrow (bob)
+  // examples
   const today = new Date();
   const tomorrow = new Date(today);
   tomorrow.setDate(today.getDate() + 1);
 
-  // ensure DB Date only (no time)
+  // date only helper
   function toDateOnly(d) {
     return new Date(d.getFullYear(), d.getMonth(), d.getDate());
   }
