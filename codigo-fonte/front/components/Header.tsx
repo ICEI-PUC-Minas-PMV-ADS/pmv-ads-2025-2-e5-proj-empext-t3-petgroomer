@@ -5,6 +5,7 @@ import BurgerMenu from './BurgerMenu';
 const Header: React.FC = () => {
   const items = [
     { key: 'home', label: <a href="/">Portfolio</a> },
+    { key: 'calendar', label: <a href="/calendar">Calendário</a> },
     { key: 'add-service', label: <a href="/add-service">Adicionar Serviço</a> },
     { key: 'login', label: <a href="/login">Login</a> },
   ];

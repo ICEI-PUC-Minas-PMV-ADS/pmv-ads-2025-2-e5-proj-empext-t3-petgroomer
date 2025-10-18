@@ -64,12 +64,12 @@ export class AuthService {
 
   private async issueTokens(sub: string, role: string) {
     const access = await this.jwt.signAsync(
-      { sub, role },
-      { secret: process.env.JWT_ACCESS_SECRET, expiresIn: process.env.ACCESS_TOKEN_TTL || '15m' },
+      { sub, role } as any,
+      { secret: process.env.JWT_ACCESS_SECRET, expiresIn: process.env.ACCESS_TOKEN_TTL || '15m' } as any,
     );
     const refresh = await this.jwt.signAsync(
-      { sub, role, type: 'refresh' },
-      { secret: process.env.JWT_REFRESH_SECRET, expiresIn: process.env.REFRESH_TOKEN_TTL || '7d' },
+      { sub, role, type: 'refresh' } as any,
+      { secret: process.env.JWT_REFRESH_SECRET, expiresIn: process.env.REFRESH_TOKEN_TTL || '7d' } as any,
     );
     const refreshHash = await bcrypt.hash(refresh, 12);
     await this.prisma.user.update({ where: { id: sub }, data: { refreshTokenHash: refreshHash }});

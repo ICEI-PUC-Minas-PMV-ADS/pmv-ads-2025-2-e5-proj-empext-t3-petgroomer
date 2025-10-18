@@ -29,6 +29,10 @@ const BurgerMenu: React.FC = () => {
               key: 'home',
               label: <Link href="/">Portfolio</Link>,
             },
+              {
+                key: 'calendar',
+                label: <Link href="/calendar">Calendário</Link>,
+              },
             {
               key: 'add-service',
               label: <Link href="/add-service">Adicionar Serviço</Link>,
