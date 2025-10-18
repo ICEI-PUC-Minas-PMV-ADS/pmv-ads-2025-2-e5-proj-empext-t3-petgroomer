@@ -216,7 +216,6 @@ code {
   flex: 1 0 auto;
 }
 
-/* Footer */
 .site-footer {
 	background: var(--color-footer-bg);
 	color: var(--color-footer-text);
@@ -230,7 +229,6 @@ code {
 	margin: 8px auto 0;
 }
 
-/* Calendar event list */
 .events {
   list-style: none;
   margin: 0;
@@ -243,7 +241,6 @@ code {
   min-height: 140px;
 }
 
-/* Calendar wrapper to match page padding and show grid */
 .calendar-wrapper {
   padding: 1rem;
   background: #fff;
