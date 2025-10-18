@@ -1,4 +1,5 @@
-import { IsISO8601, IsOptional, IsString } from 'class-validator';
+import { IsISO8601, IsNumber, IsOptional, IsString } from 'class-validator';
+import { StatusAgendamento } from '@prisma/client';
 
 export class UpdateAgendamentoDto {
   @IsOptional()
@@ -8,4 +9,11 @@ export class UpdateAgendamentoDto {
   @IsOptional()
   @IsString()
   status?: string;
+}
+
+export class UpdateAgendamentoStatusDto {
+  status: StatusAgendamento;
+
+  @IsNumber()
+  id: number;
 }

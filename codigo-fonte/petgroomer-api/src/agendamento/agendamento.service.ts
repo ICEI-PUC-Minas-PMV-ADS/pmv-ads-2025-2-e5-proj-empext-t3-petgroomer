@@ -34,6 +34,11 @@ export class AgendamentoService {
 		return this.prisma.agendamento.update({ where: { id }, data: patch });
 	}
 
+	async updateStatus(statusId: number, status: StatusAgendamento){
+		await this.findById(statusId);
+		this.prisma.agendamento.update({where: { id: statusId},data:{status: status}});
+	}
+
 	async remove(id: number) {
 		await this.findById(id);
 		return this.prisma.agendamento.delete({ where: { id } });

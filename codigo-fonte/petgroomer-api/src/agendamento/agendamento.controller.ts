@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, ParseIntPipe } from '@nestjs/common';
 import { AgendamentoService } from './agendamento.service';
 import { CreateAgendamentoDto } from './dto/create-agendamento.dto';
-import { UpdateAgendamentoDto } from './dto/update-agendamento.dto';
+import { UpdateAgendamentoDto, UpdateAgendamentoStatusDto } from './dto/update-agendamento.dto';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 
 @ApiTags('Agendamentos')
@@ -38,6 +38,16 @@ export class AgendamentoController {
     if (dto.status) patch.status = dto.status;
     return this.svc.update(id, patch);
   }
+
+  @Put("alterar-status")
+  alterarStatus(@Body() params: UpdateAgendamentoStatusDto){
+    this.svc.updateStatus(params.id,params.status)
+    
+    
+    
+  }
+
+  
 
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
