@@ -168,7 +168,7 @@ export default function CalendarPage() {
 	return (
 		<>
 			<Head>
-				<title>Calendar | PetGroomer</title>
+				<title>Calendário</title>
 			</Head>
 			<Content className="content">
 				<div className="page-container">
