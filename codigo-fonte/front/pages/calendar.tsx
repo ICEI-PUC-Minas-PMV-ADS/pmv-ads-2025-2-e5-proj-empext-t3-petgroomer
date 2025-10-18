@@ -153,7 +153,7 @@ export default function CalendarPage() {
 			return;
 		}
 		// modal switch do month mode pra year mode
-		if (calendarMode === 'month') {
+		if (calendarMode === 'month' || calendarMode === undefined) {
 			const ds = ensureDayLike(d).format('YYYY-MM-DD');
 			openForDate(ds);
 		}
