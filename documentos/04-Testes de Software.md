@@ -19,11 +19,11 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   </tr>
   <tr>
     <td width="150"><strong>Descrição</strong></td>
-    <td>Este caso de teste verifica se o sistema permite cadastrar clientes e seus pets corretamente..</td>
+    <td>Este caso de teste verifica se o sistema permite cadastrar clientes.</td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
-    <td width="430">[Nome do Responsável pelo Requisito]</td>
+    <td width="430">Jonatas Coelho</td>
   </tr>
  <tr>
     <td><strong>Tipo do Teste</strong></td>
@@ -36,11 +36,11 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   <tr>
     <td><strong>Passos</strong></td>
     <td>
-      1. Abrir o aplicativo.<br>
-      2. Navegar até a tela “Cadastrar Cliente”.<br>
-      3. Preencher campos do cliente: nome, telefone, e-mail (se houver).<br>
-      4. Preencher informações do pet: nome, espécie, raça, idade. <br>
-      5. Clicar em “Salvar”.
+      1. Inserir email.<br>
+      2. Inserir senha.<br>
+      3. Inserir nome.<br>
+      4. Definir role. <br>
+      5. Clicar em executar.
       </td>
   </tr>
     <!-- <tr>
@@ -51,7 +51,49 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   </tr> -->
     <tr>
     <td><strong>Critérios de êxito</strong></td>
-    <td>- O cliente deve passar a constar no banco de dados.</td>
+    <td>- O usuário deve passar a constar no banco de dados.</td>
+  </tr>
+</table>
+
+<table><!-- ct 001 Cadastro de clientes com dados válidos-->
+  <tr>
+    <th colspan="2" width="1000">CT-001 - I01S<br>Login dos clientes com dados inválidos</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se o sistema identifica logins válidos ou inválidos.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Jonatas Coelho</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Insucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-001: O sistema deve permitir cadastrar petshops contratantes, incluindo nome, telefone, endereço e pessoa de contato.</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Inserir email.<br>
+      2. Inserir senha.<br>
+      </td>
+  </tr>
+    <!-- <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      - <strong>CPF:</strong> Colocar CPF cadastrado na base<br>
+      - <strong>Senha:</strong> Colocar valor de senha válida
+  </tr> -->
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td> 
+    - Deve retornar resposta 401 do server.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
+    - Response body deve dizer: "message": "Credenciais inválidas", "error": "Unauthorized", "statusCode": 401</td>
   </tr>
 </table>
 
@@ -420,9 +462,73 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
 -----------------
 
 
-<!-- ### ETAPA 3
-Colocar evidências de teste da etapa 3
+ ### ETAPA 3
 
-### ETAPA 4
+<table> <!--a fazer: Testar login-->
+  <tr>
+    <th colspan="6" width="1000">CT-001<br>Cadastro de clientes com dados válidos.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve constar no banco de dados.<br>
+    - O swagger deve retornar dois códigos 200 e response body com [access], [id], [email], [name], [role] e [createdAt].</td>
+  </tr>
+    <tr>
+      <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Jonatas Coelho </td>
+      <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">Ariel Ortega </td>
+     <td width="100"><strong>Data do teste</strong></td>
+    <td width="150">18/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está retornando as requisições corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img width="1419" height="876" alt="image" src="https://github.com/user-attachments/assets/4ad135b7-e05a-4878-bff3-28010fd4a640" /><img width="1420" height="636" alt="image" src="https://github.com/user-attachments/assets/471c9347-1431-477e-96ae-781cf8d217f6" /> <img width="1364" height="736" alt="image" src="https://github.com/user-attachments/assets/8758c78a-0265-4d2b-ad22-25d7a0e00f67" />
+
+
+    
+</td>
+  </tr>
+</table>
+
+<table> <!--a fazer: Testar login-->
+  <tr>
+    <th colspan="6" width="1000">CT-001 - I01S<br>Login dos clientes com dados inválidos</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">
+    - Deve retornar resposta 401 do server.<br>
+    - Deve retornar resposta 200 da tentativa de envio.<br>
+    - Response body deve dizer: "message": "Credenciais inválidas", "error": "Unauthorized", "statusCode": 401</td>
+  </tr>
+    <tr>
+      <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Jonatas Coelho </td>
+      <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">Ariel Ortega </td>
+     <td width="100"><strong>Data do teste</strong></td>
+    <td width="150">18/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está impedindo o login com credenciais inválidas.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img width="1419" height="846" alt="image" src="https://github.com/user-attachments/assets/e68d2685-2072-4b22-826e-e1ea81e549f0" />    
+</td>
+  </tr>
+</table>
+
+<!--### ETAPA 4
 Colocar evidências de teste da etapa 4
  -->
