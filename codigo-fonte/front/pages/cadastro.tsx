@@ -48,10 +48,14 @@ export default function Login() {
       const data = await res.json();
 
       if (!res.ok) {
+        // backend padrão Nest lança { statusCode, message, error }
         const msg = Array.isArray(data?.message) ? data.message[0] : data?.message || 'Falha ao autenticar';
         throw new Error(msg);
       }
 
+      // você recebe { access, user } — access você pode guardar em memória
+      // Para um MVP, dá pra colocar em sessionStorage (menos seguro que memória),
+      // idealmente use um Context/Zustand para manter só em memória.
       sessionStorage.setItem('access_token', data.access);
       sessionStorage.setItem('user', JSON.stringify(data.user));
 
