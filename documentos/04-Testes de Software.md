@@ -387,6 +387,93 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   </tr>
 </table>
 
+<table><!-- ct 005 Teste do cadastro de serviços-->
+  <tr>
+    <th colspan="2" width="1000">CT-005<br>Teste de sucesso do cadastro de serviços</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se é possível cadastrar um serviço</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Ariel</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-007: O sistema deve permitir cadastrar os serviços oferecidos (banho, tosa, hidratação, etc.), com nome e valor.</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Iniciar o backend: em `codigo-fonte/petgroomer-api` executar `npm run start:dev`<br>
+      2. Iniciar o frontend: `codigo-fonte/front` executar `npm run dev`<br>
+      3. Na página local aberta, navegar até Adicionar Serviço.<br>
+      5. Cadastrar um serviço válido com os dados fornecidos abaixo.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      Nome: Tosa<br>
+      Valor: 40<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>
+    - Deve cadastrar e exibir tosa com o valor cadastrado.
+    </td>
+  </tr>
+</table>
+
+<table><!-- ct 005 - I01 Teste do cadastro de serviços-->
+  <tr>
+    <th colspan="2" width="1000">CT-005 - I01<br>Teste de insucesso do cadastro de serviços</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se o sistema impede de cadastrar um serviço com valor inválido</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Ariel</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Insucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-007: O sistema deve permitir cadastrar os serviços oferecidos (banho, tosa, hidratação, etc.), com nome e valor.</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Iniciar o backend: em `codigo-fonte/petgroomer-api` executar `npm run start:dev`<br>
+      2. Iniciar o frontend: `codigo-fonte/front` executar `npm run dev`<br>
+      3. Na página local aberta, navegar até Adicionar Serviço.<br>
+      5. Cadastrar um serviço inválido com os dados fornecidos abaixo.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      Nome: 214 Coisa<br>
+      Valor: AAAAA124&@<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>
+    - O sistema deve impedir o cadastro com a mensagem 'informe um valor válido'
+    </td>
+  </tr>
+</table>
 
 <!--## ETAPA 4
 Casos de teste etapa 4 -->
@@ -756,6 +843,64 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
   </tr>
   <tr>
     <td colspan="6" align="center"><img width="1419" height="846" alt="image" src="https://github.com/user-attachments/assets/e68d2685-2072-4b22-826e-e1ea81e549f0" />    
+</td>
+  </tr>
+</table>
+
+<table> <!--a fazer: CT-005 Evidência da Isa do Teste de sucesso do cadastro de serviços-->
+  <tr>
+    <th colspan="6" width="1000">CT-005<br>Teste de sucesso do cadastro de serviços.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- - Deve cadastrar e exibir tosa com o valor cadastrado.</td>
+  </tr>
+    <tr>
+      <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Ariel Ortega </td>
+      <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">Isabela Castro </td>
+     <td width="100"><strong>Data do teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está cadastrando e exibindo a tosa corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img width="1920" height="1491" alt="image" src="img" />
+</td>
+  </tr>
+</table>
+
+<table> <!--a fazer: CT-005 - I01 Evidência da Isa do Teste de insucesso do cadastro de serviços-->
+  <tr>
+    <th colspan="6" width="1000">CT-005 - I01<br>Teste de insucesso do cadastro de serviços.</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- O sistema deve impedir o cadastro com a mensagem 'informe um valor válido'</td>
+  </tr>
+    <tr>
+      <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Ariel Ortega </td>
+      <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">Isabela Castro </td>
+     <td width="100"><strong>Data do teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está impedindo o cadastro e exibindo a mensagem de erro esperada.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><img width="1920" height="1491" alt="image" src="img" />
 </td>
   </tr>
 </table>
