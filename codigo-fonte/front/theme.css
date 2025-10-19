@@ -48,6 +48,7 @@ code {
 }
 
 /* Page container dentro de content */
+/* DECLARADO DUAS VEZES - olhar com isa e ariel*/
 .page-container {
 	background: var(--color-bg-container);
 	padding: 16px;
@@ -73,7 +74,7 @@ code {
   flex-direction: column;
 }
 
-
+/* DECLARADO DUAS VEZES - olhar com isa e ariel*/
 .page-container {
   min-height: 100vh;
   background: linear-gradient(to bottom, #f3e8ff, #ffffff); /* roxo claro → branco */
