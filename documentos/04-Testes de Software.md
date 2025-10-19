@@ -270,24 +270,24 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
       1. Rodar o script reset-and-seed.js: em `codigo-fonte/petgroomer-api` executar `node .\prisma\reset-and-seed.js`<br>
       2. Iniciar o backend: em `codigo-fonte/petgroomer-api` executar `npm run start:dev`<br>
       3. Iniciar o frontend: `codigo-fonte/front` executar `npm run dev`<br>
-      4. Na página local aberta, navegar até Calendário.
-      5. Verificar os agendamentos no mês do teste.<br>
+      4. Na página local aberta, navegar até Calendário.<br>
+      5. Verificar os agendamentos no mês do teste.
       </td>
   </tr>
     <tr>
     <td><strong>Dados de teste</strong></td>
     <td>
-      userId: alice.id, data: today, status: 'PENDENTE'
-      userId: alice.id, data: day2, status: 'APROVADO'
-      userId: bob.id, data: day5, status: 'PENDENTE'
-      userId: bob.id, data: day6, status: 'NEGADO'
+      userId: alice.id, data: today, status: 'PENDENTE'<br>
+      userId: alice.id, data: day2, status: 'APROVADO'<br>
+      userId: bob.id, data: day5, status: 'PENDENTE'<br>
+      userId: bob.id, data: day6, status: 'NEGADO'<br>
   </tr> -->
     <tr>
     <td><strong>Critérios de êxito</strong></td>
     <td>
     - Deve ser possível ver um agendamento no nome da Alice para o dia do teste e para dois dias após o teste.<br>
-    - Deve ser possível ver um agendamento no nome do Bob para 5 dias depois do teste.
-    - Não deve ser possível ver um agendamento no nome do Bob para 6 dias depois do teste.
+    - Deve ser possível ver um agendamento no nome do Bob para 5 dias depois do teste.<br>
+    - Ao clicar em um agendamento deve ser possível ver uma modal com os dados.<br>
     </td>
   </tr>
 </table>
@@ -299,6 +299,53 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
   <tr>
     <td width="150"><strong>Descrição</strong></td>
     <td>Este caso de teste verifica se o calendário não exibe os agendamentos recusados.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Isabela Gontijo de Castro</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Insucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-008: O sistema deve permitir marcar o agendamento como “pendente” ou “confirmado”.</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Rodar o script reset-and-seed.js: em `codigo-fonte/petgroomer-api` executar `node .\prisma\reset-and-seed.js`<br>
+      2. Iniciar o backend: em `codigo-fonte/petgroomer-api` executar `npm run start:dev`<br>
+      3. Iniciar o frontend: `codigo-fonte/front` executar `npm run dev`<br>
+      4. Na página local aberta, navegar até Calendário.<br>
+      5. Verificar os agendamentos no mês do teste.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      userId: alice.id, data: today, status: 'PENDENTE'<br>
+      userId: alice.id, data: day2, status: 'APROVADO'<br>
+      userId: bob.id, data: day5, status: 'PENDENTE'<br>
+      userId: bob.id, data: day6, status: 'NEGADO'<br>
+  </tr> -->
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>
+    - Não deve ser possível ver um agendamento no nome do Bob para 6 dias depois do teste.<br>
+    - Ao clicar no dia 6 a partir da data do teste (dia seguinte ao agendamento pendente do bob) a modal que abre deve dizer: Nenhum agendamento neste dia.
+    </td>
+  </tr>
+</table>
+
+<table><!-- ct 004 Teste do serviço de exibição do calendário - ano-->
+  <tr>
+    <th colspan="2" width="1000">CT-004 - S<br>Teste do serviço de exibição anual do calendário</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se na visualização de ano o calendário exibe uma contagem dos dias </td>
   </tr>
   <tr>
     <td><strong>Responsável Caso de Teste </strong></td>
@@ -318,22 +365,24 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
       1. Rodar o script reset-and-seed.js: em `codigo-fonte/petgroomer-api` executar `node .\prisma\reset-and-seed.js`<br>
       2. Iniciar o backend: em `codigo-fonte/petgroomer-api` executar `npm run start:dev`<br>
       3. Iniciar o frontend: `codigo-fonte/front` executar `npm run dev`<br>
-      4. Na página local aberta, navegar até Calendário.
-      5. Verificar os agendamentos no mês do teste.<br>
+      4. Na página local aberta, navegar até Calendário.<br>
+      5. Clicar em Ano.<br>
+      6 Verificar os agendamentos no ano do teste.<br>
       </td>
   </tr>
     <tr>
     <td><strong>Dados de teste</strong></td>
     <td>
-      userId: alice.id, data: today, status: 'PENDENTE'
-      userId: alice.id, data: day2, status: 'APROVADO'
-      userId: bob.id, data: day5, status: 'PENDENTE'
-      userId: bob.id, data: day6, status: 'NEGADO'
+      userId: alice.id, data: today, status: 'PENDENTE'<br>
+      userId: alice.id, data: day2, status: 'APROVADO'<br>
+      userId: bob.id, data: day5, status: 'PENDENTE'<br>
+      userId: bob.id, data: day6, status: 'NEGADO'<br>
   </tr> -->
     <tr>
     <td><strong>Critérios de êxito</strong></td>
     <td>
-    - Não deve ser possível ver um agendamento no nome do Bob para 6 dias depois do teste.
+    - Deve exibir uma contagem de 3 agendamentos de forma a refletir agendamentos feitos nos próximos 5 dias.<br> 
+    Observação: caso o teste seja feito no fim do mês pode ser que esta contagem esteja dividida entre o mês atual e o seguinte.<br>
     </td>
   </tr>
 </table>
@@ -445,10 +494,98 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
 
 ----------------------
 
-<!-- ### ETAPA 3
-Evidências de teste etapa 3
+### ETAPA 3
+<table> <!--CT-003 -->
+  <tr>
+    <th colspan="6" width="1000">CT-003<br>Teste do serviço de exibição do calendário</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve ser possível ver um agendamento no nome da Alice para o dia do teste e para dois dias após o teste.<br>
+    - Deve ser possível ver um agendamento no nome do Bob para 5 dias depois do teste.<br>
+    - Ao clicar em um agendamento deve ser possível ver uma modal com os dados.<br></td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
+    <td width="430">Isabela Gontijo de Castro </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">- O sistema está exibindo os três agendamentos corretamente.<br>
+    - Ao clicar nas datas agendadas os dados do agendamento são exibidos corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong> 
+    <img width="1420" height="706" alt="image" src="img" />
+</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="[link]"/></td>
+  </tr>
+</table>
 
-### ETAPA 4
+<table> <!--CT-003 - I01 -->
+  <tr>
+    <th colspan="6" width="1000">CT-003 - I01<br>Teste do serviço de exibição do calendário</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Não deve ser possível ver um agendamento no nome do Bob para 6 dias depois do teste.<br>
+    - Ao clicar no dia 6 a partir da data do teste (dia seguinte ao agendamento pendente do bob) a modal que abre deve dizer: Nenhum agendamento neste dia.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
+    <td width="430">Isabela Gontijo de Castro </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">- O sistema não está exibindo nenhum agendamento recusado.<br>
+    - Ao clicar no dia 25/10 a modal diz que não há agendamentos.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong> 
+    <img width="1420" height="706" alt="image" src="img" />
+</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="[link]"/></td>
+  </tr>
+</table>
+
+<table> <!--CT-004 -->
+  <tr>
+    <th colspan="6" width="1000">CT-004<br>Teste do serviço de exibição anual do calendário</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve exibir uma contagem de 3 agendamentos de forma a refletir agendamentos feitos nos próximos 5 dias.<br> 
+    Observação: caso o teste seja feito no fim do mês pode ser que esta contagem esteja dividida entre o mês atual e o seguinte.<br></td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade (desenvolvimento e teste)</strong></td>
+    <td width="430">Isabela Gontijo de Castro </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema está exibindo a contagem de agendamentos em outubro e em nenhum outro mês corretamente.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong> 
+    <img width="1420" height="706" alt="image" src="img" />
+</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="[link]"/></td>
+  </tr>
+</table>
+
+<!-- ### ETAPA 4
 Evidências de teste etapa 3 -->
 
 ## Parte 2 - Testes por pares
