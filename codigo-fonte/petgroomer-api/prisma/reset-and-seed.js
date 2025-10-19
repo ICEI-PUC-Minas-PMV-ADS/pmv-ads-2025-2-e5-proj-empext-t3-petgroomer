@@ -28,13 +28,15 @@ async function main() {
   const today = toDateOnly(new Date());
   const day2 = toDateOnly(new Date(Date.now() + 2 * 24 * 60 * 60 * 1000));
   const day5 = toDateOnly(new Date(Date.now() + 5 * 24 * 60 * 60 * 1000));
+  const day6 = toDateOnly(new Date(Date.now() + 6 * 24 * 60 * 60 * 1000));
 
-  console.log('Seeding 3 agendamentos on separate days...');
+  console.log('Seeding 4 agendamentos on separate days...');
   await prisma.agendamento.createMany({
     data: [
       { userId: alice.id, data: today, status: 'PENDENTE' },
       { userId: alice.id, data: day2, status: 'APROVADO' },
       { userId: bob.id, data: day5, status: 'PENDENTE' },
+      { userId: bob.id, data: day6, status: 'NEGADO' },
     ],
   });
 

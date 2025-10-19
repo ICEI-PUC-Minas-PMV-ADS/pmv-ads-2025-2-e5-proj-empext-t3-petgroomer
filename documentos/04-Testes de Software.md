@@ -242,10 +242,104 @@ O caso de teste de sucesso deve ser identificado por CT - xxx - S
 
 --------
 
-<!-- ## ETAPA 3
-Casos de teste etapa 3
+## ETAPA 3
 
-## ETAPA 4
+<table><!-- ct 003 Teste do serviço de exibição do calendário - mês-->
+  <tr>
+    <th colspan="2" width="1000">CT-003 - S<br>Teste do serviço de exibição do calendário</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se o calendário exibe os agendamentos pendentes e aprovados, no dia adequado e com o nome do cliente.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Isabela Gontijo de Castro</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-008: O sistema deve permitir marcar o agendamento como “pendente” ou “confirmado”.</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Rodar o script reset-and-seed.js: em `codigo-fonte/petgroomer-api` executar `node .\prisma\reset-and-seed.js`<br>
+      2. Iniciar o backend: em `codigo-fonte/petgroomer-api` executar `npm run start:dev`<br>
+      3. Iniciar o frontend: `codigo-fonte/front` executar `npm run dev`<br>
+      4. Na página local aberta, navegar até Calendário.
+      5. Verificar os agendamentos no mês do teste.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      userId: alice.id, data: today, status: 'PENDENTE'
+      userId: alice.id, data: day2, status: 'APROVADO'
+      userId: bob.id, data: day5, status: 'PENDENTE'
+      userId: bob.id, data: day6, status: 'NEGADO'
+  </tr> -->
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>
+    - Deve ser possível ver um agendamento no nome da Alice para o dia do teste e para dois dias após o teste.<br>
+    - Deve ser possível ver um agendamento no nome do Bob para 5 dias depois do teste.
+    - Não deve ser possível ver um agendamento no nome do Bob para 6 dias depois do teste.
+    </td>
+  </tr>
+</table>
+
+<table><!-- ct 003 Teste de insucesso do serviço de exibição do calendário - mês-->
+  <tr>
+    <th colspan="2" width="1000">CT-003 - I01<br>Teste de insucesso do serviço de exibição do calendário</th>
+  </tr>
+  <tr>
+    <td width="150"><strong>Descrição</strong></td>
+    <td>Este caso de teste verifica se o calendário não exibe os agendamentos recusados.</td>
+  </tr>
+  <tr>
+    <td><strong>Responsável Caso de Teste </strong></td>
+    <td width="430">Isabela Gontijo de Castro</td>
+  </tr>
+ <tr>
+    <td><strong>Tipo do Teste</strong></td>
+    <td width="430">Sucesso</td>
+  </tr> 
+  <tr>
+    <td><strong>Requisitos associados</strong></td>
+    <td>RF-008: O sistema deve permitir marcar o agendamento como “pendente” ou “confirmado”.</td>
+  </tr>
+  <tr>
+    <td><strong>Passos</strong></td>
+    <td>
+      1. Rodar o script reset-and-seed.js: em `codigo-fonte/petgroomer-api` executar `node .\prisma\reset-and-seed.js`<br>
+      2. Iniciar o backend: em `codigo-fonte/petgroomer-api` executar `npm run start:dev`<br>
+      3. Iniciar o frontend: `codigo-fonte/front` executar `npm run dev`<br>
+      4. Na página local aberta, navegar até Calendário.
+      5. Verificar os agendamentos no mês do teste.<br>
+      </td>
+  </tr>
+    <tr>
+    <td><strong>Dados de teste</strong></td>
+    <td>
+      userId: alice.id, data: today, status: 'PENDENTE'
+      userId: alice.id, data: day2, status: 'APROVADO'
+      userId: bob.id, data: day5, status: 'PENDENTE'
+      userId: bob.id, data: day6, status: 'NEGADO'
+  </tr> -->
+    <tr>
+    <td><strong>Critérios de êxito</strong></td>
+    <td>
+    - Não deve ser possível ver um agendamento no nome do Bob para 6 dias depois do teste.
+    </td>
+  </tr>
+</table>
+
+
+<!--## ETAPA 4
 Casos de teste etapa 4 -->
  
 # Evidências de Testes de Software
@@ -427,7 +521,7 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
 
 -----------------
 
-<table> <!--a fazer: CT-002 - I02 Evidência da Isa do Teste do Upload de formato inadequado para foto-->
+<table> <!--CT-002 - I02 Evidência da Isa do Teste do Upload de formato inadequado para foto-->
   <tr>
     <th colspan="6" width="1000">CT-002 - I02<br>Upload de formato inadequado para foto.</th>
   </tr>
