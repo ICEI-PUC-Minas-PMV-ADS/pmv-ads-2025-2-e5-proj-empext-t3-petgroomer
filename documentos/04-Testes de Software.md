@@ -605,7 +605,8 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong> 
-    <img width="1420" height="706" alt="image" src="img" />
+    <img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/5f12504f-ffd5-453c-a560-556b33914c7e" />
+
 </td>
   </tr>
   <tr>
@@ -635,7 +636,8 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong> 
-    <img width="1420" height="706" alt="image" src="img" />
+    <img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/f05ad36c-2d5d-49ce-9e63-5c4b8bfaabf5" />
+
 </td>
   </tr>
   <tr>
@@ -664,7 +666,8 @@ Cada funcionalidade desenvolvida deve ser testada pelo próprio desenvolvedor, u
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong> 
-    <img width="1420" height="706" alt="image" src="img" />
+    <img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/f79d1d83-7bf0-4044-8b46-09fe47f1760c" />
+
 </td>
   </tr>
   <tr>
@@ -871,7 +874,7 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><img width="1920" height="1491" alt="image" src="img" />
+    <td colspan="6" align="center"><img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/b9651a53-0908-4d5c-a9ac-021b3d24c50f" />
 </td>
   </tr>
 </table>
@@ -900,7 +903,7 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td colspan="6" align="center"><strong>Evidência</strong></td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><img width="1920" height="1491" alt="image" src="img" />
+    <td colspan="6" align="center"><img width="1920" height="1079" alt="image" src="https://github.com/user-attachments/assets/0bb07597-a30c-4abb-aa63-ab8a271fafd3" />
 </td>
   </tr>
 </table>
