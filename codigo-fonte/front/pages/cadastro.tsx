@@ -8,14 +8,14 @@ import {
   Form,
   Input,
   Button,
-  Checkbox,
   Alert,
   Space,
   Divider,
 } from 'antd';
 import {
-  LockOutlined,
   MailOutlined,
+  UserOutlined,
+  LockOutlined,
   ArrowRightOutlined,
 } from '@ant-design/icons';
 
@@ -24,38 +24,39 @@ const { Title, Text } = Typography;
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
 
-export default function Login() {
+export default function Cadastro() {
   const router = useRouter();
   const [form] = Form.useForm();
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  async function onFinish(values: { email: string; password: string; remember?: boolean }) {
+  async function onFinish(values: { email: string; password: string; name: string }) {
     setErrorMsg(null);
     setSubmitting(true);
+
     try {
-      const res = await fetch(`${API_URL}/auth/login`, {
+      const res = await fetch(`${API_URL}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // IMPORTANTE: para receber o cookie httpOnly (refresh_token)
         credentials: 'include',
         body: JSON.stringify({
-          email: values.email,
-          password: values.password,
+          ...values,
+          role: 'CLIENTE', // Fixo
         }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        const msg = Array.isArray(data?.message) ? data.message[0] : data?.message || 'Falha ao autenticar';
+        const msg = Array.isArray(data?.message)
+          ? data.message[0]
+          : data?.message || 'Falha ao cadastrar';
         throw new Error(msg);
       }
 
       sessionStorage.setItem('access_token', data.access);
       sessionStorage.setItem('user', JSON.stringify(data.user));
 
-      // redireciona para o dashboard (ajuste o path)
       router.push('/dashboard');
     } catch (err: any) {
       setErrorMsg(err.message || 'Erro inesperado. Tente novamente.');
@@ -67,17 +68,20 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Login — PetGroomer</title>
+        <title>Cadastro — PetGroomer</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
       <Layout style={{ minHeight: '100vh' }}>
         <Content className="content">
           <div className="bg" />
+
           <Card className="card" bordered={false}>
             <Space direction="vertical" size={6} style={{ width: '100%', textAlign: 'center' }}>
-              <Title level={2} style={{ marginBottom: 0 }}>Bem-vindo ao PetGroomer</Title>
-              <Text type="secondary">Acesse sua conta para continuar</Text>
+              <Title level={2} style={{ marginBottom: 0 }}>
+                Crie sua conta
+              </Title>
+              <Text type="secondary">e agende o banho e tosa do seu pet</Text>
             </Space>
 
             <Divider />
@@ -85,7 +89,7 @@ export default function Login() {
             {errorMsg && (
               <Alert
                 type="error"
-                message="Não foi possível entrar"
+                message="Erro no cadastro"
                 description={errorMsg}
                 showIcon
                 style={{ marginBottom: 16 }}
@@ -95,11 +99,25 @@ export default function Login() {
             <Form
               form={form}
               layout="vertical"
-              name="login"
+              name="cadastro"
               onFinish={onFinish}
-              initialValues={{ remember: true }}
               requiredMark={false}
             >
+              <Form.Item
+                label="Nome completo"
+                name="name"
+                rules={[
+                  { required: true, message: 'Informe seu nome completo' },
+                  { min: 3, message: 'Mínimo de 3 caracteres' },
+                ]}
+              >
+                <Input
+                  size="large"
+                  prefix={<UserOutlined />}
+                  placeholder="Ex: João Silva"
+                />
+              </Form.Item>
+
               <Form.Item
                 label="E-mail"
                 name="email"
@@ -120,26 +138,17 @@ export default function Login() {
                 label="Senha"
                 name="password"
                 rules={[
-                  { required: true, message: 'Informe sua senha' },
+                  { required: true, message: 'Crie uma senha' },
                   { min: 6, message: 'Mínimo de 6 caracteres' },
                 ]}
               >
                 <Input.Password
                   size="large"
                   prefix={<LockOutlined />}
-                  placeholder="Sua senha"
-                  autoComplete="current-password"
+                  placeholder="Digite sua senha"
+                  autoComplete="new-password"
                 />
               </Form.Item>
-
-              <div className="row">
-                <Form.Item name="remember" valuePropName="checked" noStyle>
-                  <Checkbox>Lembrar de mim</Checkbox>
-                </Form.Item>
-                <Button type="link" href="/recuperar-senha" style={{ padding: 0 }}>
-                  Esqueci minha senha
-                </Button>
-              </div>
 
               <Form.Item style={{ marginTop: 8 }}>
                 <Button
@@ -150,7 +159,7 @@ export default function Login() {
                   block
                   icon={<ArrowRightOutlined />}
                 >
-                  Entrar
+                  Criar conta
                 </Button>
               </Form.Item>
             </Form>
@@ -161,7 +170,7 @@ export default function Login() {
 
             <Space direction="vertical" style={{ width: '100%' }}>
               <Text type="secondary">
-                Não tem conta? <a href="/cadastro">Crie agora</a>
+                Já possui conta? <a href="/login">Entre agora</a>
               </Text>
             </Space>
           </Card>
@@ -194,12 +203,6 @@ export default function Login() {
           border-radius: 16px;
           box-shadow: 0 10px 30px rgba(0,0,0,0.25);
           backdrop-filter: blur(4px);
-        }
-        .row {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: -8px;
         }
       `}</style>
     </>
