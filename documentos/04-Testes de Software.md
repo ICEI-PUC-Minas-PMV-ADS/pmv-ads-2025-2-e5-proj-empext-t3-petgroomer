@@ -955,16 +955,17 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td><strong>Responsável pela funcionalidade</strong></td>
     <td width="430">Isabela Gontijo de Castro </td>
     <td><strong>Responsável pelo teste</strong></td>
-    <td width="430">x </td>
+    <td width="430">Ariel Ortega </td>
      <td width="100"><strong>Data do Teste</strong></td>
     <td width="150">19/10/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">- x</td>
+    <td colspan="5">-O aplicativo retornou o agendamento da Alice com sucesso.</td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><strong>Evidência</strong> 
+    <td colspan="6" align="center"><strong>Evidência</strong> <img width="1326" height="735" alt="image" src="https://github.com/user-attachments/assets/85e03f47-ee8f-4b74-95e4-b08e00c9a21b" />
+
     
 
 </td>
@@ -987,16 +988,17 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td><strong>Responsável pela funcionalidade</strong></td>
     <td width="430">Isabela Gontijo de Castro </td>
     <td><strong>Responsável pelo teste</strong></td>
-    <td width="430">x </td>
+    <td width="430"> Ariel Ortega </td>
      <td width="100"><strong>Data do Teste</strong></td>
     <td width="150">19/10/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">- x</td>
+    <td colspan="5">- Não foi possível ver o agendamento do Bob.</td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><strong>Evidência</strong> 
+    <td colspan="6" align="center"><strong>Evidência</strong> <img width="1326" height="735" alt="image" src="https://github.com/user-attachments/assets/fbec738c-e418-4ad1-bf01-c6b32fd8b686" />
+
     IMG
 
 </td>
@@ -1019,16 +1021,17 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
     <td><strong>Responsável pela funcionalidade</strong></td>
     <td width="430">Isabela Gontijo de Castro </td>
     <td><strong>Responsável pelo teste</strong></td>
-    <td width="430">x </td>
+    <td width="430">Ariel Ortega </td>
      <td width="100"><strong>Data do Teste</strong></td>
     <td width="150">19/10/2025</td>
   </tr>
     <tr>
     <td width="170"><strong>Comentário</strong></td>
-    <td colspan="5">X</td>
+    <td colspan="5">O sistema exibiu corretamente a exibição anual do calendário.</td>
   </tr>
   <tr>
-    <td colspan="6" align="center"><strong>Evidência</strong> 
+    <td colspan="6" align="center"><strong>Evidência</strong> <img width="1333" height="734" alt="image" src="https://github.com/user-attachments/assets/98e93c9e-d6cb-4c90-bede-d0d95219f2bd" />
+
     IMG
 
 </td>
