@@ -199,51 +199,6 @@
   <tr>
   <th colspan="3">Pendências</th>
   </tr>
-  <tr>
-  <td>
-  <strong>Descrição</strong>
-  </td>
-  <td>
-  <strong>Data</strong>
-  </td>
-  <td>
-  <strong>Responsável</strong>
-  </td>
-  </tr>
-    <tr>
-  <td>
-  - Desenvolvimento serviço foto 
-  </td>
-  <td>
-  21/09/2025 
-  </td>
-  <td>
-  Ariel
-  </td>
-  </tr>
-    <tr>
-  <td>
-  - Correção do planejamento do banco de dados para refletir b2b 
-  </td>
-  <td>
-  21/09/2025 
-  </td>
-  <td>
-  Isabela
-  </td>
-  </tr>
-    <tr>
-  <td>
-  Atualização do protótipo para refletir b2b 
-  </td>
-  <td>
-  21/09/2025 
-  </td>
-  <td>
-  Thiago
-  </td>
-  </tr>
-  <tr>
   <th colspan="3">Registro de Presença</th>
   </tr>
     <tr>
