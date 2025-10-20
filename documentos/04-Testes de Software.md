@@ -933,7 +933,10 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
   </tr>
   <tr>
     <td colspan="6" align="center">
-    IMG
+    <img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/38b439ba-32bb-45c5-9652-c3e33c68ef05" />
+    <img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/5fc78818-a673-4fd7-88ce-c7f2771dd318" />
+
+
 </td>
   </tr>
 </table>
