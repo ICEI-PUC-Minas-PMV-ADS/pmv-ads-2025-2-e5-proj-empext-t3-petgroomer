@@ -908,6 +908,133 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
   </tr>
 </table>
 
+<table> <!--a fazer: CT-006 evidencia do trem do pedro-->
+  <tr>
+    <th colspan="6" width="1000">CT-006<br>Teste de sucesso do pedido de agendamento</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- O sistema deve permitir o cadastro do agendamento e deve enviar para o banco com status pendente.</td>
+  </tr>
+    <tr>
+      <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Pedro Amorim </td>
+      <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">Isabela Castro </td>
+     <td width="100"><strong>Data do teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">O sistema permitiu o cadastro corretamente e refletiu no banco de dados.</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong></td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center">
+    IMG
+</td>
+  </tr>
+</table>
+
+<table> <!--CT-003 -->
+  <tr>
+    <th colspan="6" width="1000">CT-003<br>Teste do serviço de exibição do calendário</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve ser possível ver um agendamento no nome da Alice para o dia do teste e para dois dias após o teste.<br>
+    - Deve ser possível ver um agendamento no nome do Bob para 5 dias depois do teste.<br>
+    - Ao clicar em um agendamento deve ser possível ver uma modal com os dados.<br></td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Isabela Gontijo de Castro </td>
+    <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">x </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">- x</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong> 
+    
+
+</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="[link]"/></td>
+  </tr>
+</table>
+
+<table> <!--CT-003 - I01 -->
+  <tr>
+    <th colspan="6" width="1000">CT-003 - I01<br>Teste do serviço de exibição do calendário</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Não deve ser possível ver um agendamento no nome do Bob para 6 dias depois do teste.<br>
+    - Ao clicar no dia 6 a partir da data do teste (dia seguinte ao agendamento pendente do bob) a modal que abre deve dizer: Nenhum agendamento neste dia.</td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Isabela Gontijo de Castro </td>
+    <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">x </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">- x</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong> 
+    IMG
+
+</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="[link]"/></td>
+  </tr>
+</table>
+
+<table> <!--CT-004 -->
+  <tr>
+    <th colspan="6" width="1000">CT-004<br>Teste do serviço de exibição anual do calendário</th>
+  </tr>
+  <tr>
+    <td width="170"><strong>Critérios de êxito</strong></td>
+    <td colspan="5">- Deve exibir uma contagem de 3 agendamentos de forma a refletir agendamentos feitos nos próximos 5 dias.<br> 
+    Observação: caso o teste seja feito no fim do mês pode ser que esta contagem esteja dividida entre o mês atual e o seguinte.<br></td>
+  </tr>
+    <tr>
+    <td><strong>Responsável pela funcionalidade</strong></td>
+    <td width="430">Isabela Gontijo de Castro </td>
+    <td><strong>Responsável pelo teste</strong></td>
+    <td width="430">x </td>
+     <td width="100"><strong>Data do Teste</strong></td>
+    <td width="150">19/10/2025</td>
+  </tr>
+    <tr>
+    <td width="170"><strong>Comentário</strong></td>
+    <td colspan="5">X</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><strong>Evidência</strong> 
+    IMG
+
+</td>
+  </tr>
+  <tr>
+    <td colspan="6" align="center"><video  src="[link]"/></td>
+  </tr>
+</table>
+
 <!--### ETAPA 4
 Colocar evidências de teste da etapa 4
  -->
