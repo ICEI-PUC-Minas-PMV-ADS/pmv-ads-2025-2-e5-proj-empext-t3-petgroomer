@@ -998,9 +998,6 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong> <img width="1326" height="735" alt="image" src="https://github.com/user-attachments/assets/fbec738c-e418-4ad1-bf01-c6b32fd8b686" />
-
-    IMG
-
 </td>
   </tr>
   <tr>
@@ -1031,9 +1028,6 @@ A fim de aumentar a qualidade da aplicação desenvolvida, cada funcionalidade d
   </tr>
   <tr>
     <td colspan="6" align="center"><strong>Evidência</strong> <img width="1333" height="734" alt="image" src="https://github.com/user-attachments/assets/98e93c9e-d6cb-4c90-bede-d0d95219f2bd" />
-
-    IMG
-
 </td>
   </tr>
   <tr>
