@@ -1,0 +1,231 @@
+/* Global theme styles go here */
+
+body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+
+.desktop-menu {
+	display: block;
+}
+.mobile-menu {
+	display: none;
+}
+
+
+@media (max-width: 768px) {
+	.desktop-menu {
+		display: none;
+	}
+	.mobile-menu {
+		display: block;
+	}
+}
+
+/* Theme */
+:root {
+	--color-bg-container: #fff;
+	--color-footer-bg: #fff;
+	--color-footer-text: #000;
+}
+
+/* Layout content wrapper  */
+.content {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 99.75rem;
+	margin: 8px auto 0;
+}
+
+/* Page container dentro de content */
+.page-container {
+	background: var(--color-bg-container);
+	padding: 16px;
+	min-height: 380px;
+}
+
+/* Header */
+.app-header {
+	display: flex;
+	align-items: center;
+	height: 64px;
+	background: transparent;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 99.75rem;
+	margin: 0 auto 0;
+}
+
+/* Layout */
+.layout {
+  min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+}
+
+
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #f3e8ff, #ffffff); /* roxo claro → branco */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  color: #5b21b6; /* roxo escuro */
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.page-subtitle {
+  color: #7c3aed; /* roxo médio */
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-container h2 {
+  color: #5b21b6;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: #4c1d95;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-container input:focus {
+  border-color: #7c3aed;
+}
+
+.form-container button {
+  width: 100%;
+  background-color: #5b21b6;
+  color: white;
+  padding: 0.5rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-container button:hover {
+  background-color: #7c3aed;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: #5b21b6;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-value {
+  color: #6b7280;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.delete-button {
+  background-color: #e11d48; /* vermelho */
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #be123c;
+}
+
+/* Site content (deixa o footer no fim)*/
+.site-content {
+  flex: 1 0 auto;
+}
+
+/* Footer */
+.site-footer {
+	background: var(--color-footer-bg);
+	color: var(--color-footer-text);
+	text-align: center;
+	padding: 6px 8px;
+	font-size: 0.85rem;
+	line-height: 1.2;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 99.75rem;
+	margin: 8px auto 0;
+}
