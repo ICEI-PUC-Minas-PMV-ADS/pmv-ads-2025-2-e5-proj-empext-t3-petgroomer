@@ -55,8 +55,15 @@ export default function Login() {
       sessionStorage.setItem('access_token', data.access);
       sessionStorage.setItem('user', JSON.stringify(data.user));
 
-      // redireciona para o dashboard (ajuste o path)
-      router.push('/dashboard');
+      // 🔔 AVISA O APP QUE O AUTH MUDOU (atualiza Header/Burger sem refresh)
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new Event('auth:changed'));      // mesma aba
+          try { new BroadcastChannel('auth').postMessage('ok'); } catch {} // outras abas (opcional)
+        }
+
+        // redireciona para o dashboard
+        router.push('/dashboard');
+
     } catch (err: any) {
       setErrorMsg(err.message || 'Erro inesperado. Tente novamente.');
     } finally {

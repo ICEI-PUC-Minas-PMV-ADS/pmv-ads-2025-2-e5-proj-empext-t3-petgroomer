@@ -60,5 +60,7 @@ export async function apiLogout() {
   if (typeof window !== 'undefined') {
     sessionStorage.removeItem('access_token');
     sessionStorage.removeItem('user');
+    window.dispatchEvent(new Event('auth:changed'));
+    try { new BroadcastChannel('auth').postMessage('ok'); } catch {}
   }
 }

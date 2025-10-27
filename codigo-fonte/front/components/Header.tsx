@@ -25,12 +25,42 @@ export default function Header() {
   const [user, setUser] = useState<User | null>(null);
   const isAuth = !!user;
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const raw = sessionStorage.getItem('user');
-    if (!raw) { setUser(null); return; }
-    try { setUser(JSON.parse(raw)); } catch { setUser(null); }
-  }, []);
+useEffect(() => {
+  function read() {
+    try {
+      const raw = sessionStorage.getItem('user');
+      setUser(raw ? JSON.parse(raw) : null);
+    } catch {
+      setUser(null);
+    }
+  }
+
+  // carga inicial
+  read();
+
+  // mesma aba
+  const onAuthChanged = () => read();
+  window.addEventListener('auth:changed', onAuthChanged);
+
+  // multi-abas via BroadcastChannel (opcional)
+  let bc: BroadcastChannel | null = null;
+  try {
+    bc = new BroadcastChannel('auth');
+    bc.onmessage = onAuthChanged;
+  } catch {}
+
+  // fallback: storage (outras abas)
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === 'user' || e.key === 'access_token') read();
+  };
+  window.addEventListener('storage', onStorage);
+
+  return () => {
+    window.removeEventListener('auth:changed', onAuthChanged);
+    window.removeEventListener('storage', onStorage);
+    if (bc) bc.close();
+  };
+}, []);
 
   // item ativo
   const selectedKey = useMemo(() => {

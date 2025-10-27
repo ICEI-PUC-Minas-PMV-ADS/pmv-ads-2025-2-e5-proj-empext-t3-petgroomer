@@ -57,7 +57,14 @@ export default function Cadastro() {
       sessionStorage.setItem('access_token', data.access);
       sessionStorage.setItem('user', JSON.stringify(data.user));
 
-      router.push('/dashboard');
+        if (typeof window !== 'undefined') {
+          sessionStorage.removeItem('access_token');
+          sessionStorage.removeItem('user');
+
+          // 🔔 avisa todo mundo que o estado de auth mudou
+          window.dispatchEvent(new Event('auth:changed'));
+          try { new BroadcastChannel('auth').postMessage('ok'); } catch {}
+        }
     } catch (err: any) {
       setErrorMsg(err.message || 'Erro inesperado. Tente novamente.');
     } finally {
