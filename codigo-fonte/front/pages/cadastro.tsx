@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/globals.css';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import {
@@ -22,7 +23,7 @@ import {
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
 export default function Cadastro() {
   const router = useRouter();
@@ -30,7 +31,7 @@ export default function Cadastro() {
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  async function onFinish(values: { email: string; password: string; name: string }) {
+  const onFinish = async (values: { email: string; password: string; name: string }) => {
     setErrorMsg(null);
     setSubmitting(true);
 
@@ -38,39 +39,32 @@ export default function Cadastro() {
       const res = await fetch(`${API_URL}/auth/signup`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          ...values,
-          role: 'CLIENTE', // Fixo
-        }),
+        body: JSON.stringify({ ...values, role: 'CLIENTE' }),
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        const msg = Array.isArray(data?.message)
-          ? data.message[0]
-          : data?.message || 'Falha ao cadastrar';
+        const msg = Array.isArray(data?.message) ? data.message[0] : data?.message || 'Falha ao cadastrar';
         throw new Error(msg);
       }
 
-      sessionStorage.setItem('access_token', data.access);
-      sessionStorage.setItem('user', JSON.stringify(data.user));
+      // Armazenar dados no sessionStorage
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('access_token', data.access);
+        sessionStorage.setItem('user', JSON.stringify(data.user));
+        // Avise outros tabs sobre mudança de auth
+        window.dispatchEvent(new Event('auth:changed'));
+        try { new BroadcastChannel('auth').postMessage('ok'); } catch {}
+      }
 
-        if (typeof window !== 'undefined') {
-          sessionStorage.removeItem('access_token');
-          sessionStorage.removeItem('user');
-
-          // 🔔 avisa todo mundo que o estado de auth mudou
-          window.dispatchEvent(new Event('auth:changed'));
-          try { new BroadcastChannel('auth').postMessage('ok'); } catch {}
-        }
+      router.push('/'); // redireciona após cadastro
     } catch (err: any) {
       setErrorMsg(err.message || 'Erro inesperado. Tente novamente.');
     } finally {
       setSubmitting(false);
     }
-  }
+  };
 
   return (
     <>
@@ -85,9 +79,7 @@ export default function Cadastro() {
 
           <Card className="card" bordered={false}>
             <Space direction="vertical" size={6} style={{ width: '100%', textAlign: 'center' }}>
-              <Title level={2} style={{ marginBottom: 0 }}>
-                Crie sua conta
-              </Title>
+              <Title level={2} style={{ marginBottom: 0 }}>Crie sua conta</Title>
               <Text type="secondary">e agende o banho e tosa do seu pet</Text>
             </Space>
 
@@ -118,11 +110,7 @@ export default function Cadastro() {
                   { min: 3, message: 'Mínimo de 3 caracteres' },
                 ]}
               >
-                <Input
-                  size="large"
-                  prefix={<UserOutlined />}
-                  placeholder="Ex: João Silva"
-                />
+                <Input size="large" prefix={<UserOutlined />} placeholder="Ex: João Silva" />
               </Form.Item>
 
               <Form.Item
@@ -133,12 +121,7 @@ export default function Cadastro() {
                   { type: 'email', message: 'E-mail inválido' },
                 ]}
               >
-                <Input
-                  size="large"
-                  prefix={<MailOutlined />}
-                  placeholder="voce@exemplo.com"
-                  autoComplete="email"
-                />
+                <Input size="large" prefix={<MailOutlined />} placeholder="voce@exemplo.com" autoComplete="email" />
               </Form.Item>
 
               <Form.Item
@@ -149,23 +132,11 @@ export default function Cadastro() {
                   { min: 6, message: 'Mínimo de 6 caracteres' },
                 ]}
               >
-                <Input.Password
-                  size="large"
-                  prefix={<LockOutlined />}
-                  placeholder="Digite sua senha"
-                  autoComplete="new-password"
-                />
+                <Input.Password size="large" prefix={<LockOutlined />} placeholder="Digite sua senha" autoComplete="new-password" />
               </Form.Item>
 
               <Form.Item style={{ marginTop: 8 }}>
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  size="large"
-                  loading={submitting}
-                  block
-                  icon={<ArrowRightOutlined />}
-                >
+                <Button type="primary" htmlType="submit" size="large" loading={submitting} block icon={<ArrowRightOutlined />}>
                   Criar conta
                 </Button>
               </Form.Item>
@@ -184,34 +155,8 @@ export default function Cadastro() {
         </Content>
       </Layout>
 
-      <style jsx>{`
-        .content {
-          display: grid;
-          place-items: center;
-          position: relative;
-          padding: 24px;
-          min-height: 100vh;
-          overflow: hidden;
-        }
-        .bg {
-          position: absolute;
-          inset: -20%;
-          background: radial-gradient(60% 60% at 20% 20%, #7c3aed22, transparent 60%),
-                      radial-gradient(50% 50% at 80% 30%, #06b6d422, transparent 60%),
-                      radial-gradient(40% 40% at 50% 80%, #22c55e22, transparent 60%),
-                      linear-gradient(180deg, #0b1020 0%, #0f172a 100%);
-          filter: blur(30px);
-          z-index: 0;
-        }
-        .card {
-          width: 100%;
-          max-width: 420px;
-          z-index: 1;
-          border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-          backdrop-filter: blur(4px);
-        }
-      `}</style>
+      {/* CSS Global corrigido */}
+      
     </>
   );
 }
