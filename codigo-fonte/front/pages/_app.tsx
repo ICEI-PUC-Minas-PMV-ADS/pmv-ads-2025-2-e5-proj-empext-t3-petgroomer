@@ -1,9 +1,11 @@
+import 'antd/dist/reset.css';
 import React from 'react';
 import type { AppProps } from 'next/app';
 import '../theme.css';
 import { ConfigProvider, Layout } from 'antd';
 import theme from '../theme';
 import Header from '../components/Header';
+
 
 const { Footer } = Layout;
 
@@ -43,26 +45,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Layout>
 
       {/* Estilos globais para eliminar margens e faixas claras */}
-      <style jsx global>{`
-        html,
-        body,
-        #__next {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          background: #0b1020;
-        }
-
-        .ant-layout {
-          background: #0b1020 !important;
-        }
-
-        .ant-layout-content,
-        .site-content {
-          background: transparent !important;
-          padding-top: 0 !important;
-        }
-      `}</style>
+      
     </ConfigProvider>
   );
 }

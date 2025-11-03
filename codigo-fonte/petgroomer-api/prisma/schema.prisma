@@ -38,6 +38,14 @@ model Agendamento {
   status    StatusAgendamento @default(PENDENTE)
 }
 
+model PedidoAgendamento {
+  id       Int      @id @default(autoincrement())
+  cliente  String
+  servico  String   // ⚠️ obrigatório
+  data     DateTime
+  status   String
+}
+
 enum StatusAgendamento {
   PENDENTE
   APROVADO

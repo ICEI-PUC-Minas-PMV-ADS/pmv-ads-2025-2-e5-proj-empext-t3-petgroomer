@@ -79,6 +79,7 @@ useEffect(() => {
   const commonItems = [
     { key: 'home', icon: <AppstoreOutlined />, label: <Link href="/">Portfolio</Link> },
     { key: 'calendar', icon: <CalendarOutlined />, label: <Link href="/calendar">Calendário</Link> },
+    { key: 'pedido', icon: <PlusOutlined />, label: <Link href="/pedidoagendamento">Pedido Agendamento</Link> }, // <<< Novo item
   ];
 
   // Itens condicionais por auth/role
