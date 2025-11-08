@@ -9,6 +9,7 @@ export default function PedidoAgendamento() {
   const [loading, setLoading] = useState(false);
   const [pedidoCriado, setPedidoCriado] = useState(false);
   const [servicos, setServicos] = useState<string[]>([]); // <<< Moved hooks para cima
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
   const handleSubmit = async (values: any) => {
     setLoading(true);
@@ -21,7 +22,7 @@ export default function PedidoAgendamento() {
     };
 
     try {
-      const res = await fetch('http://localhost:4000/pedidoagendamento', {
+      const res = await fetch(`${API_URL}/pedidoagendamento`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

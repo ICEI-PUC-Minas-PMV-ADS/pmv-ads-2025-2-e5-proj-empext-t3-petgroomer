@@ -12,7 +12,7 @@ type Agendamento = {
 	cliente?: { id: string; name?: string; email?: string };
 };
 
-const API_BASE_URL = 'http://localhost:4000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
 export default function CalendarPage() {
 	const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]);
@@ -50,7 +50,7 @@ export default function CalendarPage() {
 		setLoading(true);
 		setError(null);
 		try {
-			const res = await fetch(`${API_BASE_URL}/agendamentos/calendar`);
+			const res = await fetch(`${API_URL}/agendamentos/calendar`);
 			if (!res.ok) throw new Error(`Erro: ${res.status}`);
 			const data: Agendamento[] = await res.json();
 			const normalized = data.map(a => ({ ...a, data: a.data.split('T')[0] }));
