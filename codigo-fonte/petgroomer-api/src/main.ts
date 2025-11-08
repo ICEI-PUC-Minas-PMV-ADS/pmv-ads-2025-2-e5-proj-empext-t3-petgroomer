@@ -9,21 +9,17 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Segurança básica
   app.use(helmet());
   app.use(cookieParser());
 
-  // Config
   const configService = app.get(ConfigService);
-  const port = parseInt(process.env.PORT || '3000', 10);
-  await app.listen(parseInt(process.env.PORT || '4000', 10), '0.0.0.0');
+  const port = parseInt(process.env.PORT || '4000', 10);
+  const corsOrigin = (configService.get<string>('CORS_ORIGIN') ?? 'http://localhost:3000')
+    .split(',');
 
-  const corsOrigin = configService.get<string>('CORS_ORIGIN') ?? 'http://localhost:3000';
-
-  // CORS (front separado)
   app.enableCors({
-    origin: process.env.CORS_ORIGIN?.split(',') ?? ['http://localhost:3000'],
-    credentials: true, // permitirá cookies httpOnly no futuro
+    origin: corsOrigin,
+    credentials: true,
   });
 
   app.useGlobalPipes(new ValidationPipe({
@@ -32,13 +28,12 @@ async function bootstrap() {
     transform: true,
   }));
 
-  // Swagger
   const swaggerConfig = new DocumentBuilder()
     .setTitle('PetGroomer API')
     .setDescription('Documentação da API do PetGroomer')
     .setVersion('1.0')
-    .addBearerAuth()        // auth por access token (header)
-    .addCookieAuth('refresh_token') // refresh token via cookie httpOnly (futuro)
+    .addBearerAuth()
+    .addCookieAuth('refresh_token')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
