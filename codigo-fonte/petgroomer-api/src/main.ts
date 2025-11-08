@@ -15,12 +15,14 @@ async function bootstrap() {
 
   // Config
   const configService = app.get(ConfigService);
-  const port = configService.get<number>('PORT') ?? 4000;
+  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4000;
+  await app.listen(port, '0.0.0.0');
+
   const corsOrigin = configService.get<string>('CORS_ORIGIN') ?? 'http://localhost:3000';
 
   // CORS (front separado)
   app.enableCors({
-    origin: corsOrigin,
+    origin: process.env.CORS_ORIGIN?.split(',') ?? ['http://localhost:3000'],
     credentials: true, // permitirá cookies httpOnly no futuro
   });
 

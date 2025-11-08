@@ -1,0 +1,30 @@
+# railway.toml na RAIZ DO REPO
+[project]
+name = "petgroomer"
+
+[plugins]
+# Você pode criar o Postgres pelo painel e ele injeta DATABASE_URL automaticamente.
+# Ou descomente a linha abaixo para provisionar via TOML:
+# postgresql = { name = "db" }
+
+[environments.production]
+# Opcional: variáveis padrão do ambiente production
+# (você ainda consegue editar no painel)
+vars = { NODE_ENV = "production" }
+
+# ---------- BACKEND (NestJS) ----------
+[services.backend]
+# importante: aponta para o subdiretório do API
+root = "codigo-fonte/petgroomer-api"
+start = "node dist/main.js"
+build = "npm ci && npm run build"
+# Migração na inicialização (melhor garantir)
+deploy = "npx prisma migrate deploy"
+# Nixpacks cuidará do Node. Se precisar, use .nvmrc no subdir.
+
+# ---------- FRONTEND (Next.js) ----------
+[services.frontend]
+root = "codigo-fonte/front"
+# Next no Railway usa PORT automaticamente
+build = "npm ci && npm run build"
+start = "npm run start"  # Next start (SSR)
