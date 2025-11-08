@@ -13,8 +13,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Gera build do Nest e Prisma Client
-RUN npm run build \
- && npx prisma generate
+RUN npx prisma generate \
+ && npm run build
 
 # ---------- Runner (produção) ----------
 FROM node:18-alpine AS runner
