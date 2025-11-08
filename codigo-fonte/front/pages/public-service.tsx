@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import getConfig from 'next/config';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
+const { publicRuntimeConfig } = getConfig();
+const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
 
 export default function ServicesPagePublic() {
   const [servicos, setServicos] = useState([]);
@@ -16,7 +18,7 @@ export default function ServicesPagePublic() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch(`${API_BASE_URL}/servicos`);
+      const res = await fetch(`${API_URL}/servicos`);
       if (!res.ok) throw new Error(`Erro ao buscar serviços: ${res.status}`);
       const data = await res.json();
       setServicos(data);

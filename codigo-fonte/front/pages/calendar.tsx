@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Layout, Calendar, Badge, List, Spin, Alert, Modal, Button, ConfigProvider } from 'antd';
 import ptBR from 'antd/locale/pt_BR';
+import getConfig from 'next/config'; 
 
 const { Content } = Layout;
 
@@ -12,7 +13,8 @@ type Agendamento = {
 	cliente?: { id: string; name?: string; email?: string };
 };
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const { publicRuntimeConfig } = getConfig();
+const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
 
 export default function CalendarPage() {
 	const [agendamentos, setAgendamentos] = useState<Agendamento[]>([]);

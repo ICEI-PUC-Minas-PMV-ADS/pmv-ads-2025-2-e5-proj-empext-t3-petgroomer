@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Form, Input, Button, message, DatePicker } from 'antd';
 import Head from 'next/head';
+import getConfig from 'next/config'; 
 
 
 const { Content } = Layout;
@@ -9,7 +10,9 @@ export default function PedidoAgendamento() {
   const [loading, setLoading] = useState(false);
   const [pedidoCriado, setPedidoCriado] = useState(false);
   const [servicos, setServicos] = useState<string[]>([]); // <<< Moved hooks para cima
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  
+const { publicRuntimeConfig } = getConfig();
+const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
 
   const handleSubmit = async (values: any) => {
     setLoading(true);

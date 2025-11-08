@@ -2,14 +2,15 @@ import React, { useEffect, useState, FormEvent } from "react";
 import Head from "next/head";
 import { Layout } from "antd";
 const { Content } = Layout;
-
+import getConfig from 'next/config';
 interface Servico {
   id: number;
   nome: string;
   valor: number;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const { publicRuntimeConfig } = getConfig();
+const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
 
 export default function AdminServicePage() {
   const [servicos, setServicos] = useState<Servico[]>([]);
@@ -28,7 +29,7 @@ export default function AdminServicePage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`${API_BASE_URL}/servicos`);
+      const res = await fetch(`${API_URL}/servicos`);
       if (!res.ok) throw new Error(`Erro ao buscar serviços: ${res.status}`);
       const data: Servico[] = await res.json();
       setServicos(data);
@@ -52,7 +53,7 @@ export default function AdminServicePage() {
     setSubmitting(true);
     try {
       const payload = { nome: nome.trim(), valor: parsedValor };
-      const res = await fetch(`${API_BASE_URL}/servicos`, {
+      const res = await fetch(`${API_URL}/servicos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -76,7 +77,7 @@ export default function AdminServicePage() {
     if (!confirm(`Deseja realmente deletar o serviço "${nome}"?`)) return;
 
     try {
-      const res = await fetch(`${API_BASE_URL}/servicos/${id}`, {
+      const res = await fetch(`${API_URL}/servicos/${id}`, {
         method: "DELETE",
       });
       if (!res.ok) throw new Error(`Erro ao deletar: ${res.status}`);

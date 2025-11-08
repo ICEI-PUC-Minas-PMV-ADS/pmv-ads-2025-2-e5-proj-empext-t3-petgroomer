@@ -1,5 +1,8 @@
 // lib/api.ts
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig } = getConfig();
+const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
 
 function getAccessToken() {
   return typeof window !== 'undefined' ? sessionStorage.getItem('access_token') : null;
