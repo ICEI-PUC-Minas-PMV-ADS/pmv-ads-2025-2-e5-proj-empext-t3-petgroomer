@@ -175,7 +175,7 @@ export default function Login() {
         </Content>
       </Layout>
 
-      <style jsx>{`
+      <style>{`
         .content {
           display: grid;
           place-items: center;
