@@ -18,11 +18,14 @@ import {
   MailOutlined,
   ArrowRightOutlined,
 } from '@ant-design/icons';
+import getConfig from 'next/config'; 
+
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+const { publicRuntimeConfig } = getConfig();
+const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
 
 export default function Login() {
   const router = useRouter();
