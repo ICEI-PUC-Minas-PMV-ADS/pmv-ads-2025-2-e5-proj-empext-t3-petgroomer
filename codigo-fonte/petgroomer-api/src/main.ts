@@ -14,12 +14,19 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const port = parseInt(process.env.PORT || '4000', 10);
-  const corsOrigin = (configService.get<string>('CORS_ORIGIN') ?? 'http://localhost:3000')
-    .split(',');
+    const corsOrigin = [
+    'http://localhost:3000',
+    'https://pmv-ads-2025-2-e5-proj-empext-t3-petgroomer-production.up.railway.app',
+    'https://front-production-5b76.up.railway.app', // URL do seu frontend
+    process.env.FRONTEND_URL, // Variável de ambiente
+  ].filter(Boolean);
 
-  app.enableCors({
+
+    app.enableCors({
     origin: corsOrigin,
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
   });
 
   app.useGlobalPipes(new ValidationPipe({
