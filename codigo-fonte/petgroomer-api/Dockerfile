@@ -1,36 +1,34 @@
-# ---------- Base de build ----------
-FROM node:18-alpine AS deps
+# ---------- Base ----------
+FROM node:18-alpine AS base
 WORKDIR /app
 
-# Copia só os manifests p/ aproveitar cache
-COPY package*.json ./
-RUN npm ci --no-audit --no-fund
+# Copia apenas os manifests primeiro
+COPY codigo-fonte/petgroomer-api/package*.json ./
 
-# ---------- Build ----------
-FROM node:18-alpine AS build
+# Instala dependências
+RUN npm ci
+
+# Copia o restante do código
+COPY codigo-fonte/petgroomer-api .
+
+# Gera Prisma antes da build
+RUN npx prisma generate
+
+# Compila o NestJS
+RUN npm run build
+
+# ---------- Runtime ----------
+FROM node:18-alpine
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
 
-# Gera build do Nest e Prisma Client
-RUN npx prisma generate \
- && npm run build
+# Copia o build e node_modules da fase anterior
+COPY --from=base /app/node_modules ./node_modules
+COPY --from=base /app/dist ./dist
+COPY --from=base /app/prisma ./prisma
 
-# ---------- Runner (produção) ----------
-FROM node:18-alpine AS runner
-WORKDIR /app
-ENV NODE_ENV=production
-# Railway usará PORT, mas default ajuda local
-ENV PORT=3000
+# Define porta padrão
+ENV PORT=4000
+EXPOSE 4000
 
-# Copia apenas o necessário
-COPY --from=build /app/node_modules ./node_modules
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/prisma ./prisma
-
-# Script de entrada: aplica migrações e sobe app
-COPY docker/entrypoint.sh ./entrypoint.sh
-RUN chmod +x ./entrypoint.sh
-
-EXPOSE 3000
-CMD ["./entrypoint.sh"]
+# Executa
+CMD ["node", "dist/main.js"]
