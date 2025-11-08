@@ -2,31 +2,30 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copia arquivos de dependências
+# Copia arquivos de configuração
 COPY package*.json ./
+COPY tsconfig*.json ./
+COPY nest-cli.json ./
+
+# Instala todas as dependências (INCLUINDO dev para build)
+RUN npm ci --include=dev --no-audit --no-fund
+
+# Copia código fonte e prisma
+COPY src ./src
 COPY prisma ./prisma
 
-# Instala todas as dependências (incluindo dev para build)
-RUN npm ci --no-audit --no-fund
-
-# Gera o cliente Prisma
+# Gera cliente Prisma
 RUN npx prisma generate
 
-# Copia o código fonte
-COPY . .
-
-# Build da aplicação
-RUN npm run build
+# Build usando Nest CLI diretamente (mais confiável)
+RUN npx nest build -p tsconfig.build.json
 
 # Verifica se o build foi bem sucedido
-RUN test -f dist/main.js || (echo "Build failed - dist/main.js not found" && exit 1)
-
-# Limpa dependências de desenvolvimento (opcional)
-RUN npm prune --production
+RUN ls -la dist/ && test -f dist/main.js
 
 EXPOSE 4000
 
-# Seu entrypoint
+# Entrypoint
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
