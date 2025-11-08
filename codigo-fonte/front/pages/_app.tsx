@@ -2,10 +2,10 @@ import 'antd/dist/reset.css';
 import React from 'react';
 import type { AppProps } from 'next/app';
 import '../theme.css';
+import '../styles/globals.css'; // ✅ ADICIONE ESTA LINHA
 import { ConfigProvider, Layout } from 'antd';
 import theme from '../theme';
 import Header from '../components/Header';
-
 
 const { Footer } = Layout;
 
@@ -45,7 +45,23 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       </Layout>
 
       {/* Estilos globais para eliminar margens e faixas claras */}
-      
+      <style jsx global>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          background: #0b1020 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        html, body {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
+      `}</style>
     </ConfigProvider>
   );
 }

@@ -1,37 +1,21 @@
-FROM node:18-alpine AS builder
+FROM node:18-alpine
 
 WORKDIR /app
 
-# Copia arquivos de configuração primeiro (cache eficiente)
+# Copia arquivos de configuração
 COPY package*.json ./
 COPY next.config.js ./
 COPY tsconfig.json ./
-COPY .eslintrc.json ./
+COPY babel.config.js ./
 
-# Instala TODAS as dependências (incluindo dev)
-RUN npm ci --no-audit --no-fund
+# Instala dependências
+RUN npm ci --include=dev --no-audit --no-fund
 
-# Copia o código fonte
+# Copia código fonte
 COPY . .
 
 # Build da aplicação
 RUN npm run build
-
-# Runtime
-FROM node:18-alpine AS runner
-
-WORKDIR /app
-
-ENV NODE_ENV=production
-
-# Instala apenas dependências de produção
-COPY package*.json ./
-RUN npm ci --production --no-audit --no-fund
-
-# Copia os arquivos built
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.js ./
 
 EXPOSE 3000
 
