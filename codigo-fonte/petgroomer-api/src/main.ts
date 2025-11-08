@@ -15,7 +15,7 @@ async function bootstrap() {
 
   // Config
   const configService = app.get(ConfigService);
-  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4000;
+  const port = parseInt(process.env.PORT || '3000', 10);
   await app.listen(port, '0.0.0.0');
 
   const corsOrigin = configService.get<string>('CORS_ORIGIN') ?? 'http://localhost:3000';
