@@ -1,34 +1,27 @@
-# ---------- Base ----------
-FROM node:18-alpine AS base
+# ---------- deps ----------
+FROM node:18-alpine AS deps
 WORKDIR /app
-
-# Copia apenas os manifests primeiro
-COPY codigo-fonte/petgroomer-api/package*.json ./
-
-# Instala dependências
-RUN npm ci
-
-# Copia o restante do código
-COPY codigo-fonte/petgroomer-api .
-
-# Gera Prisma antes da build
+COPY package*.json ./
+RUN npm ci --no-audit --no-fund
+COPY prisma ./prisma
 RUN npx prisma generate
 
-# Compila o NestJS
+# ---------- build ----------
+FROM node:18-alpine AS build
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 RUN npm run build
 
-# ---------- Runtime ----------
+# ---------- runtime ----------
 FROM node:18-alpine
 WORKDIR /app
-
-# Copia o build e node_modules da fase anterior
-COPY --from=base /app/node_modules ./node_modules
-COPY --from=base /app/dist ./dist
-COPY --from=base /app/prisma ./prisma
-
-# Define porta padrão
+ENV NODE_ENV=production
 ENV PORT=4000
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/prisma ./prisma
+COPY docker/entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
 EXPOSE 4000
-
-# Executa
-CMD ["node", "dist/main.js"]
+CMD ["./entrypoint.sh"]
