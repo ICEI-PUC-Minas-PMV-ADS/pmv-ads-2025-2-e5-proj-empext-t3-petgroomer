@@ -70,6 +70,11 @@ const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
             </Button>
           </Form.Item>
         </Form>
+        <div style={{ textAlign: 'center', marginTop: '24px' }}>
+          <Button href="/confirmaAgendamento">
+            Acessar Painel de Confirmação
+          </Button>
+        </div>
       </Content>
     </Layout>
   );
