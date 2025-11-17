@@ -74,6 +74,9 @@ const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
           <Button href="/confirmaAgendamento">
             Acessar Painel de Confirmação
           </Button>
+          <Button href="/add-service">
+            Acessar área de serviços
+          </Button>
         </div>
       </Content>
     </Layout>

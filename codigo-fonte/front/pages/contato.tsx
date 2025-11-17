@@ -7,8 +7,8 @@ const { Title, Text, Link } = Typography;
 
 const informacoesContato = {
   nome: "Márcia Groomer", 
-  telefone: "+55 (99) 99999-9999",
-  email: "email@exemplo.com",
+  telefone: "+55 (31) 99143-4690",
+  email: "nicolemarciasilvanunes@gmail.com",
   instagramUser: "marcia.estetica_animal", // Apenas o usuário, sem o "@"
   endereco: "Belo Horizonte, Minas Gerais, Brasil",
 };
