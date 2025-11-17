@@ -8,6 +8,7 @@ import {
   PlusOutlined,
   CalendarOutlined,
   AppstoreOutlined,
+  PhoneOutlined,
 } from '@ant-design/icons';
 import BurgerMenu from './BurgerMenu'; // veremos abaixo como passar os itens
 import { apiLogout } from '../lib/api';
@@ -69,6 +70,7 @@ useEffect(() => {
     if (p.startsWith('/calendar')) return 'calendar';
     if (p.startsWith('/add-service')) return 'add-service';
     if (p.startsWith('/login')) return 'login';
+    if (p.startsWith('/contato')) return 'contato';
     if (p.startsWith('/me')) return 'me';
     return '';
   }, [router.pathname]);
@@ -79,7 +81,8 @@ useEffect(() => {
   const commonItems = [
     { key: 'home', icon: <AppstoreOutlined />, label: <Link href="/">Portfolio</Link> },
     { key: 'calendar', icon: <CalendarOutlined />, label: <Link href="/calendar">Calendário</Link> },
-    { key: 'pedido', icon: <PlusOutlined />, label: <Link href="/pedidoagendamento">Pedido Agendamento</Link> }, // <<< Novo item
+    { key: 'pedido', icon: <PlusOutlined />, label: <Link href="/pedidoagendamento">Pedido Agendamento</Link> },
+    { key: 'contato', icon: <PhoneOutlined />, label: <Link href="/contato">Contato</Link> },
   ];
 
   // Itens condicionais por auth/role
