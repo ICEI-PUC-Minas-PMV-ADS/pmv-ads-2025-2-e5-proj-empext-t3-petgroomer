@@ -1,29 +1,24 @@
 message: Please cite this software using these metadata.
-title:
+title:PetGroomer
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Ortega Acerbi
+    given-names: Ariel
+  - family-names: Rodrigues Silva de Oliveira
+    given-names: Thiago
+  - family-names: Gontijo de Castro
+    given-names: Isabela
+  - family-names: Tonin Coelho
+    given-names: Jônatas
+  - family-names: Ferreira Amorim
+    given-names: Pedro Henrique
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: da Costa
+    given-names: José Wilson
 keywords:
-  - 
-  - 
-repository-code: 
+  - Agendamento banho e tosa
+  - Sistema de cadastro de clientes
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e5-proj-empext-t3-petgroomer
 version: 1.0.0
-date-released: 2023-10-31
+
+date-released: 2025-12-08
