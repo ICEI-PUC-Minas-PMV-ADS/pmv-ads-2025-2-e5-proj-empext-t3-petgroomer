@@ -34,7 +34,7 @@ Object.defineProperty(window, 'sessionStorage', {
 // ----------------------
 // Mock backend API
 // ----------------------
-jest.mock('../lib/api', () => ({
+jest.mock('./lib/api', () => ({
   apiLogout: jest.fn(),
 }));
 
