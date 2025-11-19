@@ -5,4 +5,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testMatch: ['**/tests/**/*.test.(ts|tsx|js|jsx)'],
+   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 };
