@@ -8,6 +8,7 @@ import {
   PlusOutlined,
   CalendarOutlined,
   AppstoreOutlined,
+  PhoneOutlined,
 } from '@ant-design/icons';
 import BurgerMenu from './BurgerMenu';
 import { apiLogout } from '../lib/api';
@@ -67,6 +68,7 @@ export default function Header() {
     if (p.startsWith('/sobre')) return 'sobre';
     if (p.startsWith('/me')) return 'me';
     if (p.startsWith('/login')) return 'login';
+    if (p.startsWith('/contato')) return 'contato';
     return '';
   }, [router.pathname]);
 
@@ -78,6 +80,7 @@ export default function Header() {
     { key: 'sobre', icon: <AppstoreOutlined />, label: <Link href="/sobre">Sobre</Link> },
     { key: 'calendar', icon: <CalendarOutlined />, label: <Link href="/calendar">Calendário</Link> },
     { key: 'pedido', icon: <PlusOutlined />, label: <Link href="/pedidoagendamento">Pedido Agendamento</Link> },
+    { key: 'contato', icon: <PhoneOutlined />, label: <Link href="/contato">Contato</Link> },
   ];
 
   // Ações do usuário (direita)
