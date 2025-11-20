@@ -59,7 +59,7 @@ export default function Sobre() {
                 Conheça nossa especialista
               </h2>
               <p>
-                Maria Silva é apaixonada por animais desde a infância e possui mais de 10 anos de experiência no mercado PET.
+                Márcia Nicole é apaixonada por animais desde a infância e possui mais de 3 anos de experiência no mercado PET.
               </p>
               <p>
                 Com expertise em cuidados, estética e bem-estar animal, ela transformou sua paixão em uma carreira dedicada a proporcionar conforto e alegria para cada pet que passa pelas suas mãos.
