@@ -1,12 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 import { Layout, Button, Row, Col, Card, Typography } from 'antd';
-import {
-  ArrowRightOutlined,
-  ScissorOutlined,
-  SmileOutlined,
-} from '@ant-design/icons';
+import { ArrowRightOutlined, ScissorOutlined, SmileOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
+import { FaBath } from 'react-icons/fa';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
@@ -16,97 +13,163 @@ export default function Home() {
     <>
       <Head>
         <title>MN Groomer - Banho e Tosa de Pets</title>
-        <meta
-          name="description"
-          content="MN Groomer oferece os melhores serviços de banho e tosa para o seu pet. Agende agora!"
-        />
+        <meta name="description" content="MN Groomer oferece os melhores serviços de banho e tosa para o seu pet. Agende agora!" />
       </Head>
-      <Content>
-        {/* Hero Section */}
-        <div className="hero-section">
+
+      <Layout
+        style={{
+          minHeight: '100vh',
+          background: 'linear-gradient(160deg, #0a0f24 0%, #1b1f3b 100%)',
+          padding: '40px 0'
+        }}
+      >
+        <Content style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+
+          {/* HERO */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            style={{ textAlign: 'center', marginBottom: 80 }}
           >
+            <span style={{ fontSize: 55, display: 'block' }}>🐾</span>
             <Title
-              level={1}
               style={{
-                color: 'white',
-                fontWeight: 'bold',
+                color: '#ffffff',
                 fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-                textAlign: 'center',
+                fontWeight: 900,
+                letterSpacing: 2,
+                textTransform: 'uppercase'
               }}
             >
-              Bem-vindo à <span className="highlight-text">MN Groomer</span>
+              Bem-vindo à <span style={{ color: '#00ffff' }}>MN Groomer</span>
             </Title>
             <Paragraph
               style={{
                 color: '#e2e8f0',
-                fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
-                maxWidth: '600px',
-                textAlign: 'center',
-                margin: '0 auto 24px auto',
+                fontSize: '1.2rem',
+                maxWidth: 650,
+                margin: '20px auto'
               }}
             >
-              O melhor cuidado para o seu melhor amigo. Oferecemos serviços de
-              banho, tosa e muito mais com carinho e profissionalismo.
+              O melhor cuidado para o seu melhor amigo. Oferecemos serviços de banho, tosa e muito mais com carinho e profissionalismo.
             </Paragraph>
+
             <Button
               type="primary"
               size="large"
               href="/cadastro"
               icon={<ArrowRightOutlined />}
+              style={{
+                background: '#00ffff',
+                borderColor: '#00ffff',
+                color: '#000',
+                fontWeight: 'bold',
+                padding: '0 25px'
+              }}
             >
               Agende um Horário
             </Button>
           </motion.div>
-        </div>
 
-        {/* Features/Services Section */}
-        <div className="services-section">
-          <Title level={2} style={{ textAlign: 'center', marginBottom: '48px' }}>
-            Nossos Diferenciais
-          </Title>
-          <Row gutter={[32, 32]} justify="center" align="stretch">
-            <Col xs={24} sm={12} md={8}>
-              <Card hoverable className="feature-card">
-                <ScissorOutlined className="feature-icon" />
-                <Title level={4}>Tosa Profissional</Title>
-                <Paragraph>
-                  Nossos tosadores são experientes em todos os tipos de pelagem,
-                  garantindo o visual perfeito para seu pet.
-                </Paragraph>
-              </Card>
-            </Col>
-            <Col xs={24} sm={12} md={8}>
-              <Card hoverable className="feature-card">
-                <i className="fas fa-bath feature-icon"></i>
-                <Title level={4}>Banho Relaxante</Title>
-                <Paragraph>
-                  Utilizamos produtos de alta qualidade e hipoalergênicos para
-                  um banho seguro e relaxante.
-                </Paragraph>
-              </Card>
-            </Col>
-            <Col xs={24} sm={12} md={8}>
-              <Card hoverable className="feature-card">
-                <SmileOutlined className="feature-icon" />
-                <Title level={4}>Ambiente Acolhedor</Title>
-                <Paragraph>
-                  Um espaço pensado para o bem-estar do seu pet, com muito
-                  carinho e atenção em cada detalhe.
-                </Paragraph>
-              </Card>
-            </Col>
-          </Row>
-          <div style={{ textAlign: 'center', marginTop: '48px' }}>
-            <Button size="large" href="/public-service">
-              Ver todos os serviços
-            </Button>
-          </div>
-        </div>
-      </Content>
+          {/* SERVICES */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Title
+              level={2}
+              style={{ color: '#ffffff', textAlign: 'center', marginBottom: 50 }}
+            >
+              Nossos Diferenciais
+            </Title>
+
+            <Row gutter={[32, 32]} justify="center" align="stretch">
+              <Col xs={24} sm={12} md={8}>
+                <Card
+                  hoverable
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    backdropFilter: 'blur(6px)',
+                    borderRadius: 15,
+                    padding: '20px',
+                    textAlign: 'center',
+                    color: '#fff'
+                  }}
+                >
+                  <ScissorOutlined style={{ fontSize: 45, color: '#00ffff', marginBottom: 20 }} />
+                  <Title level={4} style={{ color: '#ffffff' }}>Tosa Profissional</Title>
+                  <Paragraph style={{ color: '#e2e8f0' }}>
+                    Nossos tosadores são experientes em todos os tipos de pelagem, garantindo o visual perfeito para seu pet.
+                  </Paragraph>
+                </Card>
+              </Col>
+
+              <Col xs={24} sm={12} md={8}>
+                <Card
+                  hoverable
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    backdropFilter: 'blur(6px)',
+                    borderRadius: 15,
+                    padding: '20px',
+                    textAlign: 'center',
+                    color: '#fff'
+                  }}
+                >
+                  <FaBath style={{ fontSize: 45, color: '#00ffff', marginBottom: 20 }} />
+                  <Title level={4} style={{ color: '#ffffff' }}>Banho Relaxante</Title>
+                  <Paragraph style={{ color: '#e2e8f0' }}>
+                    Utilizamos produtos de alta qualidade e hipoalergênicos para um banho seguro e relaxante.
+                  </Paragraph>
+                </Card>
+              </Col>
+
+              <Col xs={24} sm={12} md={8}>
+                <Card
+                  hoverable
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    backdropFilter: 'blur(6px)',
+                    borderRadius: 15,
+                    padding: '20px',
+                    textAlign: 'center',
+                    color: '#fff'
+                  }}
+                >
+                  <SmileOutlined style={{ fontSize: 45, color: '#00ffff', marginBottom: 20 }} />
+                  <Title level={4} style={{ color: '#ffffff' }}>Ambiente Acolhedor</Title>
+                  <Paragraph style={{ color: '#e2e8f0' }}>
+                    Um espaço pensado para o bem-estar do seu pet, com muito carinho e atenção em cada detalhe.
+                  </Paragraph>
+                </Card>
+              </Col>
+            </Row>
+
+            <div style={{ textAlign: 'center', marginTop: 50 }}>
+              <Button
+                size="large"
+                href="/public-service"
+                style={{
+                  background: '#00ffff',
+                  borderColor: '#00ffff',
+                  color: '#000',
+                  fontWeight: 'bold'
+                }}
+              >
+                Ver todos os serviços
+              </Button>
+            </div>
+          </motion.div>
+        </Content>
+
+        <style>{`
+          body {
+            background: linear-gradient(160deg, #0a0f24 0%, #1b1f3b 100%) !important;
+          }
+        `}</style>
+      </Layout>
     </>
   );
 }
