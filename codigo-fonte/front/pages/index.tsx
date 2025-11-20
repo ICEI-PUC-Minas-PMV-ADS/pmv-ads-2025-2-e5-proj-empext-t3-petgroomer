@@ -44,6 +44,14 @@ export default function Home() {
             >
               Bem-vindo à <span style={{ color: '#00ffff' }}>MN Groomer</span>
             </Title>
+
+            {/* ICONE/LOGO */}
+            <img
+              src="/IconeSemFundo.png"
+              alt="MN Groomer Logo"
+              style={{ width: 150, height: 150, margin: '20px 0' }}
+            />
+
             <Paragraph
               style={{
                 color: '#e2e8f0',
@@ -85,8 +93,8 @@ export default function Home() {
               Nossos Diferenciais
             </Title>
 
-            <Row gutter={[32, 32]} justify="center" align="stretch">
-              <Col xs={24} sm={12} md={8}>
+            <Row gutter={[32, 32]} justify="center" align="top">
+              <Col xs={24} sm={12} md={8} style={{ textAlign: 'center' }}>
                 <Card
                   hoverable
                   style={{
@@ -101,12 +109,13 @@ export default function Home() {
                   <ScissorOutlined style={{ fontSize: 45, color: '#00ffff', marginBottom: 20 }} />
                   <Title level={4} style={{ color: '#ffffff' }}>Tosa Profissional</Title>
                   <Paragraph style={{ color: '#e2e8f0' }}>
-                    Nossos tosadores são experientes em todos os tipos de pelagem, garantindo o visual perfeito para seu pet.
+                    Tosadora experiente em todos os tipos de pelagem, garantindo o visual perfeito para seu pet.
                   </Paragraph>
                 </Card>
+                <img src="/cachorro1.png" alt="Cachorro Tosa" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
               </Col>
 
-              <Col xs={24} sm={12} md={8}>
+              <Col xs={24} sm={12} md={8} style={{ textAlign: 'center' }}>
                 <Card
                   hoverable
                   style={{
@@ -124,9 +133,10 @@ export default function Home() {
                     Utilizamos produtos de alta qualidade e hipoalergênicos para um banho seguro e relaxante.
                   </Paragraph>
                 </Card>
+                <img src="/cachorro2.png" alt="Cachorro Banho" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
               </Col>
 
-              <Col xs={24} sm={12} md={8}>
+              <Col xs={24} sm={12} md={8} style={{ textAlign: 'center' }}>
                 <Card
                   hoverable
                   style={{
@@ -144,6 +154,7 @@ export default function Home() {
                     Um espaço pensado para o bem-estar do seu pet, com muito carinho e atenção em cada detalhe.
                   </Paragraph>
                 </Card>
+                <img src="/cachorro3.png" alt="Cachorro Ambiente" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
               </Col>
             </Row>
 
