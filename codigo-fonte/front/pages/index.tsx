@@ -47,9 +47,9 @@ export default function Home() {
 
             {/* ICONE/LOGO */}
             <img
-              src="/IconeSemFundo.png"
+              src="/IconeSemFundo2.png"
               alt="MN Groomer Logo"
-              style={{ width: 150, height: 150, margin: '20px 0' }}
+              style={{ width: 300, height: 300, margin: '20px 0' }}
             />
 
             <Paragraph
@@ -112,7 +112,7 @@ export default function Home() {
                     Tosadora experiente em todos os tipos de pelagem, garantindo o visual perfeito para seu pet.
                   </Paragraph>
                 </Card>
-                <img src="/cachorro1.png" alt="Cachorro Tosa" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
+                <img src="/Cachorro1.jpeg" alt="Cachorro Tosa" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
               </Col>
 
               <Col xs={24} sm={12} md={8} style={{ textAlign: 'center' }}>
@@ -133,7 +133,7 @@ export default function Home() {
                     Utilizamos produtos de alta qualidade e hipoalergênicos para um banho seguro e relaxante.
                   </Paragraph>
                 </Card>
-                <img src="/cachorro2.png" alt="Cachorro Banho" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
+                <img src="/Cachorro2.jpeg" alt="Cachorro Banho" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
               </Col>
 
               <Col xs={24} sm={12} md={8} style={{ textAlign: 'center' }}>
@@ -154,7 +154,7 @@ export default function Home() {
                     Um espaço pensado para o bem-estar do seu pet, com muito carinho e atenção em cada detalhe.
                   </Paragraph>
                 </Card>
-                <img src="/cachorro3.png" alt="Cachorro Ambiente" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
+                <img src="/Cachorro3.jpeg" alt="Cachorro Ambiente" style={{ width: '100%', borderRadius: 12, marginTop: 15 }} />
               </Col>
             </Row>
 
