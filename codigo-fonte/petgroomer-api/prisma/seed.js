@@ -8,17 +8,23 @@ async function main() {
 
   const password = await bcrypt.hash('password123', 10);
 
-  // upsert two users
+  // upsert three users (including admin)
   const alice = await prisma.user.upsert({
     where: { email: 'alice@example.com' },
     update: {},
-    create: { email: 'alice@example.com', hash: password, name: 'Alice' },
+    create: { email: 'alice@example.com', hash: password, name: 'Alice', role: 'CLIENTE' },
   });
 
   const bob = await prisma.user.upsert({
     where: { email: 'bob@example.com' },
     update: {},
-    create: { email: 'bob@example.com', hash: password, name: 'Bob' },
+    create: { email: 'bob@example.com', hash: password, name: 'Bob', role: 'CLIENTE' },
+  });
+
+  const admin = await prisma.user.upsert({
+    where: { email: 'admin@petgroomer.com' },
+    update: {},
+    create: { email: 'admin@petgroomer.com', hash: password, name: 'Admin', role: 'ADMIN' },
   });
 
   // examples
@@ -35,6 +41,7 @@ async function main() {
     data: [
       { userId: alice.id, data: toDateOnly(today), status: 'PENDENTE' },
       { userId: bob.id, data: toDateOnly(tomorrow), status: 'APROVADO' },
+      { userId: bob.id, data: toDateOnly(tomorrow), status: 'RECUSADO' },
     ],
     skipDuplicates: true,
   });

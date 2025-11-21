@@ -36,7 +36,7 @@ async function main() {
       { userId: alice.id, data: today, status: 'PENDENTE' },
       { userId: alice.id, data: day2, status: 'APROVADO' },
       { userId: bob.id, data: day5, status: 'PENDENTE' },
-      { userId: bob.id, data: day6, status: 'NEGADO' },
+      { userId: bob.id, data: day6, status: 'RECUSADO' },
     ],
   });
 

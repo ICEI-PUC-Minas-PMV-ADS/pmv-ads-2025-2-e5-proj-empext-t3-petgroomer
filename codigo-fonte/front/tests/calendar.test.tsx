@@ -94,7 +94,7 @@ describe('Calendar page', () => {
   expect(screen.queryByText(/Eventos|Nenhum agendamento/)).not.toBeInTheDocument();
   });
 
-  test('month view displays only PENDENTE and APROVADO and excludes NEGADO in counts', async () => {
+  test('month view displays only PENDENTE and APROVADO and excludes RECUSADO in counts', async () => {
     render(React.createElement(CalendarPage));
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());
 
@@ -108,10 +108,10 @@ describe('Calendar page', () => {
   // PENDENTE (Beto) em 2025-10-10 deve aparecer
     expect(await screen.findByText(/Beto - PENDENTE/)).toBeInTheDocument();
 
-  // NEGADO é filtrado no servidor; aqui não assumimos sua ausência no frontend
+  // RECUSADO é filtrado no servidor; aqui não assumimos sua ausência no frontend
   });
 
-  test('NEGADO agendamentos are not displayed in month counts/list', async () => {
+  test('RECUSADO agendamentos are not displayed in month counts/list', async () => {
     render(React.createElement(CalendarPage));
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());
 

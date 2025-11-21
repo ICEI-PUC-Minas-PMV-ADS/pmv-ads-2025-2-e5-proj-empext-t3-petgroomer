@@ -9,8 +9,9 @@ const { Content } = Layout;
 type Agendamento = {
 	id: number;
 	data: string; // ISO date
-	status: 'PENDENTE' | 'APROVADO' | 'NEGADO';
+	status: 'PENDENTE' | 'APROVADO' | 'RECUSADO';
 	cliente?: { id: string; name?: string; email?: string };
+	nomeClienteManual?: string;
 };
 
 const { publicRuntimeConfig } = getConfig();
@@ -24,7 +25,32 @@ export default function CalendarPage() {
 	const [selectedDate, setSelectedDate] = useState<string | null>(null);
 	const [calendarValue, setCalendarValue] = useState<any>(undefined);
 	const [calendarMode, setCalendarMode] = useState<'month' | 'year' | undefined>(undefined);
+	const [userName, setUserName] = useState<string | null>(null);
+	const [userRole, setUserRole] = useState<string | null>(null);
 	const suppressNextSelectRef = React.useRef(false);
+
+	// Get logged-in user's name and role from sessionStorage, and listen for auth changes
+	useEffect(() => {
+		function updateUserRole() {
+			try {
+				const userStr = sessionStorage.getItem('user');
+				if (userStr) {
+					const user = JSON.parse(userStr);
+					setUserName(user.name || null);
+					setUserRole(user.role);
+				} else {
+					setUserName(null);
+					setUserRole(null);
+				}
+			} catch {
+				setUserName(null);
+				setUserRole(null);
+			}
+		}
+		updateUserRole();
+		window.addEventListener('auth:changed', updateUserRole);
+		return () => window.removeEventListener('auth:changed', updateUserRole);
+	}, []);
 
 	function ensureDayLike(d: any) {
 		if (!d) return d;
@@ -52,9 +78,11 @@ export default function CalendarPage() {
 		setLoading(true);
 		setError(null);
 		try {
-			const res = await fetch(`${API_URL}/agendamentos/calendar`);
+			const roleParam = userRole ? `?role=${userRole}` : '';
+			const res = await fetch(`${API_URL}/agendamentos/calendar${roleParam}`);
 			if (!res.ok) throw new Error(`Erro: ${res.status}`);
 			const data: Agendamento[] = await res.json();
+			console.log('Agendamentos from backend:', data);
 			const normalized = data.map(a => ({ ...a, data: a.data.split('T')[0] }));
 			setAgendamentos(normalized);
 		} catch (err) {
@@ -62,33 +90,33 @@ export default function CalendarPage() {
 			setError('Falha ao carregar agendamentos.');
 		} finally {
 			setLoading(false);
-			}
+		}
 	}
 
-		// AntD cellRender
-		function cellRender(date: any, info: any) {
-			// helper for year/month/day 
-			const getYear = (d: any) => {
-				if (!d) return new Date().getFullYear();
-				if (typeof d.year === 'function') return d.year();
-				if (typeof d.getFullYear === 'function') return d.getFullYear();
-				if (typeof d.toDate === 'function') return d.toDate().getFullYear();
-				return new Date(d).getFullYear();
-			};
-			const getMonth = (d: any) => {
-				if (!d) return new Date().getMonth();
-				if (typeof d.month === 'function') return d.month();
-				if (typeof d.getMonth === 'function') return d.getMonth();
-				if (typeof d.toDate === 'function') return d.toDate().getMonth();
-				return new Date(d).getMonth();
-			};
-			const getDay = (d: any) => {
-				if (!d) return new Date().getDate();
-				if (typeof d.date === 'function') return d.date();
-				if (typeof d.getDate === 'function') return d.getDate();
-				if (typeof d.toDate === 'function') return d.toDate().getDate();
-				return new Date(d).getDate();
-			};
+	// AntD cellRender
+	function cellRender(date: any, info: any) {
+		// helper for year/month/day 
+		const getYear = (d: any) => {
+			if (!d) return new Date().getFullYear();
+			if (typeof d.year === 'function') return d.year();
+			if (typeof d.getFullYear === 'function') return d.getFullYear();
+			if (typeof d.toDate === 'function') return d.toDate().getFullYear();
+			return new Date(d).getFullYear();
+		};
+		const getMonth = (d: any) => {
+			if (!d) return new Date().getMonth();
+			if (typeof d.month === 'function') return d.month();
+			if (typeof d.getMonth === 'function') return d.getMonth();
+			if (typeof d.toDate === 'function') return d.toDate().getMonth();
+			return new Date(d).getMonth();
+		};
+		const getDay = (d: any) => {
+			if (!d) return new Date().getDate();
+			if (typeof d.date === 'function') return d.date();
+			if (typeof d.getDate === 'function') return d.getDate();
+			if (typeof d.toDate === 'function') return d.toDate().getDate();
+			return new Date(d).getDate();
+		};
 
 			if (info && info.type === 'month') {
 				// counter de agendamentos pendentes e aprovados no mês
@@ -97,7 +125,10 @@ export default function CalendarPage() {
 
 				const count = agendamentos.reduce((acc, a) => {
 					const d = new Date(a.data);
-					if (d.getFullYear() === year && d.getMonth() === month && (a.status === 'PENDENTE' || a.status === 'APROVADO')) return acc + 1;
+					const showRecusado = userRole === 'ADMIN';
+					if (d.getFullYear() === year && d.getMonth() === month && (
+						a.status === 'PENDENTE' || a.status === 'APROVADO' || (showRecusado && a.status === 'RECUSADO')
+					)) return acc + 1;
 					return acc;
 				}, 0);
 
@@ -120,15 +151,23 @@ export default function CalendarPage() {
 			const day = getDay(date);
 			const pad = (n: number) => String(n).padStart(2, '0');
 			const dateStr = `${year}-${pad(month + 1)}-${pad(day)}`;
-			const list = agendamentos.filter(a => a.data.startsWith(dateStr));
+			const showRecusado = userRole === 'ADMIN';
+			const list = agendamentos.filter(a => {
+				if (!a.data.startsWith(dateStr)) return false;
+				if (a.status === 'RECUSADO' && !showRecusado) return false;
+				return true;
+			});
 			return (
-				<ul className="events">
-					{list.map(item => (
-						<li key={item.id}>
-							<Badge status={item.status === 'APROVADO' ? 'success' : item.status === 'PENDENTE' ? 'processing' : 'default'} text={`${item.cliente?.name ?? 'Cliente'} - ${item.status}`} />
-						</li>
-					))}
-				</ul>
+						<ul className="events">
+								{list.map(item => {
+									const displayName = item.cliente?.name || item.nomeClienteManual || 'Cliente';
+									return (
+										<li key={item.id}>
+											<Badge status={item.status === 'APROVADO' ? 'success' : item.status === 'PENDENTE' ? 'processing' : 'default'} text={`${displayName} - ${item.status}`} />
+										</li>
+									);
+								})}
+						</ul>
 			);
 		}
 
@@ -172,27 +211,30 @@ export default function CalendarPage() {
 			<Head>
 				<title>Calendário</title>
 			</Head>
-			<Content className="content">
-				<div className="page-container">
-					<h1>Agendamentos - Calendário</h1>
+			<Layout style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #0a0f24 0%, #1b1f3b 100%)' }}>
+			<Content style={{ maxWidth: '1200px', margin: '20px auto 0 auto', padding: '20px' }}>
+					<h1 style={{ color: '#fff', fontWeight: 900, letterSpacing: 1.5, textTransform: 'uppercase', marginTop: 2, marginBottom: 32, textAlign: 'center' }}>
+						<span style={{ fontSize: 42, verticalAlign: 'middle', marginRight: 10 }}>🐾</span>
+						Agendamentos - Calendário
+					</h1>
 					{loading && <Spin />}
 					{error && <Alert type="error" message={error} />}
 
 					<div style={{ display: 'flex', gap: 24 }}>
 						<div style={{ flex: 1 }}>
 							<ConfigProvider locale={ptBR}>
-												<div className="calendar-wrapper">
-																				<Calendar
-																					cellRender={cellRender}
-																					onSelect={handleSelect}
-																					value={calendarValue}
-																					mode={calendarMode}
-																					onPanelChange={(v: any, m: any) => {
-																					setCalendarValue(v);
-																					setCalendarMode(m);
-																					}}
-																				/>
-												</div>
+								<div className="calendar-wrapper">
+									<Calendar
+										cellRender={cellRender}
+										onSelect={handleSelect}
+										value={calendarValue}
+										mode={calendarMode}
+										onPanelChange={(v: any, m: any) => {
+											setCalendarValue(v);
+											setCalendarMode(m);
+										}}
+									/>
+								</div>
 							</ConfigProvider>
 						</div>
 					</div>
@@ -214,7 +256,7 @@ export default function CalendarPage() {
 								renderItem={item => (
 									<List.Item key={item.id} onClick={() => handleEventClick(item)} style={{ cursor: 'pointer' }}>
 										<List.Item.Meta
-											title={`${item.cliente?.name ?? 'Cliente'} - ${item.status}`}
+											title={`${item.cliente?.name || item.nomeClienteManual || 'Cliente'} - ${item.status}`}
 											description={`Data: ${item.data}`}
 										/>
 									</List.Item>
@@ -222,8 +264,8 @@ export default function CalendarPage() {
 							/>
 						)}
 					</Modal>
-				</div>
-			</Content>
+				</Content>
+			</Layout>
 		</>
 	);
 }

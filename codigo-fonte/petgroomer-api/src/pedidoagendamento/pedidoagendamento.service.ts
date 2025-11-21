@@ -1,24 +1,21 @@
-import { Injectable } from '@nestjs/common';
+
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { StatusAgendamento } from '@prisma/client';
 
 @Injectable()
 export class PedidoagendamentoService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async criarPedido(data: any) {
-    const { cliente, servico, data: dataAgendamento } = data;
+  // Cria um novo agendamento (pedido)
 
-    return await this.prisma.pedidoAgendamento.create({
-      data: {
-        cliente,
-        servico, // ✅ Incluído aqui
-        data: new Date(dataAgendamento),
-        status: 'pendente',
-      },
-    });
+  async criarPedido(data: { userId?: string; data: Date; status?: StatusAgendamento; nomeClienteManual?: string }) {
+    return this.prisma.agendamento.create({ data: { ...data } });
   }
 
+  // Lista todos os agendamentos
   async listarPedidos() {
-    return await this.prisma.pedidoAgendamento.findMany();
+    // Inclui cliente (se houver) e também retorna nomeClienteManual
+    return this.prisma.agendamento.findMany({ include: { cliente: true } });
   }
 }

@@ -81,6 +81,7 @@ export default function Header() {
     { key: 'calendar', icon: <CalendarOutlined />, label: <Link href="/calendar">Calendário</Link> },
     { key: 'pedido', icon: <PlusOutlined />, label: <Link href="/pedidoagendamento">Pedido Agendamento</Link> },
     { key: 'contato', icon: <PhoneOutlined />, label: <Link href="/contato">Contato</Link> },
+    ...(canManageServices ? [{ key: 'add-service', icon: <PlusOutlined />, label: <Link href="/add-service">Adicionar Serviço</Link> }] : []),
   ];
 
   // Ações do usuário (direita)
@@ -89,7 +90,7 @@ export default function Header() {
         ...(canManageServices
           ? [{ key: 'add-service', icon: <PlusOutlined />, label: <Link href="/add-service">Adicionar Serviço</Link> }]
           : []),
-        { key: 'me', icon: <UserOutlined />, label: <Link href="/me">Meu Perfil</Link> },
+        { key: 'me', icon: <UserOutlined />, label: <Link href="/dashboard">Meu Perfil</Link> },
       ]
     : [{ key: 'login', label: <Link href="/login">Login</Link> }];
 
@@ -98,7 +99,7 @@ export default function Header() {
   const userMenu = (
     <Menu
       items={[
-        { key: 'me', icon: <UserOutlined />, label: <Link href="/me">Meu Perfil</Link> },
+        { key: 'me', icon: <UserOutlined />, label: <Link href="/dashboard">Meu Perfil</Link> },
         { type: 'divider' as const },
         {
           key: 'logout',
@@ -154,22 +155,24 @@ export default function Header() {
             {/* Login ou Avatar no canto direito */}
             <div>
               {isAuth ? (
-                <Space>
-                  <Dropdown overlay={userMenu} placement="bottomRight" trigger={['click']}>
-                    <Avatar style={{ backgroundColor: '#6366f1', cursor: 'pointer' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                  <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'white', fontWeight: 500, textDecoration: 'none' }}>
+                    <Avatar style={{ backgroundColor: '#6366f1', verticalAlign: 'middle' }}>
                       {user?.name?.[0]?.toUpperCase() || 'U'}
                     </Avatar>
-                  </Dropdown>
-                  <Button
-                    icon={<LogoutOutlined />}
+                    Meu Perfil
+                  </Link>
+                  <button
+                    style={{ display: 'flex', alignItems: 'center', gap: 6, background: 'transparent', border: 'none', color: 'white', fontWeight: 500, cursor: 'pointer', fontSize: 16 }}
                     onClick={async () => {
                       await apiLogout();
                       router.replace('/login');
                     }}
                   >
+                    <LogoutOutlined style={{ marginRight: 6 }} />
                     Sair
-                  </Button>
-                </Space>
+                  </button>
+                </div>
               ) : (
                 <Link href="/login">
                   <Button type="primary">Login</Button>
@@ -180,7 +183,11 @@ export default function Header() {
         )}
 
         {/* Mobile: burger com menu principal + login/avatar */}
-        {!screens.md && <BurgerMenu items={[...menuItems, ...rightSideItems]} />}
+        {!screens.md && (
+          <div style={{ display: 'flex', alignItems: 'center', height: '100%', minHeight: 64 }}>
+            <BurgerMenu />
+          </div>
+        )}
       </div>
     </AntdHeader>
   );
