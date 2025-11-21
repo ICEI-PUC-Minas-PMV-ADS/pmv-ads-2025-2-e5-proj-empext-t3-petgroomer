@@ -12,10 +12,16 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   publicRuntimeConfig: {
-    API_URL: 'https://pmv-ads-2025-2-e5-proj-empext-t3-petgroomer-production.up.railway.app' || 'http://localhost:4000',
+    API_URL:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:4000'
+        : 'https://pmv-ads-2025-2-e5-proj-empext-t3-petgroomer-production.up.railway.app',
   },
   env: {
-    NEXT_PUBLIC_API_URL: 'https://pmv-ads-2025-2-e5-proj-empext-t3-petgroomer-production.up.railway.app' || 'http://localhost:4000'
+    NEXT_PUBLIC_API_URL:
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:4000'
+        : 'https://pmv-ads-2025-2-e5-proj-empext-t3-petgroomer-production.up.railway.app',
   }
 }
 

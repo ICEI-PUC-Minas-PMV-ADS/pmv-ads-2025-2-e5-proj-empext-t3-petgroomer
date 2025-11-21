@@ -9,7 +9,8 @@ export class AccessTokenGuard implements CanActivate {
     const auth = req.headers['authorization'] || '';
     const token = auth.startsWith('Bearer ') ? auth.slice(7) : null;
     if (!token) throw new UnauthorizedException();
-    req.user = await this.jwt.verifyAsync(token, { secret: process.env.JWT_ACCESS_SECRET });
+    const payload = await this.jwt.verifyAsync(token, { secret: process.env.JWT_ACCESS_SECRET });
+    req.user = { id: payload.sub, role: payload.role };
     return true;
   }
 }

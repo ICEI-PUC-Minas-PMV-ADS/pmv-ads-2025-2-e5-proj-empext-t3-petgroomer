@@ -11,6 +11,7 @@ type Agendamento = {
 	data: string; // ISO date
 	status: 'PENDENTE' | 'APROVADO' | 'NEGADO';
 	cliente?: { id: string; name?: string; email?: string };
+	nomeClienteManual?: string;
 };
 
 const { publicRuntimeConfig } = getConfig();
@@ -24,7 +25,19 @@ export default function CalendarPage() {
 	const [selectedDate, setSelectedDate] = useState<string | null>(null);
 	const [calendarValue, setCalendarValue] = useState<any>(undefined);
 	const [calendarMode, setCalendarMode] = useState<'month' | 'year' | undefined>(undefined);
+	const [userName, setUserName] = useState<string | null>(null);
 	const suppressNextSelectRef = React.useRef(false);
+
+	// Get logged-in user's name from sessionStorage
+	useEffect(() => {
+		try {
+			const userStr = sessionStorage.getItem('user');
+			if (userStr) {
+				const user = JSON.parse(userStr);
+				setUserName(user.name || null);
+			}
+		} catch {}
+	}, []);
 
 	function ensureDayLike(d: any) {
 		if (!d) return d;
@@ -62,33 +75,33 @@ export default function CalendarPage() {
 			setError('Falha ao carregar agendamentos.');
 		} finally {
 			setLoading(false);
-			}
+		}
 	}
 
-		// AntD cellRender
-		function cellRender(date: any, info: any) {
-			// helper for year/month/day 
-			const getYear = (d: any) => {
-				if (!d) return new Date().getFullYear();
-				if (typeof d.year === 'function') return d.year();
-				if (typeof d.getFullYear === 'function') return d.getFullYear();
-				if (typeof d.toDate === 'function') return d.toDate().getFullYear();
-				return new Date(d).getFullYear();
-			};
-			const getMonth = (d: any) => {
-				if (!d) return new Date().getMonth();
-				if (typeof d.month === 'function') return d.month();
-				if (typeof d.getMonth === 'function') return d.getMonth();
-				if (typeof d.toDate === 'function') return d.toDate().getMonth();
-				return new Date(d).getMonth();
-			};
-			const getDay = (d: any) => {
-				if (!d) return new Date().getDate();
-				if (typeof d.date === 'function') return d.date();
-				if (typeof d.getDate === 'function') return d.getDate();
-				if (typeof d.toDate === 'function') return d.toDate().getDate();
-				return new Date(d).getDate();
-			};
+	// AntD cellRender
+	function cellRender(date: any, info: any) {
+		// helper for year/month/day 
+		const getYear = (d: any) => {
+			if (!d) return new Date().getFullYear();
+			if (typeof d.year === 'function') return d.year();
+			if (typeof d.getFullYear === 'function') return d.getFullYear();
+			if (typeof d.toDate === 'function') return d.toDate().getFullYear();
+			return new Date(d).getFullYear();
+		};
+		const getMonth = (d: any) => {
+			if (!d) return new Date().getMonth();
+			if (typeof d.month === 'function') return d.month();
+			if (typeof d.getMonth === 'function') return d.getMonth();
+			if (typeof d.toDate === 'function') return d.toDate().getMonth();
+			return new Date(d).getMonth();
+		};
+		const getDay = (d: any) => {
+			if (!d) return new Date().getDate();
+			if (typeof d.date === 'function') return d.date();
+			if (typeof d.getDate === 'function') return d.getDate();
+			if (typeof d.toDate === 'function') return d.toDate().getDate();
+			return new Date(d).getDate();
+		};
 
 			if (info && info.type === 'month') {
 				// counter de agendamentos pendentes e aprovados no mês
@@ -122,13 +135,16 @@ export default function CalendarPage() {
 			const dateStr = `${year}-${pad(month + 1)}-${pad(day)}`;
 			const list = agendamentos.filter(a => a.data.startsWith(dateStr));
 			return (
-				<ul className="events">
-					{list.map(item => (
-						<li key={item.id}>
-							<Badge status={item.status === 'APROVADO' ? 'success' : item.status === 'PENDENTE' ? 'processing' : 'default'} text={`${item.cliente?.name ?? 'Cliente'} - ${item.status}`} />
-						</li>
-					))}
-				</ul>
+						<ul className="events">
+								{list.map(item => {
+									const displayName = item.cliente?.name || item.nomeClienteManual || 'Cliente';
+									return (
+										<li key={item.id}>
+											<Badge status={item.status === 'APROVADO' ? 'success' : item.status === 'PENDENTE' ? 'processing' : 'default'} text={`${displayName} - ${item.status}`} />
+										</li>
+									);
+								})}
+						</ul>
 			);
 		}
 
@@ -214,7 +230,7 @@ export default function CalendarPage() {
 								renderItem={item => (
 									<List.Item key={item.id} onClick={() => handleEventClick(item)} style={{ cursor: 'pointer' }}>
 										<List.Item.Meta
-											title={`${item.cliente?.name ?? 'Cliente'} - ${item.status}`}
+											title={`${item.cliente?.name || item.nomeClienteManual || 'Cliente'} - ${item.status}`}
 											description={`Data: ${item.data}`}
 										/>
 									</List.Item>

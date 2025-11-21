@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Layout, Form, Input, Button, DatePicker, Select, Card } from 'antd';
+import { useRouter } from 'next/router';
+import { Layout, Form, Input, Button, DatePicker, Select, Card, message, Modal } from 'antd';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import { motion } from 'framer-motion';
@@ -7,8 +8,31 @@ import { motion } from 'framer-motion';
 const { Content } = Layout;
 
 export default function PedidoAgendamento() {
+  const [confirmationOpen, setConfirmationOpen] = useState(false);
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [servicos, setServicos] = useState<any[]>([]);
+  const [userRole, setUserRole] = useState<string|undefined>(undefined);
+
+  // Get user role from sessionStorage
+  useEffect(() => {
+    function updateUserRole() {
+      try {
+        const userStr = sessionStorage.getItem('user');
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          setUserRole(user.role);
+        } else {
+          setUserRole(undefined);
+        }
+      } catch {
+        setUserRole(undefined);
+      }
+    }
+    updateUserRole();
+    window.addEventListener('auth:changed', updateUserRole);
+    return () => window.removeEventListener('auth:changed', updateUserRole);
+  }, []);
 
   const { publicRuntimeConfig } = getConfig();
   const API_URL = publicRuntimeConfig?.API_URL || 'http://localhost:4000';
@@ -33,21 +57,67 @@ export default function PedidoAgendamento() {
   }));
 
   const handleSubmit = async (values: any) => {
+    if (!userRole) {
+      router.push('/login');
+      return;
+    }
     setLoading(true);
     try {
-      const payload = {
-        ...values,
-        data: values?.data?.toISOString?.() ?? null,
+      // Only send date (YYYY-MM-DD) as string
+      const payload: any = {
+        data: values?.data?.format?.('YYYY-MM-DD') ?? null,
       };
+      // Only send clienteNome if admin and filled
+      if (userRole === 'ADMIN' && values.clienteNome) {
+        payload.clienteNome = values.clienteNome;
+      }
+      // Optionally include servico if you want to keep it
+      if (values.servico) {
+        payload.servico = values.servico;
+      }
 
-      await fetch(`${API_URL}/pedidoagendamento`, {
+      // Get JWT token from sessionStorage (adjust key if needed)
+
+      let token = null;
+      try {
+        const userStr = sessionStorage.getItem('user');
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          // Try common token keys in user object
+          token = user.token || user.accessToken || user.jwt;
+        }
+        // If not found in user object, try access_token directly
+        if (!token) {
+          token = sessionStorage.getItem('access_token');
+        }
+        console.log('Token used for Authorization:', token);
+      } catch (e) {
+        console.log('Error reading token from sessionStorage', e);
+      }
+
+      const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+      if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+        console.log('Authorization header set:', headers['Authorization']);
+      } else {
+        console.log('No token found, Authorization header not set');
+      }
+
+      const res = await fetch(`${API_URL}/pedidoagendamento`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers,
         body: JSON.stringify(payload),
       });
-
+      if (res.ok) {
+        setConfirmationOpen(true);
+      } else if (res.status === 401) {
+        message.warning('Você precisa estar logado para agendar.');
+      } else {
+        message.error('Erro ao criar agendamento.');
+      }
     } catch (err) {
       console.error(err);
+      message.error('Erro ao criar agendamento.');
     } finally {
       setLoading(false);
     }
@@ -58,6 +128,24 @@ export default function PedidoAgendamento() {
       <Head>
         <title>Agendamento PET-GROOMER</title>
       </Head>
+
+      <Modal
+        open={confirmationOpen}
+        onCancel={() => setConfirmationOpen(false)}
+        footer={[
+          <Button key="calendar" type="primary" onClick={() => router.push('/calendar')}>
+            Ver calendário
+          </Button>,
+          <Button key="close" onClick={() => setConfirmationOpen(false)}>
+            Fechar
+          </Button>,
+        ]}
+        centered
+        title="Agendamento realizado!"
+      >
+        <p>Seu agendamento foi registrado com sucesso.</p>
+        <p>Você pode visualizar seus agendamentos no calendário.</p>
+      </Modal>
 
       <Layout
         style={{
@@ -102,14 +190,17 @@ export default function PedidoAgendamento() {
               }}
               hoverable
             >
+
               <Form layout="vertical" onFinish={handleSubmit}>
-                <Form.Item
-                  label={<span style={{ color: '#ffffff', fontWeight: 600 }}>Nome</span>}
-                  name="cliente"
-                  rules={[{ required: true, message: 'Informe o nome' }]}
-                >
-                  <Input placeholder="Seu nome" style={{ background: '#ffffff', borderRadius: 8, height: 45 }} />
-                </Form.Item>
+                {userRole === 'ADMIN' && (
+                  <Form.Item
+                    label={<span style={{ color: '#ffffff', fontWeight: 600 }}>Nome do Cliente (opcional)</span>}
+                    name="clienteNome"
+                    rules={[]}
+                  >
+                    <Input placeholder="Nome do cliente (opcional)" style={{ background: '#ffffff', borderRadius: 8, height: 45 }} />
+                  </Form.Item>
+                )}
 
                 <Form.Item
                   label={<span style={{ color: '#ffffff', fontWeight: 600 }}>Serviço</span>}
@@ -129,14 +220,45 @@ export default function PedidoAgendamento() {
                   name="data"
                   rules={[{ required: true, message: 'Escolha a data' }]}
                 >
-                  <DatePicker style={{ width: '100%', background: '#ffffff', borderRadius: 8, height: 45 }} showTime />
+                  <DatePicker style={{ width: '100%', background: '#ffffff', borderRadius: 8, height: 45 }} format="YYYY-MM-DD" />
                 </Form.Item>
 
-                <motion.div whileHover={{ scale: 1.03, boxShadow: '0 0 15px #00ffff' }} transition={{ duration: 0.3 }}>
+                {userRole && (
+                  <motion.div
+                    whileHover={{ scale: 1.03, boxShadow: '0 0 15px #00ffff' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Button
+                      type="primary"
+                      loading={loading}
+                      htmlType="submit"
+                      style={{
+                        width: '100%',
+                        marginTop: 25,
+                        height: 48,
+                        fontSize: 16,
+                        fontWeight: 700,
+                        letterSpacing: 1,
+                        background: '#00ffff',
+                        borderColor: '#00ffff',
+                        borderRadius: 8,
+                        color: '#0a0f24',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Confirmar
+                    </Button>
+                  </motion.div>
+                )}
+              </Form>
+              {!userRole && (
+                <motion.div
+                  whileHover={{ scale: 1.03, boxShadow: '0 0 15px #00ffff' }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Button
                     type="primary"
-                    loading={loading}
-                    htmlType="submit"
+                    onClick={() => router.push('/login')}
                     style={{
                       width: '100%',
                       marginTop: 25,
@@ -148,12 +270,13 @@ export default function PedidoAgendamento() {
                       borderColor: '#00ffff',
                       borderRadius: 8,
                       color: '#0a0f24',
+                      cursor: 'pointer',
                     }}
                   >
-                    Confirmar
+                    Fazer login
                   </Button>
                 </motion.div>
-              </Form>
+              )}
             </Card>
           </motion.div>
         </Content>

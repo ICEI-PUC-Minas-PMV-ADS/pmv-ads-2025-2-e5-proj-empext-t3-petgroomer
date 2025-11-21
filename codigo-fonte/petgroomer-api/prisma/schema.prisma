@@ -32,19 +32,13 @@ model Servico {
 
 model Agendamento {
   id        Int          @id @default(autoincrement())
-  cliente   User         @relation(fields: [userId], references: [id])
-  userId    String
+  cliente   User?        @relation(fields: [userId], references: [id])
+  userId    String?
   data      DateTime     @db.Date
   status    StatusAgendamento @default(PENDENTE)
+  nomeClienteManual String?   // Nome do cliente se não houver userId
 }
 
-model PedidoAgendamento {
-  id       Int      @id @default(autoincrement())
-  cliente  String
-  servico  String   // ⚠️ obrigatório
-  data     DateTime
-  status   String
-}
 
 enum StatusAgendamento {
   PENDENTE
