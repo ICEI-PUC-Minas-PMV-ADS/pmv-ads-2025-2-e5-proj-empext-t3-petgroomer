@@ -10,9 +10,11 @@ export class AgendamentoController {
   constructor(private readonly svc: AgendamentoService) {}
 
   @Get('calendar')
-  @ApiOperation({ summary: 'Lista agendamentos para calendário (PENDENTE, APROVADO)' })
-  calendar() {
-    return this.svc.findForCalendar();
+  @ApiOperation({ summary: 'Lista agendamentos para calendário (PENDENTE, APROVADO, RECUSADO para admin)' })
+  calendar(@Param() params: any) {
+    // Get user role from query parameter
+    const role = params?.role || null;
+      return this.svc.findForCalendar();
   }
 
   @Get()
@@ -47,10 +49,7 @@ export class AgendamentoController {
 
   @Put("alterar-status")
   alterarStatus(@Body() params: UpdateAgendamentoStatusDto){
-    this.svc.updateStatus(params.id,params.status)
-    
-    
-    
+    this.svc.updateStatus(params.id, params.status as any);
   }
 
   

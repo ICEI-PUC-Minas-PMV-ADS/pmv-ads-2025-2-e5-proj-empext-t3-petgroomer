@@ -63,30 +63,24 @@ export default function PedidoAgendamento() {
     }
     setLoading(true);
     try {
-      // Only send date (YYYY-MM-DD) as string
       const payload: any = {
         data: values?.data?.format?.('YYYY-MM-DD') ?? null,
       };
-      // Only send clienteNome if admin and filled
+      // Only send clienteNome if admin
       if (userRole === 'ADMIN' && values.clienteNome) {
         payload.clienteNome = values.clienteNome;
       }
-      // Optionally include servico if you want to keep it
       if (values.servico) {
         payload.servico = values.servico;
       }
-
-      // Get JWT token from sessionStorage (adjust key if needed)
 
       let token = null;
       try {
         const userStr = sessionStorage.getItem('user');
         if (userStr) {
           const user = JSON.parse(userStr);
-          // Try common token keys in user object
           token = user.token || user.accessToken || user.jwt;
         }
-        // If not found in user object, try access_token directly
         if (!token) {
           token = sessionStorage.getItem('access_token');
         }

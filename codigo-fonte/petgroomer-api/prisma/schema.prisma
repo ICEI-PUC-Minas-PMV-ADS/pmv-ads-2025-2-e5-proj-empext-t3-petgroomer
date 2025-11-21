@@ -43,5 +43,6 @@ model Agendamento {
 enum StatusAgendamento {
   PENDENTE
   APROVADO
-  NEGADO
+  RECUSADO
+  CANCELADO
 }

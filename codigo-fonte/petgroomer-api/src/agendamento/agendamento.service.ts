@@ -6,10 +6,9 @@ import { StatusAgendamento } from '@prisma/client';
 export class AgendamentoService {
 	constructor(private prisma: PrismaService) {}
 
-	// Get agendamentos for calendar (PENDENTE and APROVADO)
+	// Get agendamentos for calendar (PENDENTE, APROVADO, and RECUSADO for admin)
 	async findForCalendar() {
 		return this.prisma.agendamento.findMany({
-			where: { status: { in: [StatusAgendamento.PENDENTE, StatusAgendamento.APROVADO] } },
 			include: { cliente: { select: { id: true, name: true, email: true } } },
 			orderBy: { data: 'asc' },
 		});

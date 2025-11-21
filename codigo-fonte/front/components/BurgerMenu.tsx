@@ -37,7 +37,7 @@ const BurgerMenu: React.FC<Props> = ({ selectedKey, title = 'Menu' }) => {
     const authPart = isAuth
       ? [
           ...(canManageServices ? [{ key: 'add-service', icon: <PlusOutlined />, label: <Link href="/add-service">Adicionar Serviço</Link> }] : []),
-          { key: 'me', icon: <UserOutlined />, label: <Link href="/me">Meu Perfil</Link> },
+          { key: 'me', icon: <UserOutlined />, label: <Link href="/dashboard">Meu Perfil</Link> },
           { type: 'divider' as const },
           {
             key: 'logout',

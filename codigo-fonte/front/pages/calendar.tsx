@@ -9,7 +9,7 @@ const { Content } = Layout;
 type Agendamento = {
 	id: number;
 	data: string; // ISO date
-	status: 'PENDENTE' | 'APROVADO' | 'NEGADO';
+	status: 'PENDENTE' | 'APROVADO' | 'RECUSADO';
 	cliente?: { id: string; name?: string; email?: string };
 	nomeClienteManual?: string;
 };
@@ -26,17 +26,30 @@ export default function CalendarPage() {
 	const [calendarValue, setCalendarValue] = useState<any>(undefined);
 	const [calendarMode, setCalendarMode] = useState<'month' | 'year' | undefined>(undefined);
 	const [userName, setUserName] = useState<string | null>(null);
+	const [userRole, setUserRole] = useState<string | null>(null);
 	const suppressNextSelectRef = React.useRef(false);
 
-	// Get logged-in user's name from sessionStorage
+	// Get logged-in user's name and role from sessionStorage, and listen for auth changes
 	useEffect(() => {
-		try {
-			const userStr = sessionStorage.getItem('user');
-			if (userStr) {
-				const user = JSON.parse(userStr);
-				setUserName(user.name || null);
+		function updateUserRole() {
+			try {
+				const userStr = sessionStorage.getItem('user');
+				if (userStr) {
+					const user = JSON.parse(userStr);
+					setUserName(user.name || null);
+					setUserRole(user.role);
+				} else {
+					setUserName(null);
+					setUserRole(null);
+				}
+			} catch {
+				setUserName(null);
+				setUserRole(null);
 			}
-		} catch {}
+		}
+		updateUserRole();
+		window.addEventListener('auth:changed', updateUserRole);
+		return () => window.removeEventListener('auth:changed', updateUserRole);
 	}, []);
 
 	function ensureDayLike(d: any) {
@@ -65,9 +78,11 @@ export default function CalendarPage() {
 		setLoading(true);
 		setError(null);
 		try {
-			const res = await fetch(`${API_URL}/agendamentos/calendar`);
+			const roleParam = userRole ? `?role=${userRole}` : '';
+			const res = await fetch(`${API_URL}/agendamentos/calendar${roleParam}`);
 			if (!res.ok) throw new Error(`Erro: ${res.status}`);
 			const data: Agendamento[] = await res.json();
+			console.log('Agendamentos from backend:', data);
 			const normalized = data.map(a => ({ ...a, data: a.data.split('T')[0] }));
 			setAgendamentos(normalized);
 		} catch (err) {
@@ -110,7 +125,10 @@ export default function CalendarPage() {
 
 				const count = agendamentos.reduce((acc, a) => {
 					const d = new Date(a.data);
-					if (d.getFullYear() === year && d.getMonth() === month && (a.status === 'PENDENTE' || a.status === 'APROVADO')) return acc + 1;
+					const showRecusado = userRole === 'ADMIN';
+					if (d.getFullYear() === year && d.getMonth() === month && (
+						a.status === 'PENDENTE' || a.status === 'APROVADO' || (showRecusado && a.status === 'RECUSADO')
+					)) return acc + 1;
 					return acc;
 				}, 0);
 
@@ -133,7 +151,12 @@ export default function CalendarPage() {
 			const day = getDay(date);
 			const pad = (n: number) => String(n).padStart(2, '0');
 			const dateStr = `${year}-${pad(month + 1)}-${pad(day)}`;
-			const list = agendamentos.filter(a => a.data.startsWith(dateStr));
+			const showRecusado = userRole === 'ADMIN';
+			const list = agendamentos.filter(a => {
+				if (!a.data.startsWith(dateStr)) return false;
+				if (a.status === 'RECUSADO' && !showRecusado) return false;
+				return true;
+			});
 			return (
 						<ul className="events">
 								{list.map(item => {
@@ -188,27 +211,30 @@ export default function CalendarPage() {
 			<Head>
 				<title>Calendário</title>
 			</Head>
-			<Content className="content">
-				<div className="page-container">
-					<h1>Agendamentos - Calendário</h1>
+			<Layout style={{ minHeight: '100vh', background: 'linear-gradient(160deg, #0a0f24 0%, #1b1f3b 100%)' }}>
+			<Content style={{ maxWidth: '1200px', margin: '20px auto 0 auto', padding: '20px' }}>
+					<h1 style={{ color: '#fff', fontWeight: 900, letterSpacing: 1.5, textTransform: 'uppercase', marginTop: 2, marginBottom: 32, textAlign: 'center' }}>
+						<span style={{ fontSize: 42, verticalAlign: 'middle', marginRight: 10 }}>🐾</span>
+						Agendamentos - Calendário
+					</h1>
 					{loading && <Spin />}
 					{error && <Alert type="error" message={error} />}
 
 					<div style={{ display: 'flex', gap: 24 }}>
 						<div style={{ flex: 1 }}>
 							<ConfigProvider locale={ptBR}>
-												<div className="calendar-wrapper">
-																				<Calendar
-																					cellRender={cellRender}
-																					onSelect={handleSelect}
-																					value={calendarValue}
-																					mode={calendarMode}
-																					onPanelChange={(v: any, m: any) => {
-																					setCalendarValue(v);
-																					setCalendarMode(m);
-																					}}
-																				/>
-												</div>
+								<div className="calendar-wrapper">
+									<Calendar
+										cellRender={cellRender}
+										onSelect={handleSelect}
+										value={calendarValue}
+										mode={calendarMode}
+										onPanelChange={(v: any, m: any) => {
+											setCalendarValue(v);
+											setCalendarMode(m);
+										}}
+									/>
+								</div>
 							</ConfigProvider>
 						</div>
 					</div>
@@ -238,8 +264,8 @@ export default function CalendarPage() {
 							/>
 						)}
 					</Modal>
-				</div>
-			</Content>
+				</Content>
+			</Layout>
 		</>
 	);
 }
