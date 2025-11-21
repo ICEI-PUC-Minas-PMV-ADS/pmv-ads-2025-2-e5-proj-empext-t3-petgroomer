@@ -27,7 +27,13 @@ export class AgendamentoController {
 
   @Post()
   create(@Body() dto: CreateAgendamentoDto) {
-    const payload = { userId: dto.userId, data: new Date(dto.data), status: dto.status };
+    // Accept either `userId` or `cliente` (frontend uses `cliente` in some places)
+    const body: any = dto as any;
+    const userId = body.userId ?? body.cliente;
+    if (!userId) {
+      throw new Error('userId (or cliente) is required');
+    }
+    const payload = { userId, data: new Date(dto.data), status: dto.status };
     return this.svc.create(payload as any);
   }
 

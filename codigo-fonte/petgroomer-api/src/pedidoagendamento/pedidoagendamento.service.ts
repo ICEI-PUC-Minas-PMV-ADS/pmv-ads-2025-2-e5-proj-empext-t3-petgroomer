@@ -11,7 +11,8 @@ export class PedidoagendamentoService {
     return await this.prisma.pedidoAgendamento.create({
       data: {
         cliente,
-        servico, // ✅ Incluído aqui
+        // ensure servico is stored as string (frontend may send an id number)
+        servico: String(servico),
         data: new Date(dataAgendamento),
         status: 'pendente',
       },
