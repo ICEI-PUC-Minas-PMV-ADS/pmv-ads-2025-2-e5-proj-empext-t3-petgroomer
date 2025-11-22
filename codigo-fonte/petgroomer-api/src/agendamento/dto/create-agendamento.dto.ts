@@ -1,4 +1,4 @@
-import { IsISO8601, IsOptional, IsString } from 'class-validator';
+import { IsISO8601, IsOptional, IsString, IsInt } from 'class-validator';
 
 export class CreateAgendamentoDto {
   @IsString()
@@ -10,4 +10,7 @@ export class CreateAgendamentoDto {
   @IsOptional()
   @IsString()
   status?: string;
+
+  @IsInt()
+  servicoId: number;
 }

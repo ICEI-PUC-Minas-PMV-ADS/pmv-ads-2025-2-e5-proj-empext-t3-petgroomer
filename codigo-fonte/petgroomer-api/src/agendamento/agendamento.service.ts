@@ -24,7 +24,7 @@ export class AgendamentoService {
 		return item;
 	}
 
-	async create(data: { userId: string; data: Date; status?: StatusAgendamento }) {
+	async create(data: { userId: string; data: Date; status?: StatusAgendamento; servicoId: number }) {
 		return this.prisma.agendamento.create({ data });
 	}
 

@@ -71,7 +71,7 @@ export default function PedidoAgendamento() {
         payload.clienteNome = values.clienteNome;
       }
       if (values.servico) {
-        payload.servico = values.servico;
+        payload.servicoId = values.servico;
       }
 
       let token = null;

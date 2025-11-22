@@ -35,7 +35,7 @@ export class AgendamentoController {
     if (!userId) {
       throw new Error('userId (or cliente) is required');
     }
-    const payload = { userId, data: new Date(dto.data), status: dto.status };
+    const payload = { userId, data: new Date(dto.data), status: dto.status, servicoId: dto.servicoId };
     return this.svc.create(payload as any);
   }
 

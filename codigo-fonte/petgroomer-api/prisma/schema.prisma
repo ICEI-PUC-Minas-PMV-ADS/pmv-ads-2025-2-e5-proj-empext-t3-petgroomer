@@ -28,12 +28,15 @@ model Servico {
   id    Int     @id @default(autoincrement())
   nome  String
   valor Float
+  agendamentos Agendamento[]
 }
 
 model Agendamento {
   id        Int          @id @default(autoincrement())
   cliente   User?        @relation(fields: [userId], references: [id])
   userId    String?
+  servico   Servico     @relation(fields: [servicoId], references: [id])
+  servicoId Int
   data      DateTime     @db.Date
   status    StatusAgendamento @default(PENDENTE)
   nomeClienteManual String?   // Nome do cliente se não houver userId

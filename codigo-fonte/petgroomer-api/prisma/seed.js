@@ -27,21 +27,34 @@ async function main() {
     create: { email: 'admin@petgroomer.com', hash: password, name: 'Admin', role: 'ADMIN' },
   });
 
-  // examples
-  const today = new Date();
-  const tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate() + 1);
 
-  // date only helper
+  // Seed serviços
+  // Create serviços (no upsert, since nome is not unique)
+  const [banho, tosa, consulta] = await Promise.all([
+    prisma.servico.create({ data: { nome: 'Banho', valor: 50.0 } }),
+    prisma.servico.create({ data: { nome: 'Tosa', valor: 70.0 } }),
+    prisma.servico.create({ data: { nome: 'Consulta Veterinária', valor: 120.0 } })
+  ]);
+
+  // date helper
   function toDateOnly(d) {
     return new Date(d.getFullYear(), d.getMonth(), d.getDate());
   }
 
+  // Remove old agendamentos to avoid conflicts
+  await prisma.agendamento.deleteMany({});
+
+  // date helper
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+
+  // Seed agendamentos 
   await prisma.agendamento.createMany({
     data: [
-      { userId: alice.id, data: toDateOnly(today), status: 'PENDENTE' },
-      { userId: bob.id, data: toDateOnly(tomorrow), status: 'APROVADO' },
-      { userId: bob.id, data: toDateOnly(tomorrow), status: 'RECUSADO' },
+      { userId: alice.id, servicoId: banho.id, data: toDateOnly(today), status: 'PENDENTE' },
+      { userId: bob.id, servicoId: tosa.id, data: toDateOnly(tomorrow), status: 'APROVADO' },
+      { userId: bob.id, servicoId: consulta.id, data: toDateOnly(tomorrow), status: 'RECUSADO' },
     ],
     skipDuplicates: true,
   });

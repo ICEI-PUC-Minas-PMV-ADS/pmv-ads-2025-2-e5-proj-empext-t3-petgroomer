@@ -9,7 +9,7 @@ export class PedidoagendamentoService {
 
   // Cria um novo agendamento (pedido)
 
-  async criarPedido(data: { userId?: string; data: Date; status?: StatusAgendamento; nomeClienteManual?: string }) {
+  async criarPedido(data: { userId?: string; data: Date; status?: StatusAgendamento; nomeClienteManual?: string; servicoId: number }) {
     return this.prisma.agendamento.create({ data: { ...data } });
   }
 

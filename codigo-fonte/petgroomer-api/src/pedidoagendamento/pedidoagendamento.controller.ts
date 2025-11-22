@@ -55,12 +55,16 @@ export class PedidoagendamentoController {
     // Status padrão: PENDENTE
     const status: StatusAgendamento = StatusAgendamento.PENDENTE;
 
+    if (!body.servicoId) {
+      throw new BadRequestException('servicoId é obrigatório');
+    }
 
     return this.pedidoagendamentoService.criarPedido({
       userId,
       data: new Date(body.data),
       status,
       nomeClienteManual,
+      servicoId: body.servicoId,
     });
   }
 
