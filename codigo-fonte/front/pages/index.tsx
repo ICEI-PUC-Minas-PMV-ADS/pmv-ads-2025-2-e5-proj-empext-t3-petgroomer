@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Layout, Button, Row, Col, Card, Typography } from 'antd';
 import { ArrowRightOutlined, ScissorOutlined, SmileOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
-import { FaBath } from 'react-icons/fa';
+import { FaBath } from 'react-icons/fa6';
 
 const { Content } = Layout;
 const { Title, Paragraph } = Typography;
