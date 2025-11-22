@@ -145,7 +145,7 @@ export default function Dashboard() {
                 pagination={{ pageSize: 5 }}
                 columns={[
                   { title: 'Serviço', dataIndex: 'serviceName' },
-                  { title: 'Data/Hora', dataIndex: 'dateStart', render: (v:string) => new Date(v).toLocaleString('pt-BR') },
+                  { title: 'Data/Hora', dataIndex: 'data', render: (v:string) => new Date(v).toLocaleString('pt-BR') },
                   { title: 'Status', dataIndex: 'status', render: (s:Agendamento['status']) => {
                       const color = s === 'confirmado' ? 'green' : s === 'pendente' ? 'gold' : 'red';
                       return <Tag color={color}>{s.toUpperCase()}</Tag>;
