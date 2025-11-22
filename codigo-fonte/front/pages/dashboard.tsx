@@ -124,10 +124,8 @@ export default function Dashboard() {
                 dataSource={servicos}
                 pagination={{ pageSize: 5 }}
                 columns={[
-                  { title: 'Nome', dataIndex: 'name' },
-                  { title: 'Preço', dataIndex: 'priceCents', render: (v:number) => (v != null ? (v/100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '-') },
-                  { title: 'Duração', dataIndex: 'durationMin', render: (v:number) => v ? `${v} min` : '—' },
-                  { title: 'Status', dataIndex: 'active', render: (v:boolean) => v ? <Tag color="green">Ativo</Tag> : <Tag>Inativo</Tag> },
+                  { title: 'Nome', dataIndex: 'nome' },
+                  { title: 'Preço', dataIndex: 'valor', render: (v:number) => (v != null ? (v/1).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '-') },
                 ]}
               />
             </Card>
@@ -147,7 +145,7 @@ export default function Dashboard() {
                 pagination={{ pageSize: 5 }}
                 columns={[
                   { title: 'Serviço', dataIndex: 'serviceName' },
-                  { title: 'Data/Hora', dataIndex: 'dateStart', render: (v:string) => new Date(v).toLocaleString('pt-BR') },
+                  { title: 'Data/Hora', dataIndex: 'data', render: (v:string) => new Date(v).toLocaleString('pt-BR') },
                   { title: 'Status', dataIndex: 'status', render: (s:Agendamento['status']) => {
                       const color = s === 'confirmado' ? 'green' : s === 'pendente' ? 'gold' : 'red';
                       return <Tag color={color}>{s.toUpperCase()}</Tag>;
