@@ -124,10 +124,8 @@ export default function Dashboard() {
                 dataSource={servicos}
                 pagination={{ pageSize: 5 }}
                 columns={[
-                  { title: 'Nome', dataIndex: 'name' },
-                  { title: 'Preço', dataIndex: 'priceCents', render: (v:number) => (v != null ? (v/100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '-') },
-                  { title: 'Duração', dataIndex: 'durationMin', render: (v:number) => v ? `${v} min` : '—' },
-                  { title: 'Status', dataIndex: 'active', render: (v:boolean) => v ? <Tag color="green">Ativo</Tag> : <Tag>Inativo</Tag> },
+                  { title: 'Nome', dataIndex: 'nome' },
+                  { title: 'Preço', dataIndex: 'valor', render: (v:number) => (v != null ? (v/1).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '-') },
                 ]}
               />
             </Card>
