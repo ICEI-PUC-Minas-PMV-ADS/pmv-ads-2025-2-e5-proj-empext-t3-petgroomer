@@ -47,9 +47,9 @@ export class AgendamentoController {
     return this.svc.update(id, patch);
   }
 
-  @Put("alterar-status")
-  alterarStatus(@Body() params: UpdateAgendamentoStatusDto){
-    this.svc.updateStatus(params.id, params.status as any);
+  @Put(":id/alterar-status")
+  alterarStatus(@Param('id', ParseIntPipe) id: number, @Body() params: UpdateAgendamentoStatusDto){
+    this.svc.updateStatus(id, params.status as any);
   }
 
   

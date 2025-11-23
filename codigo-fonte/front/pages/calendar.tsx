@@ -28,6 +28,7 @@ export default function CalendarPage() {
 	const [userName, setUserName] = useState<string | null>(null);
 	const [userRole, setUserRole] = useState<string | null>(null);
 	const suppressNextSelectRef = React.useRef(false);
+	
 
 	// Get logged-in user's name and role from sessionStorage, and listen for auth changes
 	useEffect(() => {
@@ -151,12 +152,10 @@ export default function CalendarPage() {
 			const day = getDay(date);
 			const pad = (n: number) => String(n).padStart(2, '0');
 			const dateStr = `${year}-${pad(month + 1)}-${pad(day)}`;
-			const showRecusado = userRole === 'ADMIN';
-			const list = agendamentos.filter(a => {
-				if (!a.data.startsWith(dateStr)) return false;
-				if (a.status === 'RECUSADO' && !showRecusado) return false;
-				return true;
-			});
+			//const list = agendamentos.filter(a => {
+			//	return a.data.startsWith(dateStr) && a.status !== 'RECUSADO';
+			//});
+			const list = agendamentos.filter(a => a.data.startsWith(dateStr) && a.status !== 'RECUSADO');
 			return (
 						<ul className="events">
 								{list.map(item => {
@@ -206,6 +205,44 @@ export default function CalendarPage() {
 		setModalOpen(true);
 	}
 
+	async function handleUpdateStatus(id: number, status: 'APROVADO') {
+		try {
+			const res = await fetch(`${API_URL}/agendamentos/${id}/alterar-status`, {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ status }),
+			});
+			if (!res.ok) throw new Error(`Erro ao atualizar status: ${res.status}`);
+
+			// Atualiza o estado local para refletir a mudança
+			setAgendamentos(prev =>
+				prev.map(a => (a.id === id ? { ...a, status } : a))
+			);
+			
+		} catch (err) {
+			console.error(err);
+			setError('Falha ao atualizar o status do agendamento.');
+		}
+	}
+
+	async function handleDelete(id: number) {
+		if (!confirm('Tem certeza que deseja deletar (recusar) este agendamento? Esta ação não pode ser desfeita.')) {
+			return;
+		}
+		try {
+			const res = await fetch(`${API_URL}/agendamentos/${id}`, {
+				method: 'DELETE',
+			});
+			if (!res.ok) throw new Error(`Erro ao deletar agendamento: ${res.status}`);
+
+			setAgendamentos(prev => prev.filter(a => a.id !== id));
+			
+		} catch (err) {
+			console.error(err);
+			setError('Falha ao deletar o agendamento.');
+		}
+	}
+
 	return (
 		<>
 			<Head>
@@ -245,7 +282,25 @@ export default function CalendarPage() {
 						centered
 						onCancel={() => setModalOpen(false)}
 						footer={[
-							<Button key="close" onClick={() => setModalOpen(false)}>Fechar</Button>
+							...(userRole === 'ADMIN' && selectedList.length > 0 ? selectedList.filter(item => item.status === 'PENDENTE').flatMap(item => [
+								<Button
+									key={`accept-${item.id}`}
+									type="primary"
+									style={{ backgroundColor: 'green', borderColor: 'green' }}
+									onClick={() => handleUpdateStatus(item.id, 'APROVADO')}
+								>
+									Aceitar
+								</Button>,
+								<Button
+									key={`reject-${item.id}`}
+									type="primary"
+									danger
+									onClick={() => handleDelete(item.id)}
+								>
+									Recusar
+								</Button>
+							]) : []),
+							<Button key="close" onClick={() => setModalOpen(false)}>Fechar</Button>,
 						]}
 					>
 						{selectedList.length === 0 ? (
@@ -269,4 +324,3 @@ export default function CalendarPage() {
 		</>
 	);
 }
-

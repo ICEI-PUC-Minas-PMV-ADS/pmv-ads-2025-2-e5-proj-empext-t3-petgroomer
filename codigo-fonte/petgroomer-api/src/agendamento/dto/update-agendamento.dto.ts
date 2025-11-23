@@ -16,7 +16,5 @@ export class UpdateAgendamentoStatusDto {
   @IsString()
   status: string;
 
-  @Type(() => Number)
-  @IsInt()
-  id: number;
+  
 }
