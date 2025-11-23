@@ -48,6 +48,11 @@ type Agendamento = {
   userId?: string;           // id do usuário (campo userId no banco)
   clienteNome?: string;      // nome do cliente (se vier populado)
   userName?: string;         // outro possível nome vindo da API
+  servico: {
+    id: number;
+    nome: string;
+    valor: number;
+  };
 };
 
 export default function Dashboard() {
@@ -260,28 +265,28 @@ export default function Dashboard() {
                     render: (v: number) =>
                       v != null
                         ? v.toLocaleString('pt-BR', {
-                            style: 'currency',
-                            currency: 'BRL',
-                          })
+                          style: 'currency',
+                          currency: 'BRL',
+                        })
                         : '-',
                   },
                   ...(isCliente
                     ? [
-                        {
-                          title: 'Ações',
-                          key: 'acoes',
-                          render: (_: any, record: Servico) => (
-                            <Button
-                              type="primary"
-                              onClick={() =>
-                                irParaPedidoAgendamento(record.id)
-                              }
-                            >
-                              Agendar
-                            </Button>
-                          ),
-                        },
-                      ]
+                      {
+                        title: 'Ações',
+                        key: 'acoes',
+                        render: (_: any, record: Servico) => (
+                          <Button
+                            type="primary"
+                            onClick={() =>
+                              irParaPedidoAgendamento(record.id)
+                            }
+                          >
+                            Agendar
+                          </Button>
+                        ),
+                      },
+                    ]
                     : []),
                 ]}
               />
@@ -310,21 +315,31 @@ export default function Dashboard() {
                 columns={[
                   ...(isAdminLike
                     ? [
-                        {
-                          title: 'Cliente',
-                          dataIndex: 'clienteNome',
-                          render: (_: any, record: Agendamento) =>
-                            record.clienteNome ||
-                            record.userName ||
-                            '—',
-                        },
-                      ]
+                      {
+                        title: 'Cliente',
+                        dataIndex: 'clienteNome',
+                        render: (_: any, record: Agendamento) =>
+                          record.clienteNome ||
+                          record.userName ||
+                          '—',
+                      },
+                    ]
                     : []),
                   {
                     title: 'Serviço',
-                    dataIndex: 'servicoId',
-                    render: (_: any, record: Agendamento) =>
-                      record.servicoNome || record.serviceName || '—',
+                    key: 'servico',
+                    render: (_: any, record: Agendamento) => {
+                      if (record.servico && record.servico.nome) {
+                        return record.servico.nome;
+                      }
+
+                      if (record.servicoNome) {
+                        return record.servicoNome;
+                      }
+
+                      console.log('❌ Serviço não encontrado no agendamento:', record);
+                      return '—';
+                    },
                   },
                   {
                     title: 'Data',
@@ -343,34 +358,34 @@ export default function Dashboard() {
                   },
                   ...(isAdminLike
                     ? [
-                        {
-                          title: 'Ações',
-                          key: 'acoes',
-                          render: (_: any, record: Agendamento) => (
-                            <Space>
-                              {(['PENDENTE', 'APROVADO', 'NEGADO'] as StatusAgendamento[]).map(
-                                (status) => (
-                                  <Button
-                                    key={status}
-                                    size="small"
-                                    type={
-                                      record.status === status
-                                        ? 'primary'
-                                        : 'default'
-                                    }
-                                    loading={updatingStatusId === record.id}
-                                    onClick={() =>
-                                      alterarStatus(record.id, status)
-                                    }
-                                  >
-                                    {statusLabelMap[status]}
-                                  </Button>
-                                ),
-                              )}
-                            </Space>
-                          ),
-                        },
-                      ]
+                      {
+                        title: 'Ações',
+                        key: 'acoes',
+                        render: (_: any, record: Agendamento) => (
+                          <Space>
+                            {(['PENDENTE', 'APROVADO', 'NEGADO'] as StatusAgendamento[]).map(
+                              (status) => (
+                                <Button
+                                  key={status}
+                                  size="small"
+                                  type={
+                                    record.status === status
+                                      ? 'primary'
+                                      : 'default'
+                                  }
+                                  loading={updatingStatusId === record.id}
+                                  onClick={() =>
+                                    alterarStatus(record.id, status)
+                                  }
+                                >
+                                  {statusLabelMap[status]}
+                                </Button>
+                              ),
+                            )}
+                          </Space>
+                        ),
+                      },
+                    ]
                     : []),
                 ]}
               />
