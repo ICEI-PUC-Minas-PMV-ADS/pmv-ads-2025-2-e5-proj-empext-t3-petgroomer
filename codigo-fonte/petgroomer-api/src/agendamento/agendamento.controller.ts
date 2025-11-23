@@ -12,7 +12,6 @@ export class AgendamentoController {
   @Get('calendar')
   @ApiOperation({ summary: 'Lista agendamentos para calendário (PENDENTE, APROVADO, RECUSADO para admin)' })
   calendar(@Param() params: any) {
-    // Get user role from query parameter
     const role = params?.role || null;
       return this.svc.findForCalendar();
   }
