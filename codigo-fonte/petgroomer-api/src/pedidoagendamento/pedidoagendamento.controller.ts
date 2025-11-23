@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Get, Req, UnauthorizedException, BadRequestException, UseGuards } from '@nestjs/common';
 import { PedidoagendamentoService } from './pedidoagendamento.service';
-import { Request } from 'express';
+import type { Request } from 'express'; 
 import { PrismaService } from '../prisma/prisma.service';
 import { StatusAgendamento } from '@prisma/client';
 import { AccessTokenGuard } from '../auth/access-token.guard';
@@ -55,12 +55,16 @@ export class PedidoagendamentoController {
     // Status padrão: PENDENTE
     const status: StatusAgendamento = StatusAgendamento.PENDENTE;
 
+    if (!body.servicoId) {
+      throw new BadRequestException('servicoId é obrigatório');
+    }
 
     return this.pedidoagendamentoService.criarPedido({
       userId,
       data: new Date(body.data),
       status,
       nomeClienteManual,
+      servicoId: body.servicoId,
     });
   }
 
