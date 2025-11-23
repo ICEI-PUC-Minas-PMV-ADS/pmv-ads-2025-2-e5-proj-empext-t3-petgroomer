@@ -10,6 +10,8 @@ COPY nest-cli.json ./
 # Instala todas as dependências (INCLUINDO dev para build)
 RUN npm ci --include=dev --no-audit --no-fund
 
+RUN npm install -g @prisma/client prisma
+
 # Copia código fonte e prisma
 COPY src ./src
 COPY prisma ./prisma
