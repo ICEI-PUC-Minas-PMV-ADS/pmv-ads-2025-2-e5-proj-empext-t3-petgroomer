@@ -102,6 +102,8 @@ export default function PedidoAgendamento() {
         headers,
         body: JSON.stringify(payload),
       });
+        console.error('🔥 ERRO REAL:', res);
+
       if (res.ok) {
         setConfirmationOpen(true);
       } else if (res.status === 401) {
