@@ -1,7 +1,7 @@
 
-# Projeto de Interface
+### Projeto de Interface
 
-# Telas
+### Telas
 
 ## Portfólio
 
