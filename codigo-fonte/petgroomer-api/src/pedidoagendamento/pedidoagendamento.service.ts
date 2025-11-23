@@ -46,7 +46,13 @@ export class PedidoagendamentoService {
   async listarPedidos() {
     return this.prisma.agendamento.findMany({ 
       include: { 
-        servico: true,
+          servico: {  
+          select: {
+            id: true,
+            nome: true,
+            valor: true
+          }
+        },
         cliente: {
           select: {
             id: true,

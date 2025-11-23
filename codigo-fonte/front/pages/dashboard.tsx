@@ -322,7 +322,7 @@ export default function Dashboard() {
                     : []),
                   {
                     title: 'Serviço',
-                    dataIndex: 'servicoNome',
+                    dataIndex: 'servicoId',
                     render: (_: any, record: Agendamento) =>
                       record.servicoNome || record.serviceName || '—',
                   },
