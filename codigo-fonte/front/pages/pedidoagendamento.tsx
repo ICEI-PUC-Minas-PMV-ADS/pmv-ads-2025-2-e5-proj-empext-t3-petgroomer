@@ -71,7 +71,7 @@ export default function PedidoAgendamento() {
         payload.clienteNome = values.clienteNome;
       }
       if (values.servico) {
-        payload.servico = values.servico;
+        payload.servicoId = values.servico;
       }
 
       let token = null;
@@ -102,6 +102,8 @@ export default function PedidoAgendamento() {
         headers,
         body: JSON.stringify(payload),
       });
+        console.error('🔥 ERRO REAL:', res);
+
       if (res.ok) {
         setConfirmationOpen(true);
       } else if (res.status === 401) {

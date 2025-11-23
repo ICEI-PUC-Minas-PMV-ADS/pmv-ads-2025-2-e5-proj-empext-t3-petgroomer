@@ -12,7 +12,6 @@ export class AgendamentoController {
   @Get('calendar')
   @ApiOperation({ summary: 'Lista agendamentos para calendário (PENDENTE, APROVADO, RECUSADO para admin)' })
   calendar(@Param() params: any) {
-    // Get user role from query parameter
     const role = params?.role || null;
       return this.svc.findForCalendar();
   }
@@ -35,7 +34,7 @@ export class AgendamentoController {
     if (!userId) {
       throw new Error('userId (or cliente) is required');
     }
-    const payload = { userId, data: new Date(dto.data), status: dto.status };
+    const payload = { userId, data: new Date(dto.data), status: dto.status, servicoId: dto.servicoId };
     return this.svc.create(payload as any);
   }
 
