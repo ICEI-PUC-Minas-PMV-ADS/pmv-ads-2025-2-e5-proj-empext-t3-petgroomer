@@ -206,3 +206,6 @@
   </tr>
 
 </table>
+
+# Ata Etapa 4
+[Link](https://sgapucminasbr-my.sharepoint.com/personal/866779_sga_pucminas_br/_layouts/15/guestaccess.aspx?share=IQAVLHMqp6VeSr0eF8RWH7jrAYC0qR9incEdw4iMmNnt-GU&e=Xs8Oot)
