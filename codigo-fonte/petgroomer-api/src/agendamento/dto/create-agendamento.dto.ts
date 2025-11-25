@@ -1,4 +1,5 @@
-import { IsISO8601, IsOptional, IsString, IsInt } from 'class-validator';
+import { IsISO8601, IsOptional, IsEnum, IsString, IsInt } from 'class-validator';
+import { StatusAgendamento } from '@prisma/client';
 
 export class CreateAgendamentoDto {
   @IsString()
@@ -8,8 +9,8 @@ export class CreateAgendamentoDto {
   data: string; // ISO date string
 
   @IsOptional()
-  @IsString()
-  status?: string;
+  @IsEnum(StatusAgendamento)
+  status?: StatusAgendamento;
 
   @IsInt()
   servicoId: number;
