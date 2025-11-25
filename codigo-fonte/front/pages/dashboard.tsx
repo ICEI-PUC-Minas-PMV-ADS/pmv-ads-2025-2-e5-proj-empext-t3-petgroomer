@@ -48,6 +48,14 @@ type Agendamento = {
   userId?: string;           // id do usuário (campo userId no banco)
   clienteNome?: string;      // nome do cliente (se vier populado)
   userName?: string;         // outro possível nome vindo da API
+  nomeClienteManual: string | null;
+  cliente: {
+    id: string;
+    email: string;
+    name: string;
+    role: string;
+    createdAt: string;
+  };
   servico: {
     id: number;
     nome: string;
@@ -317,11 +325,9 @@ export default function Dashboard() {
                     ? [
                       {
                         title: 'Cliente',
-                        dataIndex: 'clienteNome',
+                        key: 'cliente',
                         render: (_: any, record: Agendamento) =>
-                          record.clienteNome ||
-                          record.userName ||
-                          '—',
+                          record.cliente?.name || record.nomeClienteManual || '—',
                       },
                     ]
                     : []),
@@ -329,16 +335,15 @@ export default function Dashboard() {
                     title: 'Serviço',
                     key: 'servico',
                     render: (_: any, record: Agendamento) => {
-                      if (record.servico && record.servico.nome) {
+                      // Primeiro tenta pegar do objeto servico
+                      if (record.servico?.nome) {
                         return record.servico.nome;
                       }
 
-                      if (record.servicoNome) {
-                        return record.servicoNome;
-                      }
-
-                      console.log('❌ Serviço não encontrado no agendamento:', record);
-                      return '—';
+                      // Se não encontrar, você pode precisar buscar o nome do serviço
+                      // baseado no servicoId, ou ajustar a API para incluir sempre
+                      const servicoEncontrado = servicos.find(s => s.id === record.servicoId);
+                      return servicoEncontrado?.nome || `Serviço #${record.servicoId}`;
                     },
                   },
                   {
@@ -392,14 +397,6 @@ export default function Dashboard() {
             </Card>
 
             <Divider />
-            <Card bordered={false}>
-              <Text type="secondary">
-                Se as rotas da API forem diferentes, é só ajustar os paths em
-                <code> carregarServicos()</code>,{' '}
-                <code>carregarAgendamentos()</code> e{' '}
-                <code>alterarStatus()</code>.
-              </Text>
-            </Card>
           </Space>
         </Content>
       </Layout>
