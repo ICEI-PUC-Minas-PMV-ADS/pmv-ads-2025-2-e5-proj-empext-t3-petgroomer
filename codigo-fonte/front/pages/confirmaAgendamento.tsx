@@ -64,9 +64,11 @@ export default function ConfirmaAgendamento() {
 
       const pendentes = data.filter(a => a.status === "PENDENTE");
 
+      // Define o primeiro agendamento como selecionado apenas no carregamento inicial
+      if (pendingAppointments.length === 0 && pendentes.length > 0) {
+        setSelectedAppointment(pendentes[0]);
+      }
       setPendingAppointments(pendentes);
-      setSelectedAppointment(pendentes[0] || null);
-
     } catch (e) {
       console.error(e);
       message.error("Erro ao carregar agendamentos");
@@ -103,6 +105,8 @@ export default function ConfirmaAgendamento() {
       );
 
       await loadAppointments();
+      // Limpa a seleção para evitar exibir um agendamento diferente automaticamente
+      setSelectedAppointment(null);
 
     } catch (err) {
       console.error(err);
