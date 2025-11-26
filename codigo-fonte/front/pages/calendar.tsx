@@ -207,7 +207,7 @@ export default function CalendarPage() {
 
 	async function handleUpdateStatus(id: number, status: 'APROVADO') {
 		try {
-			const res = await fetch(`${API_URL}/agendamentos/${id}/alterar-status`, {
+			const res = await fetch(`${API_URL}/agendamentos/${id}`, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ status }),

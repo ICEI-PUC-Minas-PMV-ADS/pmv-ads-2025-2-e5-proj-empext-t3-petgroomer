@@ -6,64 +6,61 @@ import { StatusAgendamento } from '@prisma/client';
 export class PedidoagendamentoService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async criarPedido(data: { 
-    userId?: string; 
-    data: Date; 
-    status: StatusAgendamento; 
+  async criarPedido(data: {
+    userId?: string;
+    data: Date;
+    status: StatusAgendamento;
     nomeClienteManual?: string;
-    servicoId: number; // ADICIONE ESTA LINHA
+    servicoId: number;
   }) {
-    // Verifique se o serviço existe
-    const servico = await this.prisma.servico.findUnique({
-      where: { id: data.servicoId }
-    });
-
-    if (!servico) {
-      throw new NotFoundException('Serviço não encontrado');
-    }
-
     return this.prisma.agendamento.create({
       data: {
-        userId: data.userId, // Não force string vazia, deixe como undefined se não houver
+        userId: data.userId,
         data: data.data,
         status: data.status,
         nomeClienteManual: data.nomeClienteManual,
-        servicoId: data.servicoId, // ADICIONE ESTA LINHA
+        servicoId: data.servicoId,
       },
       include: {
         servico: true,
         cliente: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
-      },
+          select: { id: true, name: true, email: true }
+        }
+      }
     });
   }
 
   async listarPedidos() {
-    return this.prisma.agendamento.findMany({ 
-      include: { 
-          servico: {  
-          select: {
-            id: true,
-            nome: true,
-            valor: true
-          }
-        },
+    return this.prisma.agendamento.findMany({
+      include: {
+        servico: true,
         cliente: {
-          select: {
-            id: true,
-            name: true,
-            email: true,
-          },
-        },
+          select: { id: true, name: true, email: true }
+        }
       },
-      orderBy: {
-        data: 'asc',
-      },
+      orderBy: { data: 'asc' }
+    });
+  }
+
+  // ================================
+  //       NOVO MÉTODO STATUS
+  // ================================
+  async atualizarStatus(id: number, status: StatusAgendamento) {
+    const agendamento = await this.prisma.agendamento.findUnique({
+      where: { id }
+    });
+
+    if (!agendamento) throw new NotFoundException('Agendamento não encontrado');
+
+    return this.prisma.agendamento.update({
+      where: { id },
+      data: { status },
+      include: {
+        servico: true,
+        cliente: {
+          select: { id: true, name: true, email: true }
+        }
+      }
     });
   }
 }

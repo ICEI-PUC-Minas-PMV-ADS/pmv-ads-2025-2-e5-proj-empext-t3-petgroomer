@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import {
   Layout,
@@ -17,125 +17,185 @@ import { motion } from 'framer-motion';
 const { Content, Sider } = Layout;
 const { Title } = Typography;
 
-// --- Dados de Exemplo ---
-// Em uma aplicação real, estes dados viriam do seu banco de dados.
-const pendingAppointments = [
-  {
-    id: 'AGD12345',
-    petName: 'Bolinha',
-    clientName: 'João da Silva',
-    service: 'Banho e Tosa Completa',
-    date: '25 de Novembro de 2025',
-    time: '14:30',
-  },
-  {
-    id: 'AGD12346',
-    petName: 'Rex',
-    clientName: 'Maria Oliveira',
-    service: 'Banho',
-    date: '25 de Novembro de 2025',
-    time: '15:00',
-  },
-  {
-    id: 'AGD12347',
-    petName: 'Luna',
-    clientName: 'Carlos Pereira',
-    service: 'Tosa Higiênica',
-    date: '26 de Novembro de 2025',
-    time: '10:00',
-  },
-];
+// ----------- TIPO DO AGENDAMENTO (baseado no Prisma) -----------
+
+type Appointment = {
+  id: number;
+  data: string;
+  status: string;
+  nomeClienteManual?: string;
+  cliente?: {
+    id: string;
+    name: string;
+    email: string;
+  } | null;
+  servico: {
+    id: number;
+    nome: string;
+    valor: number;
+  } | null;
+};
 
 export default function ConfirmaAgendamento() {
-  // Estado para guardar qual agendamento está selecionado
-  const [selectedAppointment, setSelectedAppointment] = useState(
-    pendingAppointments[0]
-  );
+  const [pendingAppointments, setPendingAppointments] = useState<Appointment[]>([]);
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
-  const handleAccept = () => {
-    // Lógica para chamar a API e confirmar o agendamento
-    console.log(`Agendamento ${selectedAppointment.id} ACEITO.`);
-    message.success(`Agendamento de ${selectedAppointment.petName} aceito!`);
-    // Aqui você também removeria o item da lista de pendentes
+  useEffect(() => {
+    const tk = localStorage.getItem("token");
+    setToken(tk);
+  }, []);
+
+  // Carrega os agendamentos pendentes
+  const loadAppointments = async () => {
+    if (!token) return;
+
+    try {
+      const res = await fetch(
+        "https://pmv-ads-2025-2-e5-proj-empext-t3-petgroomer-production.up.railway.app/agendamentos",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      if (!res.ok) throw new Error("Erro ao buscar agendamentos");
+
+      const data: Appointment[] = await res.json();
+
+      const pendentes = data.filter(a => a.status === "PENDENTE");
+
+      // Define o primeiro agendamento como selecionado apenas no carregamento inicial
+      if (pendingAppointments.length === 0 && pendentes.length > 0) {
+        setSelectedAppointment(pendentes[0]);
+      }
+      setPendingAppointments(pendentes);
+    } catch (e) {
+      console.error(e);
+      message.error("Erro ao carregar agendamentos");
+    }
   };
 
-  const handleDecline = () => {
-    // Lógica para chamar a API e recusar o agendamento
-    console.log(`Agendamento ${selectedAppointment.id} RECUSADO.`);
-    message.error(`Agendamento de ${selectedAppointment.petName} recusado.`);
-    // Aqui você também removeria o item da lista de pendentes
+  useEffect(() => {
+    if (token) loadAppointments();
+  }, [token]);
+
+  // Altera status
+  const alterarStatus = async (status: string) => {
+    if (!selectedAppointment) return;
+
+    try {
+      const res = await fetch(
+        `https://pmv-ads-2025-2-e5-proj-empext-t3-petgroomer-production.up.railway.app/agendamentos/${selectedAppointment.id}/alterar-status`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ status }),
+        }
+      );
+
+      if (!res.ok) throw new Error("Falha ao atualizar");
+
+      message.success(
+        status === "APROVADO"
+          ? "Agendamento aprovado!"
+          : "Agendamento recusado!"
+      );
+
+      await loadAppointments();
+      // Limpa a seleção para evitar exibir um agendamento diferente automaticamente
+      setSelectedAppointment(null);
+
+    } catch (err) {
+      console.error(err);
+      message.error("Erro ao atualizar o agendamento");
+    }
   };
+
+  const handleAccept = () => alterarStatus("APROVADO");
+  const handleDecline = () => alterarStatus("RECUSADO");
 
   return (
     <>
       <Head>
         <title>Confirmar Agendamento - MN Groomer</title>
-        <meta
-          name="description"
-          content="Página para confirmação de agendamentos de serviços."
-        />
       </Head>
-      <Layout
-        style={{
-          minHeight: 'calc(100vh - 134px)', // Ajuste conforme a altura do seu Header/Footer
-        }}
-      >
-        <Sider
-          width={350}
-          theme="light"
-          style={{ borderRight: '1px solid #f0f0f0' }}
-        >
-          <div style={{ padding: '16px' }}>
+
+      <Layout style={{ minHeight: "calc(100vh - 134px)" }}>
+        <Sider width={350} theme="light" style={{ borderRight: "1px solid #f0f0f0" }}>
+          <div style={{ padding: "16px" }}>
             <Title level={4}>Agendamentos Pendentes</Title>
           </div>
+
           <List
             itemLayout="horizontal"
             dataSource={pendingAppointments}
+            locale={{ emptyText: "Nenhum agendamento pendente" }}
             renderItem={(item) => (
               <List.Item
                 onClick={() => setSelectedAppointment(item)}
                 style={{
-                  cursor: 'pointer',
-                  padding: '12px 24px',
+                  cursor: "pointer",
+                  padding: "12px 24px",
                   backgroundColor:
-                    selectedAppointment?.id === item.id ? '#e6f7ff' : 'transparent',
+                    selectedAppointment?.id === item.id ? "#e6f7ff" : "transparent",
                 }}
               >
                 <List.Item.Meta
-                  title={<a>{`${item.petName} - ${item.clientName}`}</a>}
-                  description={`${item.service} - ${item.date}`}
+                  title={`${item.cliente?.name ?? item.nomeClienteManual ?? "Sem nome"}`}
+                  description={`${item.servico?.nome ?? "Serviço"} - ${new Date(item.data).toLocaleDateString()}`}
                 />
               </List.Item>
             )}
           />
         </Sider>
-        <Content style={{ padding: '24px 50px' }}>
+
+        <Content style={{ padding: "24px 50px" }}>
           {selectedAppointment ? (
             <motion.div
-              key={selectedAppointment.id} // Garante a re-renderização da animação
+              key={selectedAppointment.id}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3 }}
             >
-              <Card style={{ width: '100%', textAlign: 'center' }}>
+              <Card style={{ width: "100%", textAlign: "center" }}>
                 <Title level={2}>Detalhes do Agendamento</Title>
                 <Divider />
-                <Descriptions bordered column={1} style={{ textAlign: 'left' }}>
-                  <Descriptions.Item label="Cliente">{selectedAppointment.clientName}</Descriptions.Item>
-                  <Descriptions.Item label="Pet">{selectedAppointment.petName}</Descriptions.Item>
-                  <Descriptions.Item label="Serviço">{selectedAppointment.service}</Descriptions.Item>
-                  <Descriptions.Item label="Data">{selectedAppointment.date}</Descriptions.Item>
-                  <Descriptions.Item label="Hora">{selectedAppointment.time}</Descriptions.Item>
+
+                <Descriptions bordered column={1}>
+                  <Descriptions.Item label="Cliente">
+                    {selectedAppointment.cliente?.name ??
+                      selectedAppointment.nomeClienteManual ??
+                      "Não informado"}
+                  </Descriptions.Item>
+
+                  <Descriptions.Item label="Serviço">
+                    {selectedAppointment.servico?.nome ?? "Serviço não informado"}
+                  </Descriptions.Item>
+
+                  <Descriptions.Item label="Data">
+                    {new Date(selectedAppointment.data).toLocaleDateString()}
+                  </Descriptions.Item>
                 </Descriptions>
+
                 <Divider />
+
                 <Space size="large">
-                  <Button type="primary" icon={<CheckOutlined />} onClick={handleAccept}>Aceitar</Button>
-                  <Button type="primary" danger icon={<CloseOutlined />} onClick={handleDecline}>Recusar</Button>
+                  <Button type="primary" icon={<CheckOutlined />} onClick={handleAccept}>
+                    Aceitar
+                  </Button>
+                  <Button type="primary" danger icon={<CloseOutlined />} onClick={handleDecline}>
+                    Recusar
+                  </Button>
                 </Space>
               </Card>
             </motion.div>
           ) : (
-            <div style={{textAlign: 'center', paddingTop: '100px'}}><Title level={3}>Selecione um agendamento para ver os detalhes</Title></div>
+            <Title level={3} style={{ textAlign: "center", paddingTop: 100 }}>
+              Nenhum agendamento selecionado
+            </Title>
           )}
         </Content>
       </Layout>
