@@ -178,7 +178,7 @@ export default function Dashboard() {
   ) {
     try {
       setUpdatingStatusId(agendamentoId);
-      await apiFetch('/agendamentos/${id}', {
+      await apiFetch(`/agendamentos/${agendamentoId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
