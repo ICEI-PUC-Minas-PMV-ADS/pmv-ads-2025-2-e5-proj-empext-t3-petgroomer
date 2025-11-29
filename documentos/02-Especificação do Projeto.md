@@ -62,8 +62,8 @@ Para mais informações, consulte os microfundamentos Fundamentos de Engenharia 
 |RF-001| O sistema deve permitir cadastrar petshops contratantes. | ALTA | 
 |RF-002| O sistema deve exibir todos os meios de contato oferecidos, incluindo e-mail, redes sociais, telefone e endereço.  | BAIXA |
 |RF-003| O sistema deve exibir fotos de seus serviços realizados e que essas fotos sejam exibidas em seu portfólio.  | ALTA |
-|RF-004| O sistema deve permitir cancelar um agendamento de serviço previamente marcado com um petshop. | MÉDIA |
-|RF-005| O sistema deve exibir todos os agendamentos do dia em ordem de horário.  | ALTA |
+|RF-004| O sistema deve permitir rejeitar um agendamento de serviço previamente marcado com um petshop. | MÉDIA |
+|RF-005| O sistema deve exibir o agendamento do dia com cliente e horário.  | ALTA |
 |RF-006| O sistema exibir um dashboard com todos serviços disponíveis e agendamentos salvos.  | MÉDIA |
 |RF-007| O sistema deve permitir cadastrar os serviços oferecidos (banho, tosa, hidratação, etc.), com nome e valor.  | ALTA |
 |RF-008| O sistema deve permitir marcar o agendamento como “pendente” ou “confirmado”.  | MÉDIA |
