@@ -59,15 +59,15 @@ Para mais informações, consulte os microfundamentos Fundamentos de Engenharia 
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| O sistema deve permitir cadastrar petshops contratantes, incluindo nome, telefone, endereço e pessoa de contato. | ALTA | 
-|RF-002| O sistema deve permitir editar os dados dos petshops já cadastrados.  | MÉDIA |
-|RF-003| O sistema deve permitir que a cliente adicione fotos de seus serviços realizados e que essas fotos sejam exibidas em seu portfólio.  | ALTA |
+|RF-001| O sistema deve permitir cadastrar petshops contratantes. | ALTA | 
+|RF-002| O sistema deve exibir todos os meios de contato oferecidos, incluindo e-mail, redes sociais, telefone e endereço.  | BAIXA |
+|RF-003| O sistema deve exibir fotos de seus serviços realizados e que essas fotos sejam exibidas em seu portfólio.  | ALTA |
 |RF-004| O sistema deve permitir cancelar um agendamento de serviço previamente marcado com um petshop. | MÉDIA |
 |RF-005| O sistema deve exibir todos os agendamentos do dia em ordem de horário.  | ALTA |
-|RF-006| O sistema deve permitir localizar clientes por nome ou telefone.  | MÉDIA |
+|RF-006| O sistema exibir um dashboard com todos serviços disponíveis e agendamentos salvos.  | MÉDIA |
 |RF-007| O sistema deve permitir cadastrar os serviços oferecidos (banho, tosa, hidratação, etc.), com nome e valor.  | ALTA |
 |RF-008| O sistema deve permitir marcar o agendamento como “pendente” ou “confirmado”.  | MÉDIA |
-|RF-009| O sistema deve exibir uma lista com todos os petshops registrados.  | BAIXA |
+|RF-009| O sistema deve exibir um calendário com todos agendamentos do mês.  | MÉDIA |
 |RF-010| O sistema deve permitir agendar atendimentos, informando petshop, serviço, data e horário.  | MÉDIA |
 
 ### Requisitos não Funcionais
