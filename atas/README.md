@@ -1,7 +1,7 @@
 # Ata Etapa 1
 
 # Ata Etapa 2
-[Link do sharepoint da ata](https://sgapucminasbr-my.sharepoint.com/personal/866779_sga_pucminas_br/_layouts/15/guestaccess.aspx?share=EbsPeu6uwMlBhjlt-fecW-YB2YqkRqq7C4eeHZrCG1_yzA&e=pgCude)
+[ADS - Ata de Reunião.pdf](https://github.com/user-attachments/files/23911233/ADS.-.Ata.de.Reuniao.pdf)
 
 [Link do vídeo da reunião](https://youtu.be/rmF-XVMPYqE)
 
@@ -208,4 +208,4 @@
 </table>
 
 # Ata Etapa 4
-[Link](https://sgapucminasbr-my.sharepoint.com/personal/866779_sga_pucminas_br/_layouts/15/guestaccess.aspx?share=IQAVLHMqp6VeSr0eF8RWH7jrAYC0qR9incEdw4iMmNnt-GU&e=Xs8Oot)
+[ADS - Ata de Reunião - Etapa 4.pdf](https://github.com/user-attachments/files/23911243/ADS.-.Ata.de.Reuniao.-.Etapa.4.pdf)
