@@ -6,7 +6,9 @@
 
 # Atas
 
-## Ata Etapa 1
+# Ata de Acordo de Parceria
+
+[Ata Inicial do Acordo de Parceria.](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e5-proj-empext-t3-petgroomer/blob/main/atas/Ata_de_Acordo_de_Parceria.pdf)
 
 ## Ata Etapa 2
 [ADS - Ata de Reunião.pdf](https://github.com/user-attachments/files/23911233/ADS.-.Ata.de.Reuniao.pdf)
