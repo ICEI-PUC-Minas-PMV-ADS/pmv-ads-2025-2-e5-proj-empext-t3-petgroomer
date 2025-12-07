@@ -1,6 +1,8 @@
 # Termos
 
-[Termo_Marco_de_Entrega_-_Homologacao_e_Implantacao.pdf](https://github.com/user-attachments/files/24015839/Termo_Marco_de_Entrega_-_Homologacao_e_Implantacao.pdf)
+[Termo Marco de Entrega - Homologacao e Implantacao.pdf](https://github.com/user-attachments/files/24015839/Termo_Marco_de_Entrega_-_Homologacao_e_Implantacao.pdf)
+
+[Petgroomer - Termo de Avaliacao do Projeto.pdf](https://github.com/user-attachments/files/24018658/Petgroomer_-_Termo_de_Avaliacao_do_Projeto_assinado.pdf)
 
 
 
