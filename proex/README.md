@@ -12,5 +12,9 @@
 
 <img width="1168" height="1659" alt="Relatório Individual - Isabela Castro" src="https://github.com/user-attachments/assets/3568c491-2a24-4f0e-8a0d-1a1270e6cd42" />
 
+-------------------------
 
+## Ariel Ortega Acerbi
+[Relatório Individual Ariel Ortega.pdf](https://github.com/user-attachments/files/24016877/Relatorio.Individual.Ariel.Ortega.pdf)
 
+<img width="1158" height="1542" alt="screencapture-sge-pucminas-br-SGE-RelatorioTurma-VisualizarEntrega-4224CB1C7D2CE714472B46D01A6A702A-2025-12-07-13_10_28" src="https://github.com/user-attachments/assets/4d3654e1-d4c7-49d7-9d44-9336165e9e11" />
