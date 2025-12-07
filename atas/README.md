@@ -1,6 +1,14 @@
-# Ata Etapa 1
+# Termos
 
-# Ata Etapa 2
+[Termo_Marco_de_Entrega_-_Homologacao_e_Implantacao.pdf](https://github.com/user-attachments/files/24015839/Termo_Marco_de_Entrega_-_Homologacao_e_Implantacao.pdf)
+
+
+
+# Atas
+
+## Ata Etapa 1
+
+## Ata Etapa 2
 [ADS - Ata de Reunião.pdf](https://github.com/user-attachments/files/23911233/ADS.-.Ata.de.Reuniao.pdf)
 
 [Link do vídeo da reunião](https://youtu.be/rmF-XVMPYqE)
@@ -130,7 +138,7 @@
 
 </table>
 
-# Etapa 3
+## Ata Etapa 3
 
 <table>
 <tr>
