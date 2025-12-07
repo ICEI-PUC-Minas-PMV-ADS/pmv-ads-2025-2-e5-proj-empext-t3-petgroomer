@@ -221,3 +221,5 @@
 
 # Ata Etapa 4
 [ADS - Ata de Reunião - Etapa 4.pdf](https://github.com/user-attachments/files/23911243/ADS.-.Ata.de.Reuniao.-.Etapa.4.pdf)
+
+# Ata Entrega Final
