@@ -6,7 +6,7 @@
 
 # Atas
 
-# Ata de Acordo de Parceria
+## Ata de Acordo de Parceria
 
 [Ata Inicial do Acordo de Parceria.](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e5-proj-empext-t3-petgroomer/blob/main/atas/Ata_de_Acordo_de_Parceria.pdf)
 
