@@ -13,16 +13,6 @@ A aplicação permitirá que:
 
 Com essa proposta, o sistema não apenas melhora a organização interna dos estabelecimentos, mas também oferece uma experiência diferenciada aos clientes, aproximando-os do pet shop e criando um ecossistema digital para o setor pet.
 # Etapa 5 - Apresentação da Solução
-- Apresentação para Mostra de Extensão Eixo 5 ADS:
-  * descrição do cliente,
-  * objetivo da aplicação,
-  * telas principais,
-  * pontos positivos e desafios da experiência extensionista,
-  * conclusão da equipe.
-  
-- Vídeo de apresentação da solução:
-  * tamanho do arquivo limitado a 90Mb;
-  * taxa de FPS limitada a 30 quadros por segundo;
-  * resolução HD (720p) ou Full HD (1080p);
-  * formato mp4.
+[Link GitHub](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e5-proj-empext-t3-petgroomer/blob/main/apresentacao/Turma%203%20-%20PetGroomer.mp4) - Versão em 720p, 30 FPS e < 90MB.
+[Link Youtube]() - Versão FullHD
 
