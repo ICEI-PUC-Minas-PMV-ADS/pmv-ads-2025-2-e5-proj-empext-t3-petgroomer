@@ -13,6 +13,7 @@ A aplicação permitirá que:
 
 Com essa proposta, o sistema não apenas melhora a organização interna dos estabelecimentos, mas também oferece uma experiência diferenciada aos clientes, aproximando-os do pet shop e criando um ecossistema digital para o setor pet.
 # Etapa 5 - Apresentação da Solução
-[Link GitHub](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e5-proj-empext-t3-petgroomer/blob/main/apresentacao/Turma%203%20-%20PetGroomer.mp4) - Versão em 720p, 30 FPS e < 90MB.
-[Link Youtube]() - Versão FullHD
+- [Link GitHub](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2025-2-e5-proj-empext-t3-petgroomer/blob/main/apresentacao/Turma%203%20-%20PetGroomer.mp4) - Versão em 720p, 30 FPS e < 90MB.
+
+- [Link Youtube](https://youtu.be/0y4eq7DUBJo) - Versão FullHD
 
